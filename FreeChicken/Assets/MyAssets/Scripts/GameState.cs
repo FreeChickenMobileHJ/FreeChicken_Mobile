@@ -61,8 +61,40 @@ public class GameState : MonoBehaviour
             ClickSound.Play();
            
             SetLoadingUI();
-            Invoke("HouseScenePlay",3f);
+            Invoke("HouseScene_1Play",3f);
             
+        }
+        else if (isH_2)
+        {
+            ClickSound.Play();
+
+            SetLoadingUI();
+            Invoke("HouseScene_2Play", 3f);
+
+        }
+        else if (isH_3)
+        {
+            ClickSound.Play();
+
+            SetLoadingUI();
+            Invoke("HouseScene_3Play", 3f);
+
+        }
+        else if (isH_4)
+        {
+            ClickSound.Play();
+
+            SetLoadingUI();
+            Invoke("HouseScene_4Play", 3f);
+
+        }
+        else if (isH_5)
+        {
+            ClickSound.Play();
+
+            SetLoadingUI();
+            Invoke("HouseScene_5Play", 3f);
+
         }
         else if (isCi)
         {
@@ -135,11 +167,36 @@ public class GameState : MonoBehaviour
         SceneManager.LoadScene("FactoryScene_4");
 
 
+    }  
+    public void HouseScene_1Play()
+    {
+
+        SceneManager.LoadScene("HouseScene1");
+
     }
-    public void HouseScenePlay()
+    public void HouseScene_2Play()
     {
        
-        SceneManager.LoadScene("HouseScene1");
+        SceneManager.LoadScene("HouseScene2");
+
+    }
+    public void HouseScene_3Play()
+    {
+
+        SceneManager.LoadScene("HouseScene3");
+
+    }
+
+    public void HouseScene_4Play()
+    {
+
+        SceneManager.LoadScene("HouseScene4");
+
+    }
+    public void HouseScene_5Play()
+    {
+
+        SceneManager.LoadScene("HouseScene5");
 
     }
     public void CityScenePlay()

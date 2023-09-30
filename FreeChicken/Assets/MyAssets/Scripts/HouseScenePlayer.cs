@@ -313,11 +313,11 @@ public class HouseScenePlayer : MonoBehaviour
             SavePointImage.gameObject.SetActive(true);
             savePointAudio.Play();
             Invoke("Destroy_SavePointImage", 2f);
-            SceneManager.LoadScene("HouseScene2");
+            
             StartCam.Priority = 0;
             mainCam.Priority = 10;
             shouldLookAround = true;
-            Invoke("Destroy_SavePointObj2", 1.5f);
+            Invoke("Destroy_SavePointObj2", 1f);
         }
 
         if (other.gameObject.CompareTag("SavePoint3"))
@@ -362,9 +362,9 @@ public class HouseScenePlayer : MonoBehaviour
     }
     void NextScene()
     {
-        LoadSceneInfo.isHouse_2 = true;
-        PlayerPrefs.SetInt("SceneHouse_2", LoadSceneInfo.isHouse_2 ? 1 : 0);
-        LoadSceneInfo.LevelCnt = 7;
+        /*LoadSceneInfo.isHouse_2 = true;
+        PlayerPrefs.SetInt("SceneHouse_2", LoadSceneInfo.isHouse_2 ? 1 : 0);*/
+        LoadSceneInfo.LevelCnt = 2;
         SceneManager.LoadScene("LoadingScene");
     }
     void OnTriggerExit(Collider other)
@@ -393,12 +393,59 @@ public class HouseScenePlayer : MonoBehaviour
 
     void Destroy_SavePointObj2()
     {
-        SavePoint2Obj.gameObject.SetActive(false);
+
+        if (File.Exists("PlayerData.json"))
+        {
+            GameSave.Level = 6;
+            string jsonData = File.ReadAllText("playerData.json");
+            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+            if (loadedData.LevelChk >= GameSave.Level)
+            {
+                GameSave.Level = loadedData.LevelChk;
+            }
+            else
+            {
+                GameSave.Level = 6;
+            }
+        }
+        else
+        {
+            GameSave.Level = 6;
+        }
+
+
+        LoadSceneInfo.LevelCnt = 2;
+
+        SceneManager.LoadScene("LoadingScene");
     }
 
     void Destroy_SavePointObj3()
     {
-        SavePoint3Obj.gameObject.SetActive(false);
+        if (File.Exists("PlayerData.json"))
+        {
+            GameSave.Level = 7;
+            string jsonData = File.ReadAllText("playerData.json");
+            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+            if (loadedData.LevelChk >= GameSave.Level)
+            {
+                GameSave.Level = loadedData.LevelChk;
+            }
+            else
+            {
+                GameSave.Level = 7;
+            }
+        }
+        else
+        {
+            GameSave.Level = 7;
+        }
+
+
+        LoadSceneInfo.LevelCnt = 2;
+
+        SceneManager.LoadScene("LoadingScene");
     }
 
     void restart_stage1()

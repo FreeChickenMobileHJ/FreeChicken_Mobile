@@ -40,7 +40,13 @@ public class TypingEffect : MonoBehaviour
         
        
     }
+    public void Skip()
+    {
+        BGM.Stop();
+        LoadingUI.SetActive(true);
 
+        Invoke("StartScene", 2f);
+    }
     private IEnumerator InitialDelayCoroutine1()
     {
         yield return new WaitForSeconds(initialDelay);
