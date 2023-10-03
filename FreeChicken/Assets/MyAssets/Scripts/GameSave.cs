@@ -35,6 +35,7 @@ public class GameSave : MonoBehaviour
     public GameObject Cave_2;    // 12
     public GameObject Cave_3;    // 13
     public GameObject Cave_4;    // 14
+    public GameObject Cave_5;
 
     public GameObject[] Objects;
     public AudioSource ShowSound;
@@ -54,6 +55,7 @@ public class GameSave : MonoBehaviour
     public ParticleSystem ShowParticle_Cave_2;
     public ParticleSystem ShowParticle_Cave_3;
     public ParticleSystem ShowParticle_Cave_4;
+    public ParticleSystem ShowParticle_Cave_5;
 
 
     public static int Level = 1;
@@ -210,6 +212,16 @@ public class GameSave : MonoBehaviour
             ShowSound.Play();
 
             ShowParticle_Cave_4.Play();
+
+            isChk = true;
+        }
+        if (Level == 15 && !isChk)
+        {
+
+            Cave_5.SetActive(true);
+            ShowSound.Play();
+
+            ShowParticle_Cave_5.Play();
 
             isChk = true;
         }

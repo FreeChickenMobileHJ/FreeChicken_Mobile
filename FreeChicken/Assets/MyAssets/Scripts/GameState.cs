@@ -19,6 +19,7 @@ public class GameState : MonoBehaviour
     public bool isCa_2;
     public bool isCa_3;
     public bool isCa_4;
+    public bool isCa_5;
     public AudioSource BGM;
     public GameObject LoadingUI;
 
@@ -132,6 +133,12 @@ public class GameState : MonoBehaviour
             Invoke("CaveScene_4Play", 3f);
 
         }
+        else if (isCa_5)
+        {
+            ClickSound.Play();
+            SetLoadingUI();
+            Invoke("CaveScene_5Play", 3f);
+        }
     }  
     void SetLoadingUI()
     {
@@ -220,5 +227,9 @@ public class GameState : MonoBehaviour
     public void CaveScene_4Play()
     {
         SceneManager.LoadScene("CaveScene_4");
+    }
+    public void CaveScene_5Play()
+    {
+        SceneManager.LoadScene("CaveScene_5");
     }
 }

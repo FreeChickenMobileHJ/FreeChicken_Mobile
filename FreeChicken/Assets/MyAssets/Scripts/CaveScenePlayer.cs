@@ -74,6 +74,12 @@ public class CaveScenePlayer : MonoBehaviour
 
     public bool isLastUI;
     public bool isFire;
+
+    public bool isCave_2;
+    public bool isCave_3;
+    public bool isCave_4;
+    public bool isCave_5;
+
     [Header("Camera")]
     
     public CinemachineVirtualCamera mainCam;
@@ -126,11 +132,13 @@ public class CaveScenePlayer : MonoBehaviour
     public GameObject SavePoint2Obj;
     public GameObject SavePoint3Obj;
     public GameObject SavePoint4Obj;
+    public GameObject SavePoint5Obj;
     public bool check_savepoint0;
     public bool check_savepoint1;
     public bool check_savepoint2;
     public bool check_savepoint3;
     public bool check_savepoint4;
+    public bool check_savepoint5;
 
     [Header("Audio")]
     public AudioSource savePointAudio;
@@ -190,7 +198,25 @@ public class CaveScenePlayer : MonoBehaviour
         DiePs.gameObject.SetActive(false);
         cnt = GameObject.FindGameObjectWithTag("TimerCnt").GetComponent<CityMap_CountDown>();
         Cursor.visible = false;
-        FirstCam.Priority = 100;
+        //FirstCam.Priority = 100;
+        if (isCave_2)
+        {
+            image1.SetActive(false);
+            image2.SetActive(false);
+            check_savepoint2 = true;
+        }
+        if (isCave_3)
+        {
+            check_savepoint3 = true;
+        }
+        if (isCave_4)
+        {
+            check_savepoint4 = true;
+        }
+        if (isCave_5)
+        {
+            check_savepoint5 = true;
+        }
     }
 
     void Update()
@@ -378,6 +404,11 @@ public class CaveScenePlayer : MonoBehaviour
             {
                 DieMotion();
                 Invoke("restart_stage4", 3f);
+            }
+            else if (check_savepoint5)
+            {
+                DieMotion();
+                Invoke("restart_stage5", 3f);
             }
             else
             {
@@ -686,7 +717,7 @@ public class CaveScenePlayer : MonoBehaviour
             Invoke("Destroy_SavePointImage", 2f);
         }
 
-        if (other.gameObject.tag == "SavePoint2")
+        if (other.gameObject.tag == "SavePoint2" && !isCave_2)
         {
             check_savepoint2 = true;
             check_savepoint0 = false;
@@ -699,7 +730,7 @@ public class CaveScenePlayer : MonoBehaviour
             Invoke("Destroy_SavePointImage", 2f);
         }
 
-        if (other.gameObject.tag == "SavePoint3")
+        if (other.gameObject.tag == "SavePoint3" && !isCave_3)
         {
             check_savepoint3 = true;
             check_savepoint0 = false;
@@ -712,7 +743,7 @@ public class CaveScenePlayer : MonoBehaviour
             Invoke("Destroy_SavePointImage", 2f);
         }
 
-        if (other.gameObject.tag == "SavePoint4")
+        if (other.gameObject.tag == "SavePoint4" && !isCave_4)
         {
             check_savepoint4 = true;
             check_savepoint0 = false;
@@ -725,11 +756,25 @@ public class CaveScenePlayer : MonoBehaviour
             Invoke("Destroy_SavePointImage", 2f);
         }
 
-        if(other.gameObject.name == "FinalPoint")
+        if (other.gameObject.tag == "SavePoint5" && !isCave_5)
+        {
+            check_savepoint5 = true;
+            check_savepoint0 = false;
+            check_savepoint1 = false;
+            check_savepoint2 = false;
+            check_savepoint3 = false;
+            check_savepoint4 = false;
+            savePointAudio.Play();
+            StartCoroutine("GetSavePointImage");
+            Invoke("Destroy_SavePointObj5", 1.5f);
+            Invoke("Destroy_SavePointImage", 2f);
+        }
+
+        if (other.gameObject.name == "FinalPoint")
         {
             LoadSceneInfo.isEndScene = true;
             PlayerPrefs.SetInt("SceneEnd", LoadSceneInfo.isEndScene ? 1 : 0);
-            LoadSceneInfo.LevelCnt = 10;
+            LoadSceneInfo.LevelCnt = 3;
             SceneManager.LoadScene("LoadingScene");
         }
 
@@ -886,6 +931,12 @@ public class CaveScenePlayer : MonoBehaviour
     void Destroy_SavePointObj1()
     {
         SavePoint1Obj.gameObject.SetActive(false);
+      
+    }
+
+    void Destroy_SavePointObj2()
+    {
+        SavePoint1Obj.gameObject.SetActive(false);
         GameSave.Level = 12;
 
         if (File.Exists("PlayerData.json"))
@@ -916,21 +967,102 @@ public class CaveScenePlayer : MonoBehaviour
         SceneManager.LoadScene("LoadingScene");
     }
 
-    void Destroy_SavePointObj2()
-    {
-        SavePoint2Obj.gameObject.SetActive(false);
-    }
-
     void Destroy_SavePointObj3()
     {
-        SavePoint3Obj.gameObject.SetActive(false);
+        GameSave.Level = 13;
+
+        if (File.Exists("PlayerData.json"))
+        {
+
+            string jsonData = File.ReadAllText("playerData.json");
+            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+            if (loadedData.LevelChk >= GameSave.Level)
+            {
+                GameSave.Level = loadedData.LevelChk;
+            }
+            else
+            {
+                GameSave.Level = 13;
+            }
+        }
+        else
+        {
+            GameSave.Level = 13;
+        }
+
+
+
+        LoadSceneInfo.is2DEnterScene = true;
+        PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
+        LoadSceneInfo.LevelCnt = 2;
+        SceneManager.LoadScene("LoadingScene");
     }
 
     void Destroy_SavePointObj4()
     {
-        SavePoint4Obj.gameObject.SetActive(false);
-    }
+        SavePoint1Obj.gameObject.SetActive(false);
+        GameSave.Level = 14;
 
+        if (File.Exists("PlayerData.json"))
+        {
+
+            string jsonData = File.ReadAllText("playerData.json");
+            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+            if (loadedData.LevelChk >= GameSave.Level)
+            {
+                GameSave.Level = loadedData.LevelChk;
+            }
+            else
+            {
+                GameSave.Level = 14;
+            }
+        }
+        else
+        {
+            GameSave.Level = 14;
+        }
+
+
+
+        LoadSceneInfo.is2DEnterScene = true;
+        PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
+        LoadSceneInfo.LevelCnt = 2;
+        SceneManager.LoadScene("LoadingScene");
+    }
+    void Destroy_SavePointObj5()
+    {
+        //SavePoint5Obj.gameObject.SetActive(false);
+        GameSave.Level = 15;
+
+        if (File.Exists("PlayerData.json"))
+        {
+
+            string jsonData = File.ReadAllText("playerData.json");
+            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+            if (loadedData.LevelChk >= GameSave.Level)
+            {
+                GameSave.Level = loadedData.LevelChk;
+            }
+            else
+            {
+                GameSave.Level = 15;
+            }
+        }
+        else
+        {
+            GameSave.Level = 15;
+        }
+
+
+
+        LoadSceneInfo.is2DEnterScene = true;
+        PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
+        LoadSceneInfo.LevelCnt = 2;
+        SceneManager.LoadScene("LoadingScene");
+    }
     //------------restart_stage-----------------------------------------
     void restart_stage0()
     {
@@ -963,7 +1095,11 @@ public class CaveScenePlayer : MonoBehaviour
         Dead = false;
         this.transform.position = SavePoint4Obj.transform.position;
     }
-
+    void restart_stage5()
+    {
+        Dead = false;
+        this.transform.position = SavePoint5Obj.transform.position;
+    }
     void remove_dieUI()
     {
         DiePs.gameObject.SetActive(false);

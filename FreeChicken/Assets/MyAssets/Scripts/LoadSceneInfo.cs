@@ -12,23 +12,7 @@ public class LoadSceneInfo : MonoBehaviour
 
     public static int LevelCnt;
     public bool isChk;
-    public void Load()
-    {
-        int SceneStart = PlayerPrefs.GetInt("SceneStart");
-        if(SceneStart == 1)
-        {
-            isStartScene = true;
-            LevelCnt = 1;
-        }
-        
-        int Scene2D = PlayerPrefs.GetInt("Scene2D");
-        if (Scene2D == 1)
-        {
-            is2DEnterScene = true;
-            LevelCnt = 2;
-        }
-      
-    }
+   
     public void Update()
     {
         if (LevelCnt == 1 && !isChk)

@@ -78,9 +78,9 @@ public class CaveInteraction_Door : MonoBehaviour
         }
     }
 
-    void OpenDoor()
+    public void OpenDoor()
     {
-        if (Input.GetButtonDown("Interaction") && isOpen && player.hasKey)
+        if (isOpen && player.hasKey)
         {
             OpenDoorClear.Play();
             Invoke("SetEnd", 3f);
@@ -94,7 +94,7 @@ public class CaveInteraction_Door : MonoBehaviour
             Invoke("Last", 6f);
             
         }
-        else if(Input.GetButtonDown("Interaction") && isOpen &&!player.hasKey)
+        else if(isOpen &&!player.hasKey)
         {
             donotOpenDoorText.SetActive(true);
             Invoke("DestroyOpenDoorText", 1.5f);
