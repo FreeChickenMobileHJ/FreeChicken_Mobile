@@ -6,12 +6,11 @@ using TMPro;
 using Cinemachine;
 public class FactoryNPC_1 : MonoBehaviour
 {
-    public Slider NpcUI;
-    
     public HouseScene2_Player player;
+
     public bool isEbutton;
+    public bool isClickbutton;
     public GameObject Ebutton;
-    public TextMeshProUGUI E;
 
     public bool isNear;
     
@@ -29,51 +28,43 @@ public class FactoryNPC_1 : MonoBehaviour
     public GameObject Wall;
     public GameManager gameManager;
    
-    float t = 0;
     void Start()
     {
         Ebutton.SetActive(false);
         player = GameObject.FindWithTag("Player").GetComponent<HouseScene2_Player>();
-       
     }
     void Update()
     {
-        
-        if (Input.GetButton("E") && isEbutton)
-        {
-            Debug.Log("E");
-            E.color = Color.red;
-            if (NpcUI.value <100f)
-            {
-                t += Time.deltaTime;
-                NpcUI.value = Mathf.Lerp(0,100,t);
-            }
-            else
-            {
-                gameManager.isLoading = true;
-                isEbutton = false;
-                Video.SetActive(true);
-
-                E.color = Color.white;
-                player.isTalk1 = true;
-                Destroy(Ebutton);
-                BGM.Stop();
-                Memory.Play();
-                
-                Cursor.visible = true;
-                Invoke("ReStart", 38f);
-                isFin = true;
-            }
-        }
-        if (Input.GetButtonUp("E"))
-        {
-            t = 0;
-            E.color = Color.white;
-            NpcUI.value = 0;
-        }
-
-       
+        getMemory();
     }
+
+    public void getMemory()
+    {
+        if (isClickbutton)
+        {
+            gameManager.isLoading = true;
+            isEbutton = false;
+            Video.SetActive(true);
+
+
+            player.isTalk1 = true;
+            Destroy(Ebutton);
+            BGM.Stop();
+            Memory.Play();
+
+            Invoke("ReStart", 38f);
+            isFin = true;
+        }
+    }
+
+    public void OnEButtonClick()
+    {
+        if (isNear)
+        {
+            isClickbutton = true;
+        }
+    }
+
     public void ReStart()
     {
         if (isFin && !PlayerData.isEnglish)
@@ -112,6 +103,7 @@ public class FactoryNPC_1 : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            isNear= true;
             npccam.Priority = 100;
             maincam.Priority = 1;
             Ebutton.SetActive(true);
@@ -122,6 +114,7 @@ public class FactoryNPC_1 : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            isNear= false;
             npccam.Priority = 1;
             maincam.Priority = 10;
             Ebutton.SetActive(false);

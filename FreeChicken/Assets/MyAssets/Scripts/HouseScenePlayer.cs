@@ -25,20 +25,22 @@ public class HouseScenePlayer : MonoBehaviour
 
     [Header("Bool")]
     public bool isMove;
-    bool isJump;
+    public bool isJump;
     bool Dead;
     public bool isfallingObstacle;
     public bool isSense;
     public bool isDoorOpen = false;
     public bool isReadyDoorOpen = false;
     public bool pushBell = false;
-    private bool isOpeningDoor = false;
-    private bool isRaisingDoor = false;
+    public bool isOpeningDoor = false;
+    public bool isRaisingDoor = false;
     private float doorOpenTimer = 0.0f;
     private float doorOpenDuration = 3.0f;
     private float doorRaiseSpeed = 0.8f;
-    private bool shouldLookAround = false;
+    private bool shouldLookAround;
     public GameManager gameManager;
+    public bool isHouse1;
+    public bool isHouse2;
 
     public GameObject startDoor;
     public GameObject DieCanvas;
@@ -106,8 +108,24 @@ public class HouseScenePlayer : MonoBehaviour
     void Start()
     {
         DiePs.gameObject.SetActive(false);
-        StartCam.Priority = 10;
-        CameraJoy.SetActive(false);
+        
+        if (isHouse1)
+        {
+            StartCam.Priority = 10;
+            CameraJoy.SetActive(false);
+            shouldLookAround= false;
+        }
+        else if(isHouse2)
+        {
+            shouldLookAround = true;
+            check_savepoint2 = true;
+        }
+        else
+        {
+            shouldLookAround = true;
+            check_savepoint3 = true;
+        }    
+
         MemoryCount.memCount = 0;
     }
 
@@ -126,7 +144,7 @@ public class HouseScenePlayer : MonoBehaviour
             }
         }
 
-        if (shouldLookAround)
+        if (shouldLookAround && isHouse1)
         {
             StartCoroutine(HideGetupgrade_textAfterDelay(3f));
         }
@@ -137,7 +155,7 @@ public class HouseScenePlayer : MonoBehaviour
 
             if (doorOpenTimer >= doorOpenDuration)
             {
-                isOpeningDoor = true;
+                isOpeningDoor = false; // trueø°º≠ false∑Œ πŸ≤„¡·¿Ω
                 isRaisingDoor = true;
                 doorOpenTimer = 0.0f;
             }
@@ -180,7 +198,7 @@ public class HouseScenePlayer : MonoBehaviour
 
     public void Jump()
     {
-        if (!isJump && !Dead)
+        if (!isJump && !Dead && !isOpeningDoor)
         {
             jumpAudio.Play();
             isJump = true;
@@ -322,6 +340,7 @@ public class HouseScenePlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("SavePoint3"))
         {
+            
             check_savepoint3 = true;
             check_savepoint1 = false;
             check_savepoint2 = false;
@@ -364,7 +383,30 @@ public class HouseScenePlayer : MonoBehaviour
     {
         /*LoadSceneInfo.isHouse_2 = true;
         PlayerPrefs.SetInt("SceneHouse_2", LoadSceneInfo.isHouse_2 ? 1 : 0);*/
+
+        if (File.Exists("PlayerData.json"))
+        {
+            GameSave.Level = 8;
+            string jsonData = File.ReadAllText("playerData.json");
+            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+            if (loadedData.LevelChk >= GameSave.Level)
+            {
+                GameSave.Level = loadedData.LevelChk;
+            }
+            else
+            {
+                GameSave.Level = 8;
+            }
+        }
+        else
+        {
+            GameSave.Level = 8;
+        }
+
+
         LoadSceneInfo.LevelCnt = 2;
+
         SceneManager.LoadScene("LoadingScene");
     }
     void OnTriggerExit(Collider other)
@@ -457,6 +499,7 @@ public class HouseScenePlayer : MonoBehaviour
     void restart_stage2()
     {
         Dead = false;
+
         this.transform.position = SavePoint2Obj.transform.position;
     }
 
@@ -532,7 +575,6 @@ public class HouseScenePlayer : MonoBehaviour
     public void LookAround(Vector3 inputDirection)
     {
         anim.SetBool("Run", false);
-        isTalk = true;
         Vector2 mouseDelta = inputDirection;
 
         Vector3 camAngle = cameraArm.rotation.eulerAngles;

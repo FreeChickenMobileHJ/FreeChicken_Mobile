@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class VirtualJoystick2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField]
     private RectTransform lever;
@@ -20,11 +19,11 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private bool isInput;
 
     [SerializeField]
-    private HouseScenePlayer housePlayer1;
+    private HouseScene2_Player housePlayer2;
 
     public float sensitivity = 1f;
 
-    public enum JoysitckType { Move,Rotate}
+    public enum JoysitckType { Move, Rotate }
     public JoysitckType joystickType;
 
     private void Awake()
@@ -47,13 +46,13 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         lever.anchoredPosition = Vector2.zero;
         isInput = false;
-        switch(joystickType)
+        switch (joystickType)
         {
             case JoysitckType.Move:
-                housePlayer1.Move(Vector2.zero);
+                housePlayer2.Move(Vector2.zero);
                 break;
             case JoysitckType.Rotate:
-                housePlayer1.Move(Vector2.zero);
+                housePlayer2.Move(Vector2.zero);
                 break;
         }
     }
@@ -70,17 +69,17 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void InputControlVector()
     {
-        if (isInput && !housePlayer1.isOpeningDoor)  // 조이스틱 입력을 받는 동안에만 플레이어 움직임을 처리
+        if (isInput)  // 조이스틱 입력을 받는 동안에만 플레이어 움직임을 처리
         {
             switch (joystickType)
             {
                 case JoysitckType.Move:
-                    housePlayer1.Move(inputDirection * sensitivity);
+                    housePlayer2.Move(inputDirection * sensitivity);
                     break;
                 case JoysitckType.Rotate:
-                    housePlayer1.Move(Vector3.zero);
-                    housePlayer1.isMove = false;
-                    housePlayer1.LookAround(inputDirection * sensitivity);
+                    housePlayer2.Move(Vector3.zero);
+                    housePlayer2.isMove = false;
+                    housePlayer2.LookAround(inputDirection * sensitivity);
                     break;
             }
         }
@@ -88,17 +87,17 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        if (!housePlayer1.isTalk || housePlayer1.TalkEnd)
+        if (!housePlayer2.isTalk1 || housePlayer2.TalkEnd1 || !housePlayer2.isTalk2 || housePlayer2.TalkEnd2)
         {
             InputControlVector();
 
         }
-        else if(housePlayer1.isTalk || !housePlayer1.TalkEnd)
+        else if (housePlayer2.isTalk1 || !housePlayer2.TalkEnd1 || housePlayer2.isTalk2 || !housePlayer2.TalkEnd2)
         {
             isInput = false;
         }
