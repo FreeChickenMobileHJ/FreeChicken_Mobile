@@ -47,9 +47,33 @@ public class FactoryUIManager : MonoBehaviour
         {
             Korean.SetActive(true);
         }
-        
+        StartCoroutine(Set());
+    }
+    IEnumerator Set()
+    {
+        while (true)
+        {
+            if (text.text.Equals(currentSentences))
+            {
+                nextText.SetActive(true);
+                isTyping = false;
+            }
+
+            yield return null;
+        }
     }
    
+    public void ClickButton()
+    {
+
+        if (!isTyping)
+        {
+          
+
+                NextSentence();
+            ButtonClickSound.Play();
+        }
+    }
     public void OndiaLog(string[] lines)
     {
         sentences.Clear();
@@ -93,30 +117,12 @@ public class FactoryUIManager : MonoBehaviour
         foreach (char ch in line.ToCharArray())
         {
             text.text += ch;
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.01f);
             
             
         }
        
     }
-    void Update()
-    {
 
-        if (text.text.Equals(currentSentences))
-        {
-            nextText.SetActive(true);
-            isTyping = false;
-        }
-
-        if (Input.GetMouseButton(0)&&!isTyping)
-        {
-            if (!isTyping)
-
-                NextSentence();
-            ButtonClickSound.Play();
-        }
-      
-       
-    }
     
 }

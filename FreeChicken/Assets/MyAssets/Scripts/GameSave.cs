@@ -58,32 +58,32 @@ public class GameSave : MonoBehaviour
     public ParticleSystem ShowParticle_Cave_5;
 
 
-    public static int Level = 1;
+    public static int Level;
     public bool isExist;
-    private void Start()
+  
+    private void Awake()
     {
         Cursor.visible = true;
-        /*if (File.Exists("PlayerData.json"))
+
+        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
 
-            string jsonData = File.ReadAllText("playerData.json");
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
-            Level = loadedData.LevelChk;
-        }*/
 
+            Level = loadedData.LevelChk;
+
+        }
         for (int i = 1; i < Level; i++)
         {
             Objects[i].SetActive(true);
         }
-        
-       
+      
 
     }
 
-
-
-    public void Update()
+    public void Start()
     {
 
         if (Level == 2 && !isChk)
@@ -160,7 +160,7 @@ public class GameSave : MonoBehaviour
 
             House_5.SetActive(true);
             ShowSound.Play();
-
+            SetFile();
             ShowParticle_House_5.Play();
 
             isChk = true;
@@ -170,7 +170,7 @@ public class GameSave : MonoBehaviour
 
             City.SetActive(true);
             ShowSound.Play();
-
+            SetFile();
             ShowParticle_City.Play();
 
             isChk = true;
@@ -180,7 +180,7 @@ public class GameSave : MonoBehaviour
 
             Cave_1.SetActive(true);
             ShowSound.Play();
-
+            SetFile();
             ShowParticle_Cave_1.Play();
 
             isChk = true;
@@ -190,7 +190,7 @@ public class GameSave : MonoBehaviour
 
             Cave_2.SetActive(true);
             ShowSound.Play();
-
+            SetFile();
             ShowParticle_Cave_2.Play();
 
             isChk = true;
@@ -200,7 +200,7 @@ public class GameSave : MonoBehaviour
 
             Cave_3.SetActive(true);
             ShowSound.Play();
-
+            SetFile();
             ShowParticle_Cave_3.Play();
 
             isChk = true;
@@ -210,7 +210,7 @@ public class GameSave : MonoBehaviour
 
             Cave_4.SetActive(true);
             ShowSound.Play();
-
+            SetFile();
             ShowParticle_Cave_4.Play();
 
             isChk = true;
@@ -220,7 +220,7 @@ public class GameSave : MonoBehaviour
 
             Cave_5.SetActive(true);
             ShowSound.Play();
-
+            SetFile();
             ShowParticle_Cave_5.Play();
 
             isChk = true;
@@ -240,9 +240,11 @@ public class GameSave : MonoBehaviour
             playerData.isEng = false;
         }
         string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText("playerData.json", json);
+        
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
         Debug.Log(Level + "현재저장");
         Debug.Log(playerData.LevelChk + "파일저장");
+
+
     }
 }

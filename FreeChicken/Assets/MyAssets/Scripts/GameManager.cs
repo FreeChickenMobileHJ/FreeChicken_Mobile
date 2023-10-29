@@ -24,10 +24,18 @@ public class GameManager : MonoBehaviour
     public bool isFactory_1;
     public bool isFactory_2;
     public bool isFactory_3;
+    public bool isFactory_4;
     public bool isHouse_1;
     public bool isHouse_2;
+    public bool isHouse_3;
+    public bool isHouse_4;
+    public bool isHouse_5;
     public bool isCity;
-    public bool isCave;
+    public bool isCave_1;
+    public bool isCave_2;
+    public bool isCave_3;
+    public bool isCave_4;
+    public bool isCave_5;
     public bool isMain;
 
     public bool isLoading;
@@ -48,8 +56,14 @@ public class GameManager : MonoBehaviour
     public GameObject LoadingUI;
    
     public LocaleManager LocaleManager;
+    string path;
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
     void Start()
     {
+        path = Path.Combine(Application.persistentDataPath, "playerData.json");
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
             factoryPlayer1 = GameObject.FindGameObjectWithTag("Player").GetComponent<FactoryPlayer>();
@@ -62,10 +76,10 @@ public class GameManager : MonoBehaviour
             cavePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CaveScenePlayer>();
         }
         
-        if (File.Exists("playerData.json"))
+        if (File.Exists(path))
         {
-
-            string jsonData = File.ReadAllText("playerData.json");
+   
+            string jsonData = File.ReadAllText(path);
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             isEnglish = loadedData.isEng;
@@ -91,18 +105,10 @@ public class GameManager : MonoBehaviour
         }
     }
    
-    void Update()
-    {
-        if(isClick)
-        {
-            PauseButton();
-            isClick = false;
-        }
-    }
 
     public void PauseButton()
     {
-        isClick = true;
+        //isClick = true;
 
         if (!isLoading && !isStart)
         {
@@ -217,12 +223,17 @@ public class GameManager : MonoBehaviour
             factoryPlayer1.runAudio.UnPause();
             factoryPlayer1.isTalk = false;
         }
-        else if (isFactory_2 && factoryPlayer2 != null)
+        else if (isFactory_2 && factoryPlayer1 != null)
+        {
+            factoryPlayer1.mainAudio.UnPause();
+            factoryPlayer1.isTalk = false;
+        }
+        else if (isFactory_3 && factoryPlayer2 != null)
         {
             factoryPlayer2.BGM.UnPause();
             factoryPlayer2.isTalk = false;
         }
-        else if (isFactory_3 && factoryPlayer3 != null)
+        else if (isFactory_4 && factoryPlayer3 != null)
         {
             factoryPlayer3.BGM.UnPause();
             factoryPlayer3.isTalk = false;
@@ -233,18 +244,37 @@ public class GameManager : MonoBehaviour
             housePlayer1.runAudio.UnPause();
             housePlayer1.isTalk = false;
         }
-        else if (isHouse_2 && housePlayer2 != null)
+        else if (isHouse_2 && housePlayer1 != null)
+        {
+            housePlayer1.mainAudio.UnPause();
+            housePlayer1.runAudio.UnPause();
+            housePlayer1.isTalk = false;
+        }
+        else if (isHouse_3 && evolutionPlayer != null)
+        {
+            housePlayer1.mainAudio.UnPause();
+            housePlayer1.runAudio.UnPause();
+            housePlayer1.isTalk = false;
+        }
+        else if (isHouse_4 && evolutionPlayer != null)
         {
             housePlayer2.mainAudio.UnPause();
             housePlayer2.runAudio.UnPause();
-            housePlayer2.isTalk1 = false;
             housePlayer2.isTalk2 = false;
         }
-        else if (isHouse_2 && evolutionPlayer != null)
+        else if (isHouse_5)
         {
-            evolutionPlayer.mainAudio.UnPause();
-            evolutionPlayer.runAudio.UnPause();
-            evolutionPlayer.isTalk2 = false;
+            if (evolutionPlayer != null) {
+                evolutionPlayer.mainAudio.UnPause();
+                evolutionPlayer.runAudio.UnPause();
+                evolutionPlayer.isTalk2 = false;
+            }
+            else if (housePlayer2 != null)
+            {
+                housePlayer2.mainAudio.UnPause();
+                housePlayer2.runAudio.UnPause();
+                housePlayer2.isTalk2 = false;
+            }
         }
         else if (isCity && cityPlayer != null)
         {
@@ -252,12 +282,31 @@ public class GameManager : MonoBehaviour
             cityPlayer.startAudio.UnPause();
             cityPlayer.isAllStop = false;
         }
-        else if (isCave && cavePlayer != null)
+        else if (isCave_1 && cavePlayer != null)
         {
             cavePlayer.mainAudio.UnPause();
             cavePlayer.isTalk = false;
         }
-
+        else if (isCave_2 && cavePlayer != null)
+        {
+            cavePlayer.mainAudio.UnPause();
+            cavePlayer.isTalk = false;
+        }
+        else if (isCave_3 && cavePlayer != null)
+        {
+            cavePlayer.mainAudio.UnPause();
+            cavePlayer.isTalk = false;
+        }
+        else if (isCave_4 && cavePlayer != null)
+        {
+            cavePlayer.mainAudio.UnPause();
+            cavePlayer.isTalk = false;
+        }
+        else if (isCave_5 && cavePlayer != null)
+        {
+            cavePlayer.mainAudio.UnPause();
+            cavePlayer.isTalk = false;
+        }
         else if (isMain)
         {
             if (MainBGM != null)
@@ -286,6 +335,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Enter2DScene");
         }
+        else if (isFactory_4)
+        {
+            SceneManager.LoadScene("Enter2DScene");
+        }
+
         else if (isHouse_1)
         {
             SceneManager.LoadScene("Enter2DScene");
@@ -294,25 +348,140 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Enter2DScene");
         }
+        else if (isHouse_3)
+        {
+            SceneManager.LoadScene("Enter2DScene");
+        }
+        else if (isHouse_4)
+        {
+            SceneManager.LoadScene("Enter2DScene");
+        }
+        else if (isHouse_5)
+        {
+            SceneManager.LoadScene("Enter2DScene");
+        }
         else if (isCity)
         {
             SceneManager.LoadScene("Enter2DScene");
         }
-        else if (isCave)
+        else if (isCave_1)
+        {
+            SceneManager.LoadScene("Enter2DScene");
+        }
+        else if (isCave_2)
+        {
+            SceneManager.LoadScene("Enter2DScene");
+        }
+        else if (isCave_3)
+        {
+            SceneManager.LoadScene("Enter2DScene");
+        }
+        else if (isCave_4)
+        {
+            SceneManager.LoadScene("Enter2DScene");
+        }
+        else if (isCave_5)
         {
             SceneManager.LoadScene("Enter2DScene");
         }
     }
     public void Enter2dScene()
     {
+
         Time.timeScale = 1f;
         MemoryCount.memCount = 0;
+        if (isFactory_1)
+        {
+            GameSave.Level = 1;
+          
+
+        }
+        else if (isFactory_2)
+        {
+            GameSave.Level = 2;
+        }
+        else if (isFactory_3)
+        {
+            GameSave.Level = 3;
+        }
+        else if (isFactory_4)
+        {
+            GameSave.Level = 4;
+        }
+        else if (isHouse_1)
+        {
+            GameSave.Level = 5;
+        }
+        else if (isHouse_2)
+        {
+            GameSave.Level = 6;
+        }
+        else if (isHouse_3)
+        {
+            GameSave.Level = 7;
+        }
+        else if (isHouse_4)
+        {
+            GameSave.Level = 8;
+        }
+        else if (isHouse_5)
+        {
+            GameSave.Level = 9;
+        }
+        else if (isCity)
+        {
+            GameSave.Level = 10;
+        }
+        else if (isCave_1)
+        {
+            GameSave.Level = 11;
+        }
+        else if (isCave_2)
+        {
+            GameSave.Level = 12;
+        }
+        else if (isCave_3)
+        {
+            GameSave.Level = 13;
+        }
+        else if (isCave_4)
+        {
+            GameSave.Level = 14;
+        }
+        else if (isCave_5)
+        {
+            GameSave.Level = 15;
+        }
+        SetAndGo(GameSave.Level);
+    }
+    public void SetAndGo(int num)
+    {
+        if (File.Exists(path))
+        {
+            
+            string jsonData = File.ReadAllText(path);
+            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+            if (loadedData.LevelChk >= num)
+            {
+                GameSave.Level = loadedData.LevelChk;
+            }
+            else
+            {
+                GameSave.Level = num;
+            }
+        }
+        else
+        {
+            GameSave.Level = num;
+        }
+
+
         LoadSceneInfo.is2DEnterScene = true;
-        PlayerPrefs.SetInt("Scene2DEnter", LoadSceneInfo.is2DEnterScene ? 1 : 0);
+        PlayerPrefs.SetInt("Scene2DEnter", LoadSceneInfo.is2DEnterScene? 1 : 0);
         LoadSceneInfo.LevelCnt = 2;
         SceneManager.LoadScene("LoadingScene");
     }
-   
     public void AudioSettingScene()
     {
         AudioSettingUI.SetActive(true);
@@ -331,28 +500,22 @@ public class GameManager : MonoBehaviour
     }
     public void StartRealScene2()
     {
-        if (File.Exists("PlayerData.json"))
+       
+        if (File.Exists(path))
         {
-            /*string jsonData = File.ReadAllText("playerData.json");
+          
+
+            string jsonData = File.ReadAllText(path);
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-            is2D = loadedData.isStartEnd;
-            if (is2D)
-            {*/
 
-                LoadSceneInfo.is2DEnterScene = true;
-                PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
-                LoadSceneInfo.LevelCnt = 2;
+                
+            GameSave.Level = loadedData.LevelChk;
+            LoadSceneInfo.is2DEnterScene = true;
+            PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
+            LoadSceneInfo.LevelCnt = 2;
 
-                SceneManager.LoadScene("LoadingScene");
-            //}
-           /* else if (!is2D)
-            {
-
-                LoadSceneInfo.isStartScene = true;
-                PlayerPrefs.SetInt("SceneStart", LoadSceneInfo.isStartScene ? 1 : 0);
-                LoadSceneInfo.LevelCnt = 1;
-                SceneManager.LoadScene("LoadingScene");
-            }*/
+            SceneManager.LoadScene("LoadingScene");
+         
         }
         else
         {
@@ -382,7 +545,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerData playerData = new PlayerData();
         playerData.LevelChk = GameSave.Level;
-        //playerData.isStartEnd = true;
+       
         if (PlayerData.isEnglish)
         {
             playerData.isEng = true;
@@ -393,7 +556,7 @@ public class GameManager : MonoBehaviour
         }
         string json = JsonUtility.ToJson(playerData);
 
-        File.WriteAllText("playerData.json", json); 
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json); 
     }
     public void ReSetEveryThing()
     {
@@ -407,16 +570,16 @@ public class GameManager : MonoBehaviour
         }
         GameSave.Level = 0;
 
-        if (File.Exists("playerData.json"))
+        if (File.Exists(Application.persistentDataPath + "/playerData.json"))
         {
 
-            string jsonData = File.ReadAllText("playerData.json");
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/playerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             loadedData.LevelChk = 0;
 
         }
-        File.Delete("playerData.json");
+        File.Delete(Application.persistentDataPath + "/playerData.json");
         
         Debug.Log(isEnglish);
         Debug.Log("PlayerData" + PlayerData.isEnglish);
@@ -458,19 +621,24 @@ public class GameManager : MonoBehaviour
         }
         else if (isFactory_2)
         {
-            if (MemoryCount.memCount >= 2)
-            {
-                MemoryCount.memCount = 2;
-            }
+
+            MemoryCount.memCount = 1;
+            
             SceneManager.LoadScene("FactoryScene_2");
         }
         else if (isFactory_3)
         {
-            if (MemoryCount.memCount >= 4)
-            {
-                MemoryCount.memCount = 4;
-            }
+
+            MemoryCount.memCount = 2;
+            
             SceneManager.LoadScene("FactoryScene_3");
+        }
+        else if (isFactory_4)
+        {
+
+            MemoryCount.memCount = 3;
+            
+            SceneManager.LoadScene("FactoryScene_4");
         }
         else if (isHouse_1)
         {
@@ -479,15 +647,46 @@ public class GameManager : MonoBehaviour
         }
         else if (isHouse_2)
         {
+            MemoryCount.memCount = 1;
             SceneManager.LoadScene("HouseScene2");
+        }
+        else if (isHouse_3)
+        {
+            MemoryCount.memCount = 2;
+            SceneManager.LoadScene("HouseScene3");
+        }
+        else if (isHouse_4)
+        {
+
+            SceneManager.LoadScene("HouseScene4");
+        }
+        else if (isHouse_5)
+        {
+            SceneManager.LoadScene("HouseScene5");
         }
         else if (isCity)
         {
             SceneManager.LoadScene("CityScene");
         }
-        else if (isCave)
+        else if (isCave_1)
         {
-            SceneManager.LoadScene("CaveScene_Final");
+            SceneManager.LoadScene("CaveScene_1");
+        }
+        else if (isCave_2)
+        {
+            SceneManager.LoadScene("CaveScene_2");
+        }
+        else if (isCave_3)
+        {
+            SceneManager.LoadScene("CaveScene_3");
+        }
+        else if (isCave_4)
+        {
+            SceneManager.LoadScene("CaveScene_4");
+        }
+        else if (isCave_5)
+        {
+            SceneManager.LoadScene("CaveScene_5");
         }
     }
 

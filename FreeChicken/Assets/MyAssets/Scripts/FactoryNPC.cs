@@ -8,8 +8,8 @@ using System.IO;
 using UnityEngine.SceneManagement;
 public class FactoryNPC : MonoBehaviour
 {
-    public Slider NpcUI;
-    public GameObject factoryUI;
+   
+   
     public GameObject GetMemoryUI;
     public FactoryPlayer player;
     public FactoryPlayer_2 player_2;
@@ -20,8 +20,7 @@ public class FactoryNPC : MonoBehaviour
     public GameObject Ebutton;
     public TextMeshProUGUI E;
 
-    public GameObject EnglishUI;
-    public GameObject KoreanUI;
+   
    
     public bool isNear;
     public static bool isFinish;
@@ -33,7 +32,12 @@ public class FactoryNPC : MonoBehaviour
     public AudioSource getMemorySound;
 
     public bool isFactory_2;
-    public float t;
+    public bool isFactory_3;
+    
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
     void Start()
     {
         
@@ -42,7 +46,7 @@ public class FactoryNPC : MonoBehaviour
         player_2 = GameObject.FindWithTag("Player").GetComponent<FactoryPlayer_2>();
         player_3 = GameObject.FindWithTag("Player").GetComponent<FactoryPlayer_3>();
         
-        t = 0;
+     
        
     }
   
@@ -87,15 +91,12 @@ public class FactoryNPC : MonoBehaviour
     {
         if(player != null && !isFactory_2)
         {
-            /*GameSave.isFactory_2 = true;
-
-            PlayerPrefs.SetInt("GoFactory_2", GameSave.isFactory_2 ? 1 : 0);
-*/
+           
             GameSave.Level = 2;
-            if (File.Exists("PlayerData.json"))
+            if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
             {
                 
-                string jsonData = File.ReadAllText("playerData.json");
+                string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
                 PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
                 if (loadedData.LevelChk >= GameSave.Level)
@@ -113,8 +114,13 @@ public class FactoryNPC : MonoBehaviour
             }
 
 
+            PlayerData playerData = new PlayerData();
+            playerData.LevelChk = GameSave.Level;
 
-            //playerData.isEnglish = true;
+
+            string json = JsonUtility.ToJson(playerData);
+
+            File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
 
             LoadSceneInfo.is2DEnterScene = true;
             PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
@@ -123,16 +129,14 @@ public class FactoryNPC : MonoBehaviour
         }
         if(player != null && isFactory_2)
         {
-            /* GameSave.isFactory_3 = true;
-
-             PlayerPrefs.SetInt("GoFactory_3", GameSave.isFactory_3 ? 1 : 0);*/
+           
 
             GameSave.Level = 3;
 
-            if (File.Exists("PlayerData.json"))
+            if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
             {
                 
-                string jsonData = File.ReadAllText("playerData.json");
+                string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
                 PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
                 if (loadedData.LevelChk >= GameSave.Level)
@@ -148,9 +152,15 @@ public class FactoryNPC : MonoBehaviour
             {
                 GameSave.Level = 3;
             }
+            PlayerData playerData = new PlayerData();
+            playerData.LevelChk = GameSave.Level;
 
-           
-           
+
+            string json = JsonUtility.ToJson(playerData);
+
+            File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
+
+
             LoadSceneInfo.is2DEnterScene = true;
             PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
             LoadSceneInfo.LevelCnt = 2;
@@ -162,19 +172,8 @@ public class FactoryNPC : MonoBehaviour
        
         this.gameObject.SetActive(false);
        
-        if (factoryUI != null)
-        {
-            factoryUI.gameObject.SetActive(true);
-            if (PlayerData.isEnglish )
-            {
-                EnglishUI.SetActive(true);
-            }
-            else if (!PlayerData.isEnglish)
-            {
-                KoreanUI.SetActive(true);
-            }
-        }
-        else if(factoryUI == null)
+     
+        if(isFactory_3)
         {
             isNear = false;
             isEbutton = false;

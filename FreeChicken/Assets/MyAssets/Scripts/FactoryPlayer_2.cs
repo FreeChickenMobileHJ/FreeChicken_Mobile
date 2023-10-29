@@ -58,14 +58,18 @@ public class FactoryPlayer_2 : MonoBehaviour
     public AudioSource changeConAudio;
     void Awake()
     {
+        Application.targetFrameRate = 30;
+    }
+    private void Start()
+    {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         isTalk = false;
         changeZone = GameObject.Find("ChangeConveyorZone").GetComponent<FactorySceneChangeZone>();
         BGM.Play();
         MemoryCount.memCount = 2;
+        StartCoroutine(PickUPStart());
     }
-   
     void Update()
     { 
 
@@ -77,15 +81,28 @@ public class FactoryPlayer_2 : MonoBehaviour
             
             
         }
-        if (changeZone.isButton)
-        {
-            anim.SetBool("isWalk", false);
-        }
-        if (isStamp)
-        {
-            this.gameObject.transform.position = StampTMP.transform.position;
-        }
+       
       
+    }
+    IEnumerator PickUPStart()
+    {
+        while (true)
+        {
+           
+            if (isStamp)
+            {
+                this.gameObject.transform.position = StampTMP.transform.position;
+                anim.SetBool("isWalk", false);
+
+            }
+            if (changeZone.isButton)
+            {
+                anim.SetBool("isWalk", false);
+            }
+
+            yield return null;
+        }
+
     }
     void PickUP()
     {
@@ -221,10 +238,10 @@ public class FactoryPlayer_2 : MonoBehaviour
     }
     void RoadScene()
     {
-        if (File.Exists("PlayerData.json"))
+        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
             GameSave.Level = 4;
-            string jsonData = File.ReadAllText("playerData.json");
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             if (loadedData.LevelChk >= GameSave.Level)
@@ -241,7 +258,13 @@ public class FactoryPlayer_2 : MonoBehaviour
             GameSave.Level = 4;
         }
 
+        PlayerData playerData = new PlayerData();
+        playerData.LevelChk = GameSave.Level;
 
+
+        string json = JsonUtility.ToJson(playerData);
+
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
         LoadSceneInfo.LevelCnt = 2;
         
         SceneManager.LoadScene("LoadingScene");

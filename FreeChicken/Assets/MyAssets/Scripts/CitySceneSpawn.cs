@@ -33,17 +33,23 @@ public class CitySceneSpawn : MonoBehaviour
     void Start()
     {
         currentPlayer = GameObject.FindWithTag("Player").GetComponent<CityScenePlayer>();
+        StartCoroutine(LastMapGo());
         
     }
-    private void Update()
+    IEnumerator LastMapGo()
     {
-        if (areaIndex == 5 && !isFinish)
+        while (true)
         {
-            isStop = true;
-            SpawnLastMap();
-           
+            if (areaIndex == 5 && !isFinish)
+            {
+                isStop = true;
+                SpawnLastMap();
+
+            }
+            yield return null;
         }
     }
+   
     public void SpawnArea(bool isRandom = true)
     {
         GameObject clone = null;

@@ -21,9 +21,25 @@ public class TypingEffect : MonoBehaviour
     private bool waitForClick = false;
     public AudioSource ButtonClickSound;
     public AudioSource BGM;
+    public GameObject Video;
+    public GameObject MainCanvas;
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
     private void Start()
     {
+
         Cursor.visible = true;
+
+        Video.SetActive(true);
+        Invoke("ReStart", 24f);
+
+    }
+    void ReStart()
+    {
+        Video.SetActive(false);
+        MainCanvas.SetActive(true);
         BGM.Play();
         canvasGroup.alpha = 1f;
         if (dialogueList1.Count > 0 && !PlayerData.isEnglish)
@@ -37,8 +53,10 @@ public class TypingEffect : MonoBehaviour
             text.text = "";
             StartCoroutine(InitialDelayCoroutine2());
         }
-        
-       
+    }
+    public void FirstSkip()
+    {
+        ReStart();
     }
     public void Skip()
     {
@@ -153,14 +171,7 @@ public class TypingEffect : MonoBehaviour
     }
     void StartScene()
     {
-        /*if (!File.Exists("PlayerData.json"))
-        {
-            PlayerData playerData = new PlayerData();
-            playerData.isStartEnd = true;
-            string json = JsonUtility.ToJson(playerData);
-
-            File.WriteAllText("playerData.json", json);
-        }*/
+        
         SceneManager.LoadScene(nextSceneName);
     }
 }

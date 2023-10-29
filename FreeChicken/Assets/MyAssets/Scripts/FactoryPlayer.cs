@@ -120,17 +120,26 @@ public class FactoryPlayer : MonoBehaviour
     public bool isKorean;
     void Awake()
     {
+        Application.targetFrameRate = 30;
+        
+       
+    }
+
+    private void Start()
+    {
         mainAudio.Play();
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         isTalk = false;
         Cursor.visible = false;
         MemoryCount.memCount = 0;
+        if (isFactory_2)
+        {
+            MemoryCount.memCount = 1;
+        }
+        StartCoroutine(PickUPStart());
 
-       
     }
-
-
     void Update()
     {
         
@@ -141,27 +150,27 @@ public class FactoryPlayer : MonoBehaviour
             Turn();
           
         }
-       /* if (!isTalk && isEgg)
-        {
-            StartCoroutine("Check");
-        }*/
-        if (isTalk && isStamp)
-        {
-            anim.SetBool("isWalk", false);
-        }
+      
         
+    }
+    IEnumerator PickUPStart()
+    {
+        while (true)
+        {
+            if (isPickUp)
+            {
+                this.gameObject.transform.position = TMP.transform.position;
+                anim.SetBool("isWalk", false);
+            }
+            if (isStamp)
+            {
+                this.gameObject.transform.position = StampTMP.transform.position;
+                anim.SetBool("isWalk", false);
 
-        if (isPickUp)
-        {
-            this.gameObject.transform.position = TMP.transform.position;
-            
+            }
+            yield return null;
         }
-        if (isStamp)
-        {
-            this.gameObject.transform.position = StampTMP.transform.position;
-            
-        }
-       
+      
     }
     void PickUP()
     {
@@ -173,26 +182,7 @@ public class FactoryPlayer : MonoBehaviour
         DieCanvas.SetActive(true);
         Invoke("ExitCanvas", 2f);
     }
-    /*public void Check()
-    {
-        //yield return new WaitForSeconds(1f);
-
-
-        if (*//*Input.GetButton("E")&&*//*!isSetEggFinish)
-        {
-            
-            
-            isEgg = false;
-            isClick = false;
-            changeEggCanvas.gameObject.SetActive(false);
-            //yield return new WaitForSeconds(.2f);
-            EggPrefab.gameObject.SetActive(false);           
-            thisMesh.SetActive(true);
-           
-        }
-      
-    }*/
-  
+   
     public void GetInput()
     {
 
@@ -230,20 +220,18 @@ public class FactoryPlayer : MonoBehaviour
     public void Jump()
     {
 
-       /* if (Input.GetButtonDown("Jump"))
-        {*/
-            if (!isJump)
-            {
+        if (!isJump)
+        {
             anim.SetTrigger("doJump");
             rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             jumpParticle.Play();
-                jumpAudio.Play();
-                isJump = true;
-               
-                
-            }
-        //}
-       
+            jumpAudio.Play();
+            isJump = true;
+
+
+        }
+
+
     }
   
     void OnCollisionEnter(Collision collision)
@@ -350,7 +338,7 @@ public class FactoryPlayer : MonoBehaviour
             DieCanvas.SetActive(false);
             PickUpParticle.SetActive(false);
         }
-       
+        isPlaying = false;
         mainCam.Priority = 2;
         Pos();
 
@@ -444,10 +432,7 @@ public class FactoryPlayer : MonoBehaviour
         {
             playerData.LevelChk = GameSave.Level;
         }
-        /*string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText("playerData.json", json);
-*/
+      
         LoadSceneInfo.is2DEnterScene = true;
         PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
         LoadSceneInfo.LevelCnt = 2;
@@ -491,34 +476,7 @@ public class FactoryPlayer : MonoBehaviour
             this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 1f, Space.World);
         }
         
-       /* if (other.CompareTag("PointZone") && !isSetEggFinish &&!isClick)
-        {*/
-          /*  turnEggCanvas.gameObject.SetActive(true);
-            if (!isSetEggFinish)
-            {
-                EggFClick();
-            }*/
-
-            /*  if (*//*Input.GetButton("F") && *//*!isSetEggFinish)
-              {
-                  isClick = true;
-
-
-                  Vector3 pos = other.gameObject.transform.position;
-
-                  tmpBox = other.gameObject;
-                  thisMesh.SetActive(false);
-                  EggPrefab.gameObject.SetActive(true);
-                  EggPrefab.transform.position = pos;
-                  turnEggCanvas.gameObject.SetActive(false);
-                  changeEggCanvas.gameObject.SetActive(true);
-                  isEgg = true;
-                  StartCoroutine(Egg());
-
-              }*/
-
-
-        //}
+       
     }
    
 

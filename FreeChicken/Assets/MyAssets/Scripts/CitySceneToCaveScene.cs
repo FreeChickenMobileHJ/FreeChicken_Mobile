@@ -21,38 +21,40 @@ public class CitySceneToCaveScene : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<CityScenePlayer>();
-        
+        StartCoroutine(Go());
     }
-
-    
-    void Update()
+    IEnumerator Go()
     {
-        if (player.isLast)
+        while (true)
         {
-            
-            if (isContact)
+            if (player.isLast)
             {
-                
-                endCam.Priority = 2;
-                CarSound.Play();
-                player.gameObject.transform.position = pos.transform.position;
-                player.anim_2.SetBool("isRun",false);
-                this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 4f, Space.World);
-                
-                Invoke("LoadCaveScene", 3f);
-                
-               
-            }
-        }
 
+                if (isContact)
+                {
+
+                    endCam.Priority = 2;
+                    CarSound.Play();
+                    player.gameObject.transform.position = pos.transform.position;
+                    player.anim_2.SetBool("isRun", false);
+                    this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 4f, Space.World);
+
+                    Invoke("LoadCaveScene", 3f);
+
+
+                }
+            }
+            yield return null;
+        }
     }
+   
     void LoadCaveScene()
     {
 
-        if (File.Exists("PlayerData.json"))
+        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
             GameSave.Level = 11;
-            string jsonData = File.ReadAllText("playerData.json");
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             if (loadedData.LevelChk >= GameSave.Level)
@@ -69,7 +71,13 @@ public class CitySceneToCaveScene : MonoBehaviour
             GameSave.Level = 11;
         }
 
+        PlayerData playerData = new PlayerData();
+        playerData.LevelChk = GameSave.Level;
 
+
+        string json = JsonUtility.ToJson(playerData);
+
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
         LoadSceneInfo.LevelCnt = 2;
 
         SceneManager.LoadScene("LoadingScene");

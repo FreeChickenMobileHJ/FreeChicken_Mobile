@@ -68,9 +68,7 @@ public class FactoryPlayer_3 : MonoBehaviour
 
     public GameObject DieCanvas;
     public GameObject ExitUI;
-    public Slider OnTruck;
-    float t;
-
+   
     public GameObject UpstairUI;
 
     public GameObject LastUI;
@@ -103,6 +101,7 @@ public class FactoryPlayer_3 : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate =  30;
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
@@ -111,6 +110,7 @@ public class FactoryPlayer_3 : MonoBehaviour
     }
     void Start()
     {
+        MemoryCount.memCount = 3;
         Loading = GetComponent<LoadingTyping>();
         BGM.Play();
         isTalk = true;
@@ -123,6 +123,7 @@ public class FactoryPlayer_3 : MonoBehaviour
         StartParticle.SetActive(false);
         isTalk = false;
         StartSound.Stop();
+        StartCoroutine(TruckGoStart());
     }
     void Update()
     {
@@ -136,24 +137,32 @@ public class FactoryPlayer_3 : MonoBehaviour
 
         }
 
-        if (isTruckGo)
-        {
-            Truck.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 4f);
-            this.gameObject.transform.position = truckPos.transform.position;
-            LastUI.SetActive(true);
-            Invoke("Finish", 2f);
-
-        }
+        
      
 
+    }
+    IEnumerator TruckGoStart()
+    {
+        while (true)
+        {
+            if (isTruckGo)
+            {
+                Truck.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 4f);
+                this.gameObject.transform.position = truckPos.transform.position;
+                LastUI.SetActive(true);
+                Invoke("Finish", 2f);
+
+            }
+            yield return null;
+        }
     }
     void Finish()
     {
        
-        if (File.Exists("PlayerData.json"))
+        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
             GameSave.Level = 5;
-            string jsonData = File.ReadAllText("playerData.json");
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             if (loadedData.LevelChk >= GameSave.Level)
@@ -170,7 +179,13 @@ public class FactoryPlayer_3 : MonoBehaviour
             GameSave.Level = 5;
         }
 
+        PlayerData playerData = new PlayerData();
+        playerData.LevelChk = GameSave.Level;
 
+
+        string json = JsonUtility.ToJson(playerData);
+
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
         LoadSceneInfo.is2DEnterScene = true;
         PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
         LoadSceneInfo.LevelCnt = 2;
@@ -248,14 +263,14 @@ public class FactoryPlayer_3 : MonoBehaviour
         {
 
             ExitUI.gameObject.SetActive(false);
-            isEbutton = true;
+            isEbutton = false;
 
 
         }
     }
         private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Exit")) 
+        if (other.gameObject.CompareTag("Exit") && !isEbutton) 
         {
             
             ExitUI.gameObject.SetActive(true);

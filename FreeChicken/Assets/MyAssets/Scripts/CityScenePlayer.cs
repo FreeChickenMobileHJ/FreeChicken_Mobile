@@ -44,7 +44,11 @@ public class CityScenePlayer : MonoBehaviour
     public AudioSource ChangeAudio;
     public AudioSource RingAudio;
     public GameManager gameManager;
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
+
     void Start()
     {
         startAudio.Play();
@@ -71,11 +75,7 @@ public class CityScenePlayer : MonoBehaviour
     void Update()
     {
        
-        /*if (!isDie && !isAllStop)
-        {
-
-            Jump();
-        }*/
+       
         if (isAllStop)
         {
 
@@ -92,7 +92,7 @@ public class CityScenePlayer : MonoBehaviour
         }
         if (this.transform.position.y < -5f &&!isAllStop &&!isDie)
         {
-            //isAllStop = true;
+            
             TagisObj();
         }
         
