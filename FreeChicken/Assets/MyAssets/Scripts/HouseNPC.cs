@@ -28,13 +28,9 @@ public class HouseNPC : MonoBehaviour
         t = 0;
     }
 
-    void Update()
+    IEnumerator CO_GetMemory()
     {
-        GetMemory();
-    }
 
-    public void GetMemory()
-    {
         if (isClickbutton)
         {
             isEbutton = false;
@@ -46,6 +42,7 @@ public class HouseNPC : MonoBehaviour
 
             Invoke("ReStart", 2f);
         }
+        yield return null;
     }
 
     public void OnEButtonClick()
@@ -53,6 +50,7 @@ public class HouseNPC : MonoBehaviour
         if (isNear)
         {
             isClickbutton = true;
+            StartCoroutine(CO_GetMemory());
         }
     }
 

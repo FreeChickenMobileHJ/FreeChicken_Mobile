@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18410069, g: 0.5851003, b: 0.7337847, a: 1}
+  m_IndirectSpecularColor: {r: 0.02836535, g: 0.30143204, b: 0.49761617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8196,8 +8196,8 @@ MonoBehaviour:
   player: {fileID: 254029496}
   isfallingObstacle: 0
   DieCanvas: {fileID: 124008808}
-  speed: 4
-  JumpPower: 10
+  speed: 5
+  JumpPower: 12
   isMove: 0
   DiePs: {fileID: 806482468}
   JumpPs: {fileID: 2018737425}
@@ -19447,7 +19447,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455634176}
-  m_LocalRotation: {x: 0.0049387002, y: 0.9860046, z: -0.029696586, w: 0.16397779}
+  m_LocalRotation: {x: 0.004938702, y: 0.9860046, z: -0.029696597, w: 0.16397779}
   m_LocalPosition: {x: -1, y: -0.29999995, z: 7.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20697,7 +20697,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541722525}
-  m_LocalRotation: {x: 0.011640851, y: -0.46395746, z: 0.006097431, w: 0.88576}
+  m_LocalRotation: {x: 0.011640849, y: -0.46395746, z: 0.006097429, w: 0.88576}
   m_LocalPosition: {x: 0.20372176, y: -0.8699213, z: 0.47367907}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23296,6 +23296,50 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 541722527}
+--- !u!1 &785501894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 785501896}
+  - component: {fileID: 785501895}
+  m_Layer: 0
+  m_Name: FrameChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &785501895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785501894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a06d9129a5c96d4e8e0389ea0e07bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &785501896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785501894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &786896735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31411,7 +31455,7 @@ RectTransform:
   m_GameObject: {fileID: 1455474068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1488214971}
@@ -31419,7 +31463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -35, y: -70}
+  m_AnchoredPosition: {x: -35, y: -80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455474070
@@ -31498,7 +31542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ac529a6f92134d4bac33c58958c9c41, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5085830f83096514e97144f57c0aa8de, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -48708,8 +48752,15 @@ MonoBehaviour:
   isFactory_3: 0
   isHouse_1: 0
   isHouse_2: 1
+  isHouse_3: 0
+  isHouse_4: 0
+  isHouse_5: 0
   isCity: 0
-  isCave: 0
+  isCave_1: 0
+  isCave_2: 0
+  isCave_3: 0
+  isCave_4: 0
+  isCave_5: 0
   isMain: 0
   isLoading: 0
   isStart: 0
@@ -53989,7 +54040,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 1488214970}
   leverRange: 25
   housePlayer2: {fileID: 254029502}
-  sensitivity: 1
+  sensitivity: 3.5
   joystickType: 1
 --- !u!1001 &2034200455
 PrefabInstance:

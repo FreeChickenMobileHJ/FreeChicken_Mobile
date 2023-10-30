@@ -11,7 +11,6 @@ using UnityEngine.EventSystems;
 public class HouseScenePlayer : MonoBehaviour
 {
     [Header("Setting")]
-    public GameObject CameraJoy;
     [SerializeField] private Transform characterBody;
     [SerializeField] private Transform cameraArm;
     public GameObject player;
@@ -19,8 +18,8 @@ public class HouseScenePlayer : MonoBehaviour
     public ParticleSystem JumpPs;
     Animator anim;
     Rigidbody rigid;
+    public GameManager gameManager;
     public float speed;
-    public float JumpPower;
     public float jumpPower = 5f;
 
     [Header("Bool")]
@@ -29,7 +28,7 @@ public class HouseScenePlayer : MonoBehaviour
     bool Dead;
     public bool isfallingObstacle;
     public bool isSense;
-    public bool isDoorOpen = false;
+    public bool isDoorOpen =false;
     public bool isReadyDoorOpen = false;
     public bool pushBell = false;
     public bool isOpeningDoor = false;
@@ -38,14 +37,19 @@ public class HouseScenePlayer : MonoBehaviour
     private float doorOpenDuration = 3.0f;
     private float doorRaiseSpeed = 0.8f;
     private bool shouldLookAround;
-    public GameManager gameManager;
     public bool isHouse1;
     public bool isHouse2;
+    public bool isEnglish;
+    private bool isRotating = false;
+    private Quaternion originalCameraRotation;
+    private float rotationTimer = 0.0f;
+    private float rotationDuration = 3.0f;
 
+    [Header ("GameObject")]
     public GameObject startDoor;
     public GameObject DieCanvas;
     public GameObject NextSceneImage;
-    public bool isEnglish;
+    public GameObject GetUpgradePs;
 
     [Header("Dialogue")]
     public GameObject startCanvas1;
@@ -66,6 +70,7 @@ public class HouseScenePlayer : MonoBehaviour
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera StartCam;
     public CinemachineVirtualCamera openDoorCam;
+    public GameObject CameraJoy;
 
     [Header("Audio")]
     public AudioSource mainAudio;
@@ -82,12 +87,6 @@ public class HouseScenePlayer : MonoBehaviour
     public GameObject PushBell_text;
     public GameObject GetUpgradeBox_text;
 
-    private bool isRotating = false;
-    private Quaternion originalCameraRotation;
-    private float rotationTimer = 0.0f;
-    private float rotationDuration =3.0f;
-    public GameObject GetUpgradePs;
-
     void Awake()
     {
         mainAudio.Play();
@@ -96,12 +95,10 @@ public class HouseScenePlayer : MonoBehaviour
         isJump = false;
         if (File.Exists("playerData.json"))
         {
-            
             string jsonData = File.ReadAllText("playerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             isEnglish = loadedData.isEng;
-
         }
     }
 
@@ -114,6 +111,9 @@ public class HouseScenePlayer : MonoBehaviour
             StartCam.Priority = 10;
             CameraJoy.SetActive(false);
             shouldLookAround= false;
+            StartCoroutine(HideGetupgrade_textAfterDelay(3f));
+            StartCoroutine(CO_isOpeningDoor());
+            StartCoroutine(CO_isRaisingDoor());
         }
         else if(isHouse2)
         {
@@ -127,14 +127,17 @@ public class HouseScenePlayer : MonoBehaviour
         }    
 
         MemoryCount.memCount = 0;
+
+        StartCoroutine(CO_notDead());
     }
 
-    void Update()
+    IEnumerator CO_notDead()
     {
-        if (!Dead)
+        while (!Dead)
         {
             DiePs.gameObject.SetActive(false);
-            anim.SetBool("isDead", false);
+            //anim.SetBool("isDead", false);
+
             if (!isTalk)
             {
                 if (isRotating)
@@ -142,39 +145,50 @@ public class HouseScenePlayer : MonoBehaviour
                     HandleCameraRotation();
                 }
             }
+            yield return null;
         }
+    }
 
-        if (shouldLookAround && isHouse1)
+    IEnumerator CO_isOpeningDoor()
+    {
+        while (true)
         {
-            StartCoroutine(HideGetupgrade_textAfterDelay(3f));
-        }
+            yield return new WaitUntil(() => isOpeningDoor);
 
-        if (isOpeningDoor)
-        {
-            doorOpenTimer += Time.deltaTime;
+            doorOpenTimer = 0.0f;
 
-            if (doorOpenTimer >= doorOpenDuration)
+            while (doorOpenTimer < doorOpenDuration)
             {
-                isOpeningDoor = false; // true¿¡¼­ false·Î ¹Ù²ãÁáÀ½
-                isRaisingDoor = true;
-                doorOpenTimer = 0.0f;
+                doorOpenTimer += Time.deltaTime;
+                yield return null;
             }
-        }
 
-        if (isRaisingDoor)
+            isOpeningDoor = false;
+            isRaisingDoor = true;
+        }
+    }
+
+    IEnumerator CO_isRaisingDoor()
+    {
+        while (true)
         {
-            startDoor.transform.Translate(Vector3.up * doorRaiseSpeed * Time.deltaTime);
-            if (startDoor.transform.position.y >= 2f)
+            yield return new WaitUntil(() => isRaisingDoor);
+
+            while (startDoor.transform.position.y < 2f)
             {
-                startDoor.SetActive(false);
-                isRaisingDoor = false;
-                isTalk = false;
-                mainCam.Priority = 10;
-                openDoorCam.Priority = 0;
-                pushBell = false;
-                PushBell_text.SetActive(false);
-                isReadyDoorOpen = false;
+                startDoor.transform.Translate(Vector3.up * doorRaiseSpeed * Time.deltaTime);
+                yield return null;
             }
+
+            startDoor.SetActive(false);
+            isRaisingDoor = false;
+            isTalk = false;
+            mainCam.Priority = 10;
+            openDoorCam.Priority = 0;
+            pushBell = false;
+            PushBell_text.SetActive(false);
+            isReadyDoorOpen = false;
+            isDoorOpen = true;
         }
     }
 
@@ -220,6 +234,7 @@ public class HouseScenePlayer : MonoBehaviour
             isTalk = true;
             anim.SetBool("Walk", false);
             anim.SetBool("Run", false);
+            isDoorOpen = true;
         }
     }
 
@@ -230,27 +245,30 @@ public class HouseScenePlayer : MonoBehaviour
             DieCanvas.gameObject.SetActive(true);
             DiePs.gameObject.SetActive(true);
             dieAudio.Play();
-            anim.SetBool("isDead",true);
+            anim.SetTrigger("isDead");
             Invoke("remove_dieUI", 3f);
         }
     }
 
     private void HandleCameraRotation()
     {
-        rotationTimer += Time.deltaTime;
-
-        float rotationAngle = Mathf.Lerp(0f, 720f, rotationTimer / rotationDuration);
-        cameraArm.RotateAround(transform.position, Vector3.up, rotationAngle * Time.deltaTime);
-
-        GetUpgradePs.SetActive(true);
-
-        if (rotationTimer >= rotationDuration)
+        if (shouldLookAround && isHouse1)
         {
-            rotationTimer = 0.0f;
-            isRotating = false;
+            rotationTimer += Time.deltaTime;
 
-            cameraArm.rotation = originalCameraRotation;
-            GetUpgradePs.SetActive(false);
+            float rotationAngle = Mathf.Lerp(0f, 720f, rotationTimer / rotationDuration);
+            cameraArm.RotateAround(transform.position, Vector3.up, rotationAngle * Time.deltaTime);
+
+            GetUpgradePs.SetActive(true);
+
+            if (rotationTimer >= rotationDuration)
+            {
+                rotationTimer = 0.0f;
+                isRotating = false;
+
+                cameraArm.rotation = originalCameraRotation;
+                GetUpgradePs.SetActive(false);
+            }
         }
     }
 
@@ -262,9 +280,12 @@ public class HouseScenePlayer : MonoBehaviour
 
     IEnumerator HideGetupgrade_textAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay); 
+        while(true)
+        {
+            yield return new WaitForSeconds(delay);
 
-        GetUpgradeBox_text.SetActive(false); 
+            GetUpgradeBox_text.SetActive(false);
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -294,12 +315,9 @@ public class HouseScenePlayer : MonoBehaviour
             isReadyDoorOpen = true;
         }
 
-        if(other.CompareTag("PushButton") && isOpeningDoor)
+        if(other.CompareTag("PushButton") && isDoorOpen)
         {
             PushBell_text.SetActive(false);
-            bellAudio.Pause();
-            OpenDoorAudio.Pause();
-            openDoorCam.Priority = 0;
         }
 
         if(other.gameObject.name == "UpgradeBox")
@@ -338,7 +356,7 @@ public class HouseScenePlayer : MonoBehaviour
             Invoke("Destroy_SavePointObj2", 1f);
         }
 
-        if (other.gameObject.CompareTag("SavePoint3"))
+        if (other.CompareTag("SavePoint3"))
         {
             
             check_savepoint3 = true;
@@ -356,7 +374,7 @@ public class HouseScenePlayer : MonoBehaviour
             
         }
 
-        if (other.gameObject.CompareTag("Obstacle") && !Dead)
+        if (other.CompareTag("Obstacle") && !Dead)
         {
             Dead = true;
            
@@ -381,9 +399,6 @@ public class HouseScenePlayer : MonoBehaviour
     }
     void NextScene()
     {
-        /*LoadSceneInfo.isHouse_2 = true;
-        PlayerPrefs.SetInt("SceneHouse_2", LoadSceneInfo.isHouse_2 ? 1 : 0);*/
-
         if (File.Exists("PlayerData.json"))
         {
             GameSave.Level = 8;
@@ -404,9 +419,14 @@ public class HouseScenePlayer : MonoBehaviour
             GameSave.Level = 8;
         }
 
+        PlayerData playerData = new PlayerData();
+        playerData.LevelChk = GameSave.Level;
 
+
+        string json = JsonUtility.ToJson(playerData);
+
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
         LoadSceneInfo.LevelCnt = 2;
-
         SceneManager.LoadScene("LoadingScene");
     }
     void OnTriggerExit(Collider other)
@@ -455,8 +475,6 @@ public class HouseScenePlayer : MonoBehaviour
         {
             GameSave.Level = 6;
         }
-
-
         LoadSceneInfo.LevelCnt = 2;
 
         SceneManager.LoadScene("LoadingScene");
@@ -499,7 +517,6 @@ public class HouseScenePlayer : MonoBehaviour
     void restart_stage2()
     {
         Dead = false;
-
         this.transform.position = SavePoint2Obj.transform.position;
     }
 
@@ -517,33 +534,31 @@ public class HouseScenePlayer : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (Dead)
+            return;
+
         if (collision.gameObject.CompareTag("Obstacle") && !Dead)
         {
             Dead = true;
-
-            if (check_savepoint1)
-            {
-                DieMotion();
-                Invoke("restart_stage1", 3f);
-            }
-
-            if (check_savepoint2)
-            {
-                DieMotion();
-                Invoke("restart_stage2", 3f);
-            }
-
-            if (check_savepoint3)
-            {
-                DieMotion();
-                Invoke("restart_stage3", 3f);
-            }
+            Invoke("RestartStage", 3f);
         }
 
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJump = false;
         }
+    }
+
+    void RestartStage()
+    {
+        DieMotion();
+
+        if (check_savepoint1)
+            Invoke("RestartStage1", 0f);
+        else if (check_savepoint2)
+            Invoke("RestartStage2", 0f);
+        else if (check_savepoint3)
+            Invoke("RestartStage3", 0f);
     }
 
     void OnParticleCollision(GameObject other)

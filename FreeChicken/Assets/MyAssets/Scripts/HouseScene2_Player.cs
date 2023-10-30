@@ -86,26 +86,45 @@ public class HouseScene2_Player : MonoBehaviour
     {
         DiePs.gameObject.SetActive(false);
         DieCanvas.gameObject.SetActive(false);
+        StartCoroutine(CO_notDead());
+        StartCoroutine(CO_Dead());
     }
 
     void Update()
     {
-        if(this.gameObject.transform.position.y <= -100f && !Dead)
-        {
-            Dead = true;
-            DieMotion();
-            Invoke("ReLoadScene", 2f);
-        }
+        
+        
+    }
 
-        if (!Dead)
+    IEnumerator CO_notDead()
+    {
+        while(true)
         {
-            if (!isTalk1 || !isTalk2)
+            if (!Dead)
             {
-                if (isRotating)
+                if (!isTalk1 || !isTalk2)
                 {
-                    HandleCameraRotation();
+                    if (isRotating)
+                    {
+                        HandleCameraRotation();
+                    }
                 }
             }
+            yield return null;
+        } 
+    }
+
+    IEnumerator CO_Dead()
+    {
+        while(true)
+        {
+            if (this.transform.position.y <= -100f && !Dead)
+            {
+                Dead = true;
+                DieMotion();
+                Invoke("ReLoadScene", 2f);
+            }
+            yield return null;
         }
     }
 
@@ -169,7 +188,7 @@ public class HouseScene2_Player : MonoBehaviour
             isfallingObstacle = true;
         }
 
-        if (other.gameObject.CompareTag("NPC") && !isTalk1 && !TalkEnd1 && !PlayerData.isEnglish)
+        if (other.CompareTag("NPC") && !isTalk1 && !TalkEnd1 && !PlayerData.isEnglish)
         {
             isTalk1 = true;
             NPCDialogue1.SetActive(true);
@@ -181,7 +200,7 @@ public class HouseScene2_Player : MonoBehaviour
             mainCam.Priority = 1;
         }
 
-        if (other.gameObject.CompareTag("NPC") && !isTalk1 && !TalkEnd1 && PlayerData.isEnglish)
+        if (other.CompareTag("NPC") && !isTalk1 && !TalkEnd1 && PlayerData.isEnglish)
         {
             isTalk1 = true;
             NPCDialogue2.SetActive(true);
@@ -228,9 +247,6 @@ public class HouseScene2_Player : MonoBehaviour
 
     void NextScene()
     {
-        /*LoadSceneInfo.isHouse_2 = true;
-        PlayerPrefs.SetInt("SceneHouse_2", LoadSceneInfo.isHouse_2 ? 1 : 0);*/
-
         if (File.Exists("PlayerData.json"))
         {
             GameSave.Level = 9;
@@ -251,9 +267,14 @@ public class HouseScene2_Player : MonoBehaviour
             GameSave.Level = 9;
         }
 
+        PlayerData playerData = new PlayerData();
+        playerData.LevelChk = GameSave.Level;
 
+
+        string json = JsonUtility.ToJson(playerData);
+
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
         LoadSceneInfo.LevelCnt = 2;
-
         SceneManager.LoadScene("LoadingScene");
     }
 
@@ -292,10 +313,9 @@ public class HouseScene2_Player : MonoBehaviour
         originalCameraRotation = cameraArm.rotation; 
     }
 
-
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("NPC"))
+        if (other.CompareTag("NPC"))
         {
             npc_cam.Priority = 1;
             mainCam.Priority = 10;

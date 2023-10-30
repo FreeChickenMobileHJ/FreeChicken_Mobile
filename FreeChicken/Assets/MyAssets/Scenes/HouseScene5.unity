@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18410069, g: 0.5851003, b: 0.7337847, a: 1}
+  m_IndirectSpecularColor: {r: 0.02836535, g: 0.30143204, b: 0.49761617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7768,6 +7768,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1978516048}
     - target: {fileID: 1050380024037320803, guid: 17a09d423219f824bba039eaed8819b8, type: 3}
+      propertyPath: speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050380024037320803, guid: 17a09d423219f824bba039eaed8819b8, type: 3}
       propertyPath: GoCity
       value: 
       objectReference: {fileID: 0}
@@ -7787,6 +7791,10 @@ PrefabInstance:
       propertyPath: DieCanvas
       value: 
       objectReference: {fileID: 124008808}
+    - target: {fileID: 1050380024037320803, guid: 17a09d423219f824bba039eaed8819b8, type: 3}
+      propertyPath: JumpPower
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1050380024037320803, guid: 17a09d423219f824bba039eaed8819b8, type: 3}
       propertyPath: LoadingUI
       value: 
@@ -8174,8 +8182,8 @@ MonoBehaviour:
   player: {fileID: 254029496}
   isfallingObstacle: 0
   DieCanvas: {fileID: 124008808}
-  speed: 4
-  JumpPower: 10
+  speed: 7
+  JumpPower: 12
   isMove: 0
   DiePs: {fileID: 806482468}
   JumpPs: {fileID: 2018737425}
@@ -9017,7 +9025,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 1488214970}
   leverRange: 25
   evolutionPlayer: {fileID: 232130284}
-  sensitivity: 5
+  sensitivity: 3.5
   joystickType: 1
 --- !u!1 &305207829
 GameObject:
@@ -9113,7 +9121,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 1488214970}
   leverRange: 25
   evolutionPlayer: {fileID: 232130284}
-  sensitivity: 1
+  sensitivity: 0.7
   joystickType: 0
 --- !u!1001 &311738583
 PrefabInstance:
@@ -22603,6 +22611,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4120510040622602, guid: fa1171c4c28a81e40a4541222c24d8ad, type: 3}
   m_PrefabInstance: {fileID: 719342431}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &719979199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 719979200}
+  - component: {fileID: 719979201}
+  m_Layer: 0
+  m_Name: FrameChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &719979200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719979199}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &719979201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719979199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a06d9129a5c96d4e8e0389ea0e07bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &729790352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26271,7 +26323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meltingObj: {fileID: 1030740485}
   colColor: {r: 1, g: 0, b: 0, a: 1}
-  hideTime: 0.5
+  hideTime: 1
   respawnTime: 2
 --- !u!114 &1030740493
 MonoBehaviour:
@@ -26950,7 +27002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meltingObj: {fileID: 580093124}
   colColor: {r: 1, g: 0, b: 0, a: 1}
-  hideTime: 0.5
+  hideTime: 1
   respawnTime: 2
 --- !u!114 &1083039377
 MonoBehaviour:
@@ -28909,7 +28961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meltingObj: {fileID: 966134264}
   colColor: {r: 1, g: 0, b: 0, a: 1}
-  hideTime: 0.5
+  hideTime: 1
   respawnTime: 2
 --- !u!114 &1237910700
 MonoBehaviour:
@@ -31963,7 +32015,7 @@ RectTransform:
   m_GameObject: {fileID: 1477807414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1488214971}
@@ -31971,7 +32023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -35, y: -70}
+  m_AnchoredPosition: {x: -35, y: -80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1477807416
@@ -31994,7 +32046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ac529a6f92134d4bac33c58958c9c41, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5085830f83096514e97144f57c0aa8de, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32802,7 +32854,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 1488214970}
   leverRange: 25
   housePlayer2: {fileID: 254029502}
-  sensitivity: 1
+  sensitivity: 0.7
   joystickType: 0
 --- !u!114 &1495900529
 MonoBehaviour:
@@ -38723,7 +38775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meltingObj: {fileID: 1613466994}
   colColor: {r: 1, g: 0, b: 0, a: 1}
-  hideTime: 0.5
+  hideTime: 1
   respawnTime: 2
 --- !u!114 &1613467002
 MonoBehaviour:
@@ -39461,7 +39513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meltingObj: {fileID: 1643103502}
   colColor: {r: 1, g: 0, b: 0, a: 1}
-  hideTime: 0.5
+  hideTime: 1
   respawnTime: 2
 --- !u!114 &1643103510
 MonoBehaviour:
@@ -47061,7 +47113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meltingObj: {fileID: 26445656}
   colColor: {r: 1, g: 0, b: 0, a: 1}
-  hideTime: 0.5
+  hideTime: 1
   respawnTime: 2
 --- !u!114 &1860153979
 MonoBehaviour:
@@ -48059,7 +48111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meltingObj: {fileID: 1949795177}
   colColor: {r: 1, g: 0, b: 0, a: 1}
-  hideTime: 0.5
+  hideTime: 1
   respawnTime: 2
 --- !u!114 &1949795185
 MonoBehaviour:
@@ -48268,7 +48320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meltingObj: {fileID: 1972054538}
   colColor: {r: 1, g: 0, b: 0, a: 1}
-  hideTime: 0.5
+  hideTime: 1
   respawnTime: 2
 --- !u!114 &1972054546
 MonoBehaviour:
@@ -48780,8 +48832,15 @@ MonoBehaviour:
   isFactory_3: 0
   isHouse_1: 0
   isHouse_2: 1
+  isHouse_3: 0
+  isHouse_4: 0
+  isHouse_5: 0
   isCity: 0
-  isCave: 0
+  isCave_1: 0
+  isCave_2: 0
+  isCave_3: 0
+  isCave_4: 0
+  isCave_5: 0
   isMain: 0
   isLoading: 0
   isStart: 0
@@ -53842,7 +53901,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 1488214970}
   leverRange: 25
   housePlayer2: {fileID: 254029502}
-  sensitivity: 5
+  sensitivity: 3.5
   joystickType: 1
 --- !u!114 &2024882437
 MonoBehaviour:
@@ -54582,7 +54641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meltingObj: {fileID: 2094740618}
   colColor: {r: 1, g: 0, b: 0, a: 1}
-  hideTime: 0.5
+  hideTime: 1
   respawnTime: 2
 --- !u!114 &2094740626
 MonoBehaviour:

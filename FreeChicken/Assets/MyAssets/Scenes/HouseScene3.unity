@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5049956, g: 0.592747, b: 0.6151627, a: 1}
+  m_IndirectSpecularColor: {r: 0.21869418, g: 0.3101467, b: 0.3365323, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8106,8 +8106,15 @@ MonoBehaviour:
   isFactory_3: 0
   isHouse_1: 1
   isHouse_2: 0
+  isHouse_3: 0
+  isHouse_4: 0
+  isHouse_5: 0
   isCity: 0
-  isCave: 0
+  isCave_1: 0
+  isCave_2: 0
+  isCave_3: 0
+  isCave_4: 0
+  isCave_5: 0
   isMain: 0
   isLoading: 0
   isStart: 0
@@ -8477,28 +8484,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06744c101d15de947824eeb5b8d57aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraJoy: {fileID: 1498976989}
   characterBody: {fileID: 1736303394}
   cameraArm: {fileID: 269574075}
   player: {fileID: 551839789}
   DiePs: {fileID: 562917381}
   JumpPs: {fileID: 1710066686}
-  speed: 4
-  JumpPower: 0
-  jumpPower: 9
+  gameManager: {fileID: 493361788}
+  speed: 5
+  jumpPower: 11
   isMove: 0
+  isJump: 0
   isfallingObstacle: 0
   isSense: 0
   isDoorOpen: 0
   isReadyDoorOpen: 0
   pushBell: 0
-  gameManager: {fileID: 493361788}
+  isOpeningDoor: 0
+  isRaisingDoor: 0
   isHouse1: 0
   isHouse2: 0
+  isEnglish: 0
   startDoor: {fileID: 0}
   DieCanvas: {fileID: 1793193930}
   NextSceneImage: {fileID: 2109328041}
-  isEnglish: 0
+  GetUpgradePs: {fileID: 1102993462}
   startCanvas1: {fileID: 491378927}
   startCanvas2: {fileID: 1032169198}
   isTalk: 0
@@ -8513,6 +8522,7 @@ MonoBehaviour:
   mainCam: {fileID: 1037758325}
   StartCam: {fileID: 669487603}
   openDoorCam: {fileID: 949045165}
+  CameraJoy: {fileID: 1498976989}
   mainAudio: {fileID: 1454988731}
   runAudio: {fileID: 1732917752}
   dieAudio: {fileID: 1240081517}
@@ -8524,7 +8534,6 @@ MonoBehaviour:
   BoxGetAudio: {fileID: 2144080207}
   PushBell_text: {fileID: 2000758094}
   GetUpgradeBox_text: {fileID: 1680492802}
-  GetUpgradePs: {fileID: 1102993462}
 --- !u!136 &551839791
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17097,7 +17106,7 @@ RectTransform:
   m_GameObject: {fileID: 1305975870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.699999, y: 0.699999, z: 0.699999}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 597694918}
@@ -17105,7 +17114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -35.000244, y: -70}
+  m_AnchoredPosition: {x: -35, y: -80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305975872
@@ -17184,7 +17193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ac529a6f92134d4bac33c58958c9c41, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5085830f83096514e97144f57c0aa8de, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18326,7 +18335,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 1578902148}
   leverRange: 25
   housePlayer1: {fileID: 551839790}
-  sensitivity: 2
+  sensitivity: 3.5
   joystickType: 1
 --- !u!114 &1498976992
 MonoBehaviour:
@@ -39533,6 +39542,50 @@ MonoBehaviour:
         - localeIdentifier:
             m_Code: en
           value: 750
+--- !u!1 &2103779640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2103779642}
+  - component: {fileID: 2103779641}
+  m_Layer: 0
+  m_Name: FrameChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2103779641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103779640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a06d9129a5c96d4e8e0389ea0e07bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2103779642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103779640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2109328041 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4406740238230005024, guid: d9e225ef610cba347b37e86dc442f13c, type: 3}
