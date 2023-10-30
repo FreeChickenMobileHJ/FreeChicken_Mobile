@@ -27,6 +27,7 @@ public class Obstacle_House : MonoBehaviour
 
     public bool isMove;
     public bool isPlayerFollow;
+    public bool isNotPlayerFollow;
 
     public float rotateSpeed;
     public int angle_z = 50;
@@ -87,7 +88,7 @@ public class Obstacle_House : MonoBehaviour
         if (turnSwitch)
         {
             transform.position = transform.position + new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+            if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null)
                 {
@@ -102,7 +103,7 @@ public class Obstacle_House : MonoBehaviour
         else
         {
             transform.position = transform.position + new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+            if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null)
                 {
@@ -152,7 +153,7 @@ public class Obstacle_House : MonoBehaviour
         if (turnSwitch)
         {
             transform.position = transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+            if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null)
                 {
@@ -167,7 +168,7 @@ public class Obstacle_House : MonoBehaviour
         else
         {
             transform.position = transform.position + new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+            if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null)
                 {
@@ -197,7 +198,7 @@ public class Obstacle_House : MonoBehaviour
         if (turnSwitch)
         {
             transform.position = transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+            if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null)
                 {
@@ -212,7 +213,7 @@ public class Obstacle_House : MonoBehaviour
         else
         {
             transform.position = transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+            if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null)
                 {
@@ -266,7 +267,7 @@ public class Obstacle_House : MonoBehaviour
                                 orbitSpeed*Time.deltaTime);
         offSet = transform.position - Circletarget.position;
 
-        if (isPlayerFollow)
+        if (isPlayerFollow && !isNotPlayerFollow)
         {
             if (player != null)
             {
