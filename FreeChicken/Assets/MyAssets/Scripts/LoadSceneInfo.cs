@@ -12,26 +12,38 @@ public class LoadSceneInfo : MonoBehaviour
 
     public static int LevelCnt;
     public bool isChk;
-   
-    public void Update()
+
+    private void Awake()
     {
-        if (LevelCnt == 1 && !isChk)
-        {
-            Invoke("LoadStart", 2.5f);
-            isChk = true;
-        }
-        if(LevelCnt == 2 && !isChk)
-        {
-            Invoke("Load2D", 2.5f);
-            isChk=true;
-        }
-        if(LevelCnt == 3 && !isChk)
-        {
-            Invoke("LoadEnd", 2.5f);
-            isChk = true;
-        }
- 
+        Application.targetFrameRate = 30;
     }
+    private void Start()
+    {
+        StartCoroutine(Set());
+    }
+    IEnumerator Set()
+    {
+        while (true)
+        {
+            if (LevelCnt == 1 && !isChk)
+            {
+                Invoke("LoadStart", 2.5f);
+                isChk = true;
+            }
+            if (LevelCnt == 2 && !isChk)
+            {
+                Invoke("Load2D", 2.5f);
+                isChk = true;
+            }
+            if (LevelCnt == 3 && !isChk)
+            {
+                Invoke("LoadEnd", 2.5f);
+                isChk = true;
+            }
+            yield return null;
+        }
+    }
+   
 
     void LoadStart()
     {
