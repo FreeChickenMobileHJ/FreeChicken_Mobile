@@ -39,11 +39,7 @@ public class CaveScenePlayer : MonoBehaviour
     public bool isReversed = false;
     private float reverseDuration =5.0f;
     
-
-    float time;
     Animator anim;
-    Obstacle_Cave obstacle;
-    DropObstacle dropObstacle;
     
     public int keyCount;
     public VariableJoystick joyStick;
@@ -56,9 +52,7 @@ public class CaveScenePlayer : MonoBehaviour
     bool isJump;
    
     public bool hasKey;
-    bool iDown;
-  
-    
+
     public bool Talk_NPC1;
     public bool Talk_NPC2;
     public bool Talk_NPC3;
@@ -194,7 +188,6 @@ public class CaveScenePlayer : MonoBehaviour
 
     void Start()
     {
-        obstacle = GameObject.FindGameObjectWithTag("Obstacle").GetComponent<Obstacle_Cave>();
         DiePs.gameObject.SetActive(false);
         cnt = GameObject.FindGameObjectWithTag("TimerCnt").GetComponent<CityMap_CountDown>();
         Cursor.visible = false;
@@ -221,8 +214,6 @@ public class CaveScenePlayer : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
-
         if (!Dead && !isReversed && !isTalk)
         {
             Move();

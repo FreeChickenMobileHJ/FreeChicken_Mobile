@@ -98,27 +98,25 @@ public class CaveSceneTalkManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (text.text.Equals(currentSentences))
-        {
-            nextText.SetActive(true);
-            isTyping = false;
-        }
-
-        
-    }
-
-    public void OnTouch()
+    public void ClickNextButton()
     {
         if (!isTyping)
         {
-
-
             NextSentence();
             ClickButtonSound.Play();
             ChangeImage();
-
+            StartCoroutine(CheckSentences());
         }
     }
+
+    IEnumerator CheckSentences()
+    {
+        while (!text.text.Equals(currentSentences))
+        {
+            yield return null;
+        }
+        nextText.SetActive(true);
+        isTyping = false;
+    }
+
 }
