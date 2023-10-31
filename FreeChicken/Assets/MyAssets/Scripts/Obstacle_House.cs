@@ -47,6 +47,16 @@ public class Obstacle_House : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 30;
+    }
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<HouseScenePlayer>();
+        player2 = GameObject.FindGameObjectWithTag("Player").GetComponent<HouseScene2_Player>();
+        isPlayerFollow = false;
+        this.gameObject.SetActive(true);
+
         if (Type == MoveObstacleType.A)
         {
             initPositionY = transform.position.y;
@@ -57,19 +67,60 @@ public class Obstacle_House : MonoBehaviour
             initPositionX = transform.position.x;
             turningPoint = initPositionX - distance;
         }
-        if(Type == MoveObstacleType.C)
+        if (Type == MoveObstacleType.C)
         {
             initPositionZ = transform.position.z;
             turningPoint = initPositionZ - distance;
         }
+        StartCoroutine(SetEverything());
     }
 
-    void Start()
+    IEnumerator SetEverything()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<HouseScenePlayer>();
-        player2 = GameObject.FindGameObjectWithTag("Player").GetComponent<HouseScene2_Player>();
-        isPlayerFollow = false;
-        this.gameObject.SetActive(true);
+        while (true)
+        {
+            switch (Type)
+            {
+                case MoveObstacleType.A:
+                    isMove = true;
+                    upDown();
+                    break;
+                case MoveObstacleType.B:
+                    isMove = true;
+                    leftRight_x();
+                    break;
+                case MoveObstacleType.C:
+                    isMove = true;
+                    leftRight_z();
+                    break;
+                case MoveObstacleType.D:
+                    isMove = false;
+                    deguldegul();
+                    break;
+                case MoveObstacleType.E:
+                    rotate_z();
+                    break;
+                case MoveObstacleType.F:
+                    isMove = true;
+                    Orbit();
+                    break;
+                case MoveObstacleType.G:
+                    isMove = true;
+                    rotatae_x();
+                    break;
+                case MoveObstacleType.H:
+                    Circle();
+                    break;
+                case MoveObstacleType.I:
+                    isMove = true;
+                    rotate_y();
+                    break;
+                case MoveObstacleType.K:
+                    rotate_xyz();
+                    break;
+            }
+            yield return null;
+        }
     }
 
     void upDown()
@@ -293,49 +344,5 @@ public class Obstacle_House : MonoBehaviour
                                 Vector3.back, orbitSpeed*Time.deltaTime);
 
         offSet = transform.position - Circletarget.position;
-    }
-
-    void Update()
-    {
-        switch (Type)
-        {
-            case MoveObstacleType.A:
-                isMove = true;
-                upDown();
-                break;
-            case MoveObstacleType.B:
-                isMove = true;
-                leftRight_x();
-                break;
-            case MoveObstacleType.C:
-                isMove = true;
-                leftRight_z();
-                break;
-            case MoveObstacleType.D:
-                isMove = false;
-                deguldegul();
-                break;
-            case MoveObstacleType.E:
-                rotate_z();
-                break;
-            case MoveObstacleType.F:
-                isMove = true;
-                Orbit();
-                break;
-            case MoveObstacleType.G:
-                isMove = true;
-                rotatae_x();
-                break;
-            case MoveObstacleType.H:
-                Circle();
-                break;
-            case MoveObstacleType.I:
-                isMove = true;
-                rotate_y();
-                break;
-            case MoveObstacleType.K:
-                rotate_xyz();
-                break;
-        }
     }
 }
