@@ -29,16 +29,19 @@ public class CaveInteraction_Door : MonoBehaviour
         {
             key = GameObject.FindGameObjectWithTag("Key").GetComponent<CaveItem_Key>();
         }
+        StartCoroutine("CO_OpenDoor");
     }
 
-    void Update()
+    IEnumerator CO_OpenDoor()
     {
         OpenDoor();
-        if (isEnd)
+
+        while(isEnd)
         {
             dadAnim.SetBool("isWalk", true);
             daddy.transform.position = Vector3.MoveTowards(daddy.transform.position, Target.transform.position, Time.deltaTime * 3f);
-           
+
+            yield return null;
         }
     }
     

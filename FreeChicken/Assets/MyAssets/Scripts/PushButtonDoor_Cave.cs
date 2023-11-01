@@ -27,44 +27,69 @@ public class PushButtonDoor_Cave : MonoBehaviour
     void Start()
     {
         anim = Daddy.GetComponent<Animator>();
+
+        StartCoroutine("CO_isPush");
+        StartCoroutine("CO_MoveDoors");
+        StartCoroutine("CO_GoDaddy");
     }
 
-    void Update()
+    IEnumerator CO_isPush()
     {
-        if (isPush)
+        while (true)
         {
-            MoveDaddy();
-            if (!doorSet)
+            if (isPush)
             {
-                Pushing();
-                if (Door1.transform.position.y >= 5f)
+                MoveDaddy();
+                if (!doorSet)
                 {
-                    doorSet = true;
-                    goDaddy = true;
+                    Pushing();
+                    if (Door1.transform.position.y >= 5f)
+                    {
+                        doorSet = true;
+                        goDaddy = true;
+                    }
                 }
             }
-        }
-
-        if (!isPush && !doorSet)
-        { 
-            Door1.transform.Translate(Vector3.down * (Time.deltaTime / downSpeed));
-            Door2.transform.Translate(Vector3.down * (Time.deltaTime / downSpeed));
-
-            if (Door1.transform.position.y <= 3.384f)
-            {
-                doorSet = true;
-                goDaddy = false;
-            }
-        }
-        if (Daddy.transform.position.x >= target.transform.position.x && isLast && Player.transform.position.x >= target.transform.position.x)
-        {
-            isLast = false;
-            DaddyFinish.SetActive(true);
-            Daddy.SetActive(false);
-            Invoke("ButtonFinish", 2f);
+            yield return null;
         }
     }
-    
+    IEnumerator CO_MoveDoors()
+    {
+        while (true)
+        {
+            if (!isPush && !doorSet)
+            {
+                Door1.transform.Translate(Vector3.down * (Time.deltaTime / downSpeed));
+                Door2.transform.Translate(Vector3.down * (Time.deltaTime / downSpeed));
+
+                if (Door1.transform.position.y <= 3.384f)
+                {
+                    doorSet = true;
+                    goDaddy = false;
+                }
+            }
+
+            yield return null;
+        }
+    }
+
+    IEnumerator CO_GoDaddy()
+    {
+        while (true)
+        {
+            if (Daddy.transform.position.x >= target.transform.position.x && isLast && Player.transform.position.x >= target.transform.position.x)
+            {
+                isLast = false;
+                DaddyFinish.SetActive(true);
+                Daddy.SetActive(false);
+                yield return new WaitForSeconds(2f);
+                ButtonFinish();
+            }
+
+            yield return null;
+        }
+    }
+
     void Pushing()
     {
        if(!doorSet)

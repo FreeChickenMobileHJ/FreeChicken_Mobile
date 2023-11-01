@@ -56,7 +56,8 @@ public class AI_Cave : MonoBehaviour
     public AudioSource AttackSound;
     public GameObject DieParticle_1;
     public GameObject DieParticle_2;
-    
+
+    //public bool isAllStop;
     // 컸을때는 obstacle & 따라가기
     // 작아지면 랜덤이동 & 죽기
     void Start()
@@ -64,69 +65,55 @@ public class AI_Cave : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         player = GameObject.Find("CaveCharacter").GetComponent<CaveScenePlayer>();
         Big_AI = true;
-        StartCoroutine("AI_Update");
     }
 
-    IEnumerator AI_Update()
+    void Update()
     {
-        while (true)
+        if (!isDie)
         {
-            if (!isDie)
-            {
-                nav.isStopped = false;
-                playerInSight = Physics.CheckSphere(transform.position, 3f, Player);
-                playerInAttack = Physics.CheckSphere(transform.position, 1f, Player);
+            nav.isStopped = false;
+            playerInSight = Physics.CheckSphere(transform.position, 3f, Player);
+            playerInAttack = Physics.CheckSphere(transform.position, 1f, Player);
+            if (Small_AI && !Big_AI && !playerInAttack) MoveRandom();
+            if (!Small_AI && Big_AI && playerInSight && !playerInAttack) Targeting();
+        }
 
-                if (Small_AI && !Big_AI && !playerInAttack)
-                {
-                    MoveRandom();
-                }
+        if (Small_AI && !Big_AI)
+        {
+            this.gameObject.tag = "Slide";
+        }
+        if (Big_AI && !Small_AI)
+        {
+            this.gameObject.tag = "Obstacle";
+        }
+        if (!isWalking && !isRun && isAttack)
+        {
 
-                if (!Small_AI && Big_AI && playerInSight && !playerInAttack)
-                {
-                    Targeting();
-                }
-            }
+            anim.SetTrigger("doAttack");
+            anim.SetBool("isAttack", true);
+            anim.SetBool("Running", false);
+        }
+        if (!isWalking && isRun && !isAttack)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("isAttack", false);
+            anim.SetBool("Running", true);
+        }
+        if (isWalking && !isRun && !isAttack)
+        {
+            anim.SetBool("Running", false);
+            anim.SetBool("Walking", true);
+            anim.SetBool("isAttack", false);
 
-            if (Small_AI && !Big_AI)
-            {
-                this.gameObject.tag = "Slide";
-            }
-
-            if (Big_AI && !Small_AI)
-            {
-                this.gameObject.tag = "Obstacle";
-            }
-
-            if (!isWalking && !isRun && isAttack)
-            {
-                anim.SetTrigger("doAttack");
-                anim.SetBool("isAttack", true);
-                anim.SetBool("Running", false);
-            }
-
-            if (!isWalking && isRun && !isAttack)
-            {
-                anim.SetBool("Walking", false);
-                anim.SetBool("isAttack", false);
-                anim.SetBool("Running", true);
-            }
-
-            if (isWalking && !isRun && !isAttack)
-            {
-                anim.SetBool("Running", false);
-                anim.SetBool("Walking", true);
-                anim.SetBool("isAttack", false);
-            }
-
-            if (player.Dead)
-            {
-                isWalking = true;
-                isRun = false;
-            }
-            yield return null;
+        }
+        if (player.Dead)
+        {
+            isWalking = true;
+            isRun = false;
         }
     }
+
+
 
     void Targeting() // 캐릭터 발견 & 따라가기 
     {
@@ -193,7 +180,7 @@ public class AI_Cave : MonoBehaviour
     void ResetAttack2()
     {
         this.gameObject.transform.position = ResetPos2.gameObject.transform.position;
-        this.gameObject.SetActive(true);    
+        this.gameObject.SetActive(true);
         isCollision = false;
     }
 
@@ -205,10 +192,10 @@ public class AI_Cave : MonoBehaviour
             Big_AI = false;
             small_potion.SetActive(false);
             DieSound.Play();
-            this.gameObject.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+            this.gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
 
-        if(collision.gameObject.CompareTag("Player") && AI_Cave1 && !AI_Cave2)
+        if (collision.gameObject.CompareTag("Player") && AI_Cave1 && !AI_Cave2)
         {
             if (!isCollision)
             {
@@ -217,16 +204,16 @@ public class AI_Cave : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.CompareTag("Player") && !AI_Cave1 && AI_Cave2)
+        if (collision.gameObject.CompareTag("Player") && !AI_Cave1 && AI_Cave2)
         {
-            if(!isCollision)
+            if (!isCollision)
             {
                 isCollision = true;
                 Invoke("Attack2", hideTime);
             }
         }
 
-        if(collision.gameObject.CompareTag("Obstacle") && !isDie)
+        if (collision.gameObject.CompareTag("Obstacle") && !isDie)
         {
             isDie = true;
             anim.SetTrigger("isDead");
@@ -246,6 +233,7 @@ public class AI_Cave : MonoBehaviour
 
     void DestroyAI_Cave()
     {
+
         keyDropSound.Play();
         mesh.SetActive(false);
         key.SetActive(true);
