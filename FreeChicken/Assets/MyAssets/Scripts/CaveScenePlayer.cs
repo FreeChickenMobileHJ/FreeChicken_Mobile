@@ -956,16 +956,16 @@ public class CaveScenePlayer : MonoBehaviour
         SavePoint1Obj.gameObject.SetActive(false);
         GameSave.Level = 12;
 
-        if (File.Exists("PlayerData.json"))
-        {
-
-            string jsonData = File.ReadAllText("playerData.json");
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-            if (loadedData.LevelChk >= GameSave.Level)
+        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
             {
-                GameSave.Level = loadedData.LevelChk;
-            }
+                
+                string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
+                PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
+
+                if (loadedData.LevelChk >= GameSave.Level)
+                {
+                    GameSave.Level = loadedData.LevelChk;
+                }
             else
             {
                 GameSave.Level = 12;
@@ -984,20 +984,20 @@ public class CaveScenePlayer : MonoBehaviour
 
         File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
 
-        LoadSceneInfo.is2DEnterScene = true;
-        PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
         LoadSceneInfo.LevelCnt = 2;
+
         SceneManager.LoadScene("LoadingScene");
+
     }
 
     void Destroy_SavePointObj3()
     {
         GameSave.Level = 13;
 
-        if (File.Exists("PlayerData.json"))
+        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
 
-            string jsonData = File.ReadAllText("playerData.json");
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             if (loadedData.LevelChk >= GameSave.Level)
@@ -1022,10 +1022,10 @@ public class CaveScenePlayer : MonoBehaviour
 
         File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
 
-        LoadSceneInfo.is2DEnterScene = true;
-        PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
         LoadSceneInfo.LevelCnt = 2;
+
         SceneManager.LoadScene("LoadingScene");
+
     }
 
     void Destroy_SavePointObj4()
@@ -1033,10 +1033,10 @@ public class CaveScenePlayer : MonoBehaviour
         SavePoint1Obj.gameObject.SetActive(false);
         GameSave.Level = 14;
 
-        if (File.Exists("PlayerData.json"))
+        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
 
-            string jsonData = File.ReadAllText("playerData.json");
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             if (loadedData.LevelChk >= GameSave.Level)
@@ -1061,20 +1061,20 @@ public class CaveScenePlayer : MonoBehaviour
 
         File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
 
-        LoadSceneInfo.is2DEnterScene = true;
-        PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
         LoadSceneInfo.LevelCnt = 2;
+
         SceneManager.LoadScene("LoadingScene");
+
     }
     void Destroy_SavePointObj5()
     {
         //SavePoint5Obj.gameObject.SetActive(false);
         GameSave.Level = 15;
 
-        if (File.Exists("PlayerData.json"))
+        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
 
-            string jsonData = File.ReadAllText("playerData.json");
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             if (loadedData.LevelChk >= GameSave.Level)
@@ -1099,10 +1099,10 @@ public class CaveScenePlayer : MonoBehaviour
 
         File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
 
-        LoadSceneInfo.is2DEnterScene = true;
-        PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
         LoadSceneInfo.LevelCnt = 2;
+
         SceneManager.LoadScene("LoadingScene");
+
     }
     //------------restart_stage-----------------------------------------
     void restart_stage0()
