@@ -9,5 +9,6 @@ public class PlayerData
     public static bool isEnglish;
     public bool isEng;
     public bool isStartEnd;
+    public static bool isVibrate;
    
 }

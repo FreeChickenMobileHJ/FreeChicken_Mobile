@@ -67,6 +67,7 @@ public class CaveScenePlayer : MonoBehaviour
     public bool isCave_4;
     public bool isCave_5;
 
+    public bool isVibrate;
     [Header("Camera")]
     
     public CinemachineVirtualCamera mainCam;
@@ -167,6 +168,7 @@ public class CaveScenePlayer : MonoBehaviour
 
     public GameManager gameManager;
     public CityMap_CountDown cnt;
+    public TextMeshProUGUI vibrateText;
     void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -179,6 +181,16 @@ public class CaveScenePlayer : MonoBehaviour
 
     void Start()
     {
+        if (PlayerData.isVibrate)
+        {
+            isVibrate = true;
+            vibrateText.color = Color.white;
+        }
+        else if (!PlayerData.isVibrate)
+        {
+            isVibrate = false;
+            vibrateText.color = Color.black;
+        }
         DiePs.gameObject.SetActive(false);
         cnt = GameObject.FindGameObjectWithTag("TimerCnt").GetComponent<CityMap_CountDown>();
         Cursor.visible = false;
@@ -288,7 +300,23 @@ public class CaveScenePlayer : MonoBehaviour
             yield return null;
         }
     }
-
+    public void SetVibrate()
+    {
+        if (isVibrate)
+        {
+            isVibrate = false;
+            vibrateText.color = Color.black;
+            PlayerData.isVibrate = false;
+            Debug.Log("Áøµ¿²¨Áü");
+        }
+        else
+        {
+            isVibrate = true;
+            vibrateText.color = Color.white;
+            PlayerData.isVibrate = true;
+            Debug.Log("Áøµ¿ÄÑÁü");
+        }
+    }
 
     void KissMovement()
     {
@@ -312,7 +340,10 @@ public class CaveScenePlayer : MonoBehaviour
         {
             
             Dash = true;
-            Handheld.Vibrate();
+            if (isVibrate)
+            {
+                Handheld.Vibrate();
+            }
         }
     }
     public void DashUnAct()

@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.Events;
+using TMPro;
+
 public class AudioMixController : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider sfxSlider;
+  
     
     // Start is called before the first frame update
     void Awake()
@@ -16,6 +19,7 @@ public class AudioMixController : MonoBehaviour
 
         bgmSlider.onValueChanged.AddListener(SetBGMVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+
         
     }
     void Start()
@@ -28,6 +32,8 @@ public class AudioMixController : MonoBehaviour
         sfxSlider.value = saveSFX;
     }
   
+   
+    
     public void SetBGMVolume(float volume)
     {
         bgmSlider.value = volume;
