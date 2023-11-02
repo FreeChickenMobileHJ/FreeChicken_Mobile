@@ -569,6 +569,7 @@ public class GameManager : MonoBehaviour
             PlayerData.isEnglish = true;
         }
         GameSave.Level = 0;
+        DeadCount.count = 0;
 
         if (File.Exists(Application.persistentDataPath + "/playerData.json"))
         {
@@ -581,8 +582,7 @@ public class GameManager : MonoBehaviour
         }
         File.Delete(Application.persistentDataPath + "/playerData.json");
         
-        Debug.Log(isEnglish);
-        Debug.Log("PlayerData" + PlayerData.isEnglish);
+      
     }
    
     public void Controls()

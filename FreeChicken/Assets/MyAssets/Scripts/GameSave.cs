@@ -63,8 +63,8 @@ public class GameSave : MonoBehaviour
   
     private void Awake()
     {
-        Cursor.visible = true;
 
+        Application.targetFrameRate = 30;
         if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
 
@@ -242,9 +242,7 @@ public class GameSave : MonoBehaviour
         string json = JsonUtility.ToJson(playerData);
         
         File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-        Debug.Log(Level + "현재저장");
-        Debug.Log(playerData.LevelChk + "파일저장");
-
+        
 
     }
 }

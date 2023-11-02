@@ -74,6 +74,7 @@ public class Obstacle_Cave : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 30;
         if (Type == MoveObstacleType.A) // Up & Down
         {
             initPositionY = transform.position.y;
@@ -285,7 +286,7 @@ public class Obstacle_Cave : MonoBehaviour
 
         if (turnSwitch)
         {
-            //yield return new WaitForSeconds(1.5f);
+            
             transform.position = transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime;
             if (isPlayerFollow)
             {
@@ -294,7 +295,7 @@ public class Obstacle_Cave : MonoBehaviour
         }
         else
         {
-            //yield return new WaitForSeconds(1.5f);
+           
             transform.position = transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime;
             if (isPlayerFollow)
             {
@@ -375,7 +376,7 @@ public class Obstacle_Cave : MonoBehaviour
         }
     }
 
-    void GetFire() // 수정하기
+    void GetFire() 
     {
         if (player.isSense == true)
         {

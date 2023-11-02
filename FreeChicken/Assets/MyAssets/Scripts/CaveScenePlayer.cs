@@ -171,6 +171,7 @@ public class CaveScenePlayer : MonoBehaviour
     public TextMeshProUGUI vibrateText;
     void Awake()
     {
+        Application.targetFrameRate = 30;
         anim = GetComponentInChildren<Animator>();
         MomDownAnim = Mom.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
@@ -194,7 +195,7 @@ public class CaveScenePlayer : MonoBehaviour
         DiePs.gameObject.SetActive(false);
         cnt = GameObject.FindGameObjectWithTag("TimerCnt").GetComponent<CityMap_CountDown>();
         Cursor.visible = false;
-        //FirstCam.Priority = 100;
+        
         if (isCave_2)
         {
             image1.SetActive(false);
@@ -292,7 +293,7 @@ public class CaveScenePlayer : MonoBehaviour
     {
         while(true)
         {
-            if (isTimerChk && cnt.isFin) // ½Ã°£ÀÌ ´ÙµÆ°í ¾Æ¹«µµ ¸ø³ª°«À»¶§
+            if (isTimerChk && cnt.isFin) 
             {
                 DeadCheck();
                 isTimerChk = false;
@@ -307,14 +308,14 @@ public class CaveScenePlayer : MonoBehaviour
             isVibrate = false;
             vibrateText.color = Color.black;
             PlayerData.isVibrate = false;
-            Debug.Log("Áøµ¿²¨Áü");
+           
         }
         else
         {
             isVibrate = true;
             vibrateText.color = Color.white;
             PlayerData.isVibrate = true;
-            Debug.Log("Áøµ¿ÄÑÁü");
+         
         }
     }
 

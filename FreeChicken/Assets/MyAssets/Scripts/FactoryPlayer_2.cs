@@ -277,7 +277,7 @@ public class FactoryPlayer_2 : MonoBehaviour
         if (other.CompareTag("Slide"))
         {
 
-            this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 2f, Space.World);
+            this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 3f, Space.World);
 
 
           

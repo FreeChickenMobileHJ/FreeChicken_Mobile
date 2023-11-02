@@ -24,7 +24,11 @@ public class GameState : MonoBehaviour
     public GameObject LoadingUI;
 
     public AudioSource ClickSound;
-    
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
     public void OnMouseDown()
     {
         if (isF_1)
