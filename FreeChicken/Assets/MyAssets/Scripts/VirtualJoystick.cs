@@ -24,7 +24,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public float sensitivity = 1f;
 
-    public enum JoysitckType { Move,Rotate}
+    public enum JoysitckType { Move, Rotate }
     public JoysitckType joystickType;
 
     private void Awake()
@@ -47,7 +47,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         lever.anchoredPosition = Vector2.zero;
         isInput = false;
-        switch(joystickType)
+        switch (joystickType)
         {
             case JoysitckType.Move:
                 housePlayer1.Move(Vector2.zero);
@@ -63,6 +63,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         var scaledAnchoredPosition = rectTransform.anchoredPosition * mainCanvas.transform.localScale.x;
         var inputPos = eventData.position - scaledAnchoredPosition;
         var inputVector = inputPos.magnitude < leverRange ? inputPos : inputPos.normalized * leverRange;
+
         lever.anchoredPosition = inputVector;
 
         inputDirection = inputVector.normalized;
@@ -70,7 +71,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void InputControlVector()
     {
-        if (isInput && !housePlayer1.isOpeningDoor)  // 조이스틱 입력을 받는 동안에만 플레이어 움직임을 처리
+        if (isInput && !housePlayer1.isOpeningDoor && !housePlayer1.isRaisingDoor)  // 조이스틱 입력을 받는 동안에만 플레이어 움직임을 처리
         {
             switch (joystickType)
             {
@@ -88,7 +89,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -98,7 +99,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             InputControlVector();
 
         }
-        else if(housePlayer1.isTalk || !housePlayer1.TalkEnd)
+        else if (housePlayer1.isTalk || !housePlayer1.TalkEnd)
         {
             isInput = false;
         }

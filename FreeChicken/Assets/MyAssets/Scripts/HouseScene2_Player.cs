@@ -90,12 +90,6 @@ public class HouseScene2_Player : MonoBehaviour
         StartCoroutine(CO_Dead());
     }
 
-    void Update()
-    {
-        
-        
-    }
-
     IEnumerator CO_notDead()
     {
         while(true)
@@ -159,14 +153,14 @@ public class HouseScene2_Player : MonoBehaviour
     void DieMotion()
     {
         DiePs.gameObject.SetActive(true);
-        anim.SetBool("isDead", true);
+        DieCanvas.gameObject.SetActive(true);
+        anim.SetTrigger("isDead");
         dieAudio.Play();
     }
 
     void ReLoadScene()
     {
         Dead = false;
-        anim.SetBool("isDead", false);
         DeadCount.count++;
 
         if (TalkEnd1)
@@ -241,7 +235,7 @@ public class HouseScene2_Player : MonoBehaviour
 
         if (other.gameObject.name == "NextScenePos")
         {
-            Invoke("NextScene", 1.5f);
+            NextScene();
         }
     }
 
@@ -338,7 +332,6 @@ public class HouseScene2_Player : MonoBehaviour
         {
             Dead = true;
             DieMotion();
-            DieCanvas.gameObject.SetActive(true);
             Invoke("ReLoadScene", 2f);
         }
 

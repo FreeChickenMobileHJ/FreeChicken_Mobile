@@ -136,7 +136,6 @@ public class HouseScenePlayer : MonoBehaviour
         while (!Dead)
         {
             DiePs.gameObject.SetActive(false);
-            //anim.SetBool("isDead", false);
 
             if (!isTalk)
             {
@@ -377,24 +376,8 @@ public class HouseScenePlayer : MonoBehaviour
         if (other.CompareTag("Obstacle") && !Dead)
         {
             Dead = true;
-           
-            if (check_savepoint1)
-            {
-                DieMotion();
-                Invoke("restart_stage1", 3f);
-            }
 
-            if (check_savepoint2)
-            {
-                DieMotion();
-                Invoke("restart_stage2", 3f);
-            }
-
-            if (check_savepoint3)
-            {
-                DieMotion();
-                Invoke("restart_stage3", 3f);
-            }
+            Invoke("RestartStage", 0f);
         }
     }
     void NextScene()
@@ -455,7 +438,6 @@ public class HouseScenePlayer : MonoBehaviour
 
     void Destroy_SavePointObj2()
     {
-
         if (File.Exists("PlayerData.json"))
         {
             GameSave.Level = 6;
@@ -475,6 +457,14 @@ public class HouseScenePlayer : MonoBehaviour
         {
             GameSave.Level = 6;
         }
+        PlayerData playerData = new PlayerData();
+        playerData.LevelChk = GameSave.Level;
+
+
+        string json = JsonUtility.ToJson(playerData);
+
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
+
         LoadSceneInfo.LevelCnt = 2;
 
         SceneManager.LoadScene("LoadingScene");
@@ -501,7 +491,13 @@ public class HouseScenePlayer : MonoBehaviour
         {
             GameSave.Level = 7;
         }
+        PlayerData playerData = new PlayerData();
+        playerData.LevelChk = GameSave.Level;
 
+
+        string json = JsonUtility.ToJson(playerData);
+
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
 
         LoadSceneInfo.LevelCnt = 2;
 
@@ -540,7 +536,8 @@ public class HouseScenePlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle") && !Dead)
         {
             Dead = true;
-            Invoke("RestartStage", 3f);
+            //Invoke("RestartStage", 3f);
+            RestartStage(); // 바로 죽는모션 나오게 수정
         }
 
         if (collision.gameObject.CompareTag("Ground"))
@@ -554,11 +551,11 @@ public class HouseScenePlayer : MonoBehaviour
         DieMotion();
 
         if (check_savepoint1)
-            Invoke("RestartStage1", 0f);
+            Invoke("restart_stage1", 3f);
         else if (check_savepoint2)
-            Invoke("RestartStage2", 0f);
+            Invoke("restart_stage2", 3f);
         else if (check_savepoint3)
-            Invoke("RestartStage3", 0f);
+            Invoke("restart_stage3", 3f);
     }
 
     void OnParticleCollision(GameObject other)
@@ -567,23 +564,7 @@ public class HouseScenePlayer : MonoBehaviour
         {
             Dead = true;
 
-            if (check_savepoint1)
-            {
-                DieMotion();
-                Invoke("restart_stage1", 3f);
-            }
-
-            if (check_savepoint2)
-            {
-                DieMotion();
-                Invoke("restart_stage2", 3f);
-            }
-
-            if (check_savepoint3)
-            {
-                DieMotion();
-                Invoke("restart_stage3", 3f);
-            }
+            Invoke("RestartStage", 0f);
         }
     }
 
