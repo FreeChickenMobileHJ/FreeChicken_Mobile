@@ -18,7 +18,7 @@ public class CityMap_CountDown : MonoBehaviour
         {
             isStart = false;
             isStop = false;
-            text.gameObject.SetActive(true);
+            this.gameObject.SetActive(true);
             StartCoroutine(CountDown());
         }   
         
@@ -53,7 +53,7 @@ public class CityMap_CountDown : MonoBehaviour
         }
         
         if(!isStop && !isCity) isFin = true;
-        text.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
        
     }
 }
