@@ -108,8 +108,6 @@ public class GameManager : MonoBehaviour
 
     public void PauseButton()
     {
-        //isClick = true;
-
         if (!isLoading && !isStart)
         {
             ClickButtonAudio.Play();
@@ -250,13 +248,13 @@ public class GameManager : MonoBehaviour
             housePlayer1.runAudio.UnPause();
             housePlayer1.isTalk = false;
         }
-        else if (isHouse_3 && evolutionPlayer != null)
+        else if (isHouse_3 && housePlayer1 != null)
         {
             housePlayer1.mainAudio.UnPause();
             housePlayer1.runAudio.UnPause();
             housePlayer1.isTalk = false;
         }
-        else if (isHouse_4 && evolutionPlayer != null)
+        else if (isHouse_4 && housePlayer2 != null)
         {
             housePlayer2.mainAudio.UnPause();
             housePlayer2.runAudio.UnPause();
