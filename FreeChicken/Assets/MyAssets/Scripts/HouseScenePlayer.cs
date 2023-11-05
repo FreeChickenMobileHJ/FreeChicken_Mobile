@@ -119,14 +119,19 @@ public class HouseScenePlayer : MonoBehaviour
         {
             shouldLookAround = true;
             check_savepoint2 = true;
+
+            MemoryCount.memCount = 1;
+
         }
         else
         {
             shouldLookAround = true;
             check_savepoint3 = true;
+
+            MemoryCount.memCount = 2;
         }    
 
-        MemoryCount.memCount = 0;
+        //MemoryCount.memCount = 0;
 
         StartCoroutine(CO_notDead());
     }
