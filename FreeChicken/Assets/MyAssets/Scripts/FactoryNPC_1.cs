@@ -13,10 +13,10 @@ public class FactoryNPC_1 : MonoBehaviour
     public GameObject Ebutton;
 
     public bool isNear;
-    
+
     public CinemachineVirtualCamera npccam;
     public CinemachineVirtualCamera maincam;
-    
+
     public GameObject npc;
     public GameObject Video;
 
@@ -27,7 +27,8 @@ public class FactoryNPC_1 : MonoBehaviour
     public bool isFin;
     public GameObject Wall;
     public GameManager gameManager;
-   
+    private bool hasPlayedBGM = false;
+
     void Start()
     {
         Ebutton.SetActive(false);
@@ -40,28 +41,29 @@ public class FactoryNPC_1 : MonoBehaviour
 
     public void getMemory()
     {
-        if (isClickbutton)
+        if (isClickbutton && !hasPlayedBGM)
         {
             gameManager.isLoading = true;
             isEbutton = false;
             Video.SetActive(true);
 
-
             player.isTalk1 = true;
-            Destroy(Ebutton);
             BGM.Stop();
             Memory.Play();
 
             Invoke("ReStart", 38f);
             isFin = true;
+            hasPlayedBGM = true;
         }
     }
 
     public void OnEButtonClick()
     {
-        if (isNear)
+        if (isNear && !isFin)
         {
             isClickbutton = true;
+            Ebutton.SetActive(false);
+            getMemory();
         }
     }
 
@@ -72,7 +74,7 @@ public class FactoryNPC_1 : MonoBehaviour
             Video.SetActive(false);
             maincam.Priority = 2;
             npccam.Priority = -5;
-          
+
             npc.SetActive(false);
             BGM.Play();
             gameManager.isLoading = false;
@@ -80,7 +82,7 @@ public class FactoryNPC_1 : MonoBehaviour
             Memory.Stop();
             TalkUI1.SetActive(true);
             isFin = false;
-          
+
         }
 
         if (isFin && PlayerData.isEnglish)
@@ -101,9 +103,9 @@ public class FactoryNPC_1 : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            isNear= true;
+            isNear = true;
             npccam.Priority = 100;
             maincam.Priority = 1;
             Ebutton.SetActive(true);
@@ -112,9 +114,9 @@ public class FactoryNPC_1 : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            isNear= false;
+            isNear = false;
             npccam.Priority = 1;
             maincam.Priority = 10;
             Ebutton.SetActive(false);
