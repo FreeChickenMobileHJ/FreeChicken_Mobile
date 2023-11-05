@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using System.IO;
+
+
 public class FactoryPlayer : MonoBehaviour
 {
     [Header("Setting")]
@@ -370,6 +372,8 @@ public class FactoryPlayer : MonoBehaviour
             eggChangeCam.Priority = 10;
             BlockWall.SetActive(true);
             eggChangeZoneAudio.Play();
+            isTalk = true;
+            anim.SetBool("isWalk", false);
             turnEggCanvas.gameObject.SetActive(true);
         }
        
@@ -455,6 +459,7 @@ public class FactoryPlayer : MonoBehaviour
             isSetEggFinish = true;
             eggChangeZoneAudio.Stop();
             heartBeatAudio.Play();
+            isTalk = false;
             turnEggCanvas.SetActive(false);
             //changeEggCanvas.SetActive(false);
         }

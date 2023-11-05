@@ -236,6 +236,12 @@ public class GameManager : MonoBehaviour
             factoryPlayer3.BGM.UnPause();
             factoryPlayer3.isTalk = false;
         }
+        else if(isCity && cityPlayer != null)
+        {
+            cityPlayer.BGM.UnPause();
+            cityPlayer.isAllStop = false;
+
+        }
         else if (isHouse_1 && housePlayer1 != null)
         {
             housePlayer1.mainAudio.UnPause();

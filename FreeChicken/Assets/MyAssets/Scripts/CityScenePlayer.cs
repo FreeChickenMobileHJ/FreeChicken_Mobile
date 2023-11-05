@@ -247,8 +247,8 @@ public class CityScenePlayer : MonoBehaviour
     }
     void ReLoadScene()
     {
-    
-        
+
+        DeadCount.count++;
         SceneManager.LoadScene("CityScene");
     }
 }
