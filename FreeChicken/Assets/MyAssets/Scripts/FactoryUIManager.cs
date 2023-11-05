@@ -117,7 +117,7 @@ public class FactoryUIManager : MonoBehaviour
         foreach (char ch in line.ToCharArray())
         {
             text.text += ch;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.0001f);
             
             
         }
