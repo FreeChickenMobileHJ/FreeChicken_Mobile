@@ -108,40 +108,28 @@ public class HouseSceneTalkManager2 : MonoBehaviour
         foreach (char ch in line.ToCharArray())
         {
             text.text += ch;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.00001f);
         }
     }
 
     public void ClickNextButton()
     {
-        //if (!isTyping)
-        //{
-        //    NextSentence();
-        //    ClickButtonSound.Play();
-        //    if (sentences.Count == 0)
-        //    {
-        //        NpcImage.SetActive(false);
-        //        PlayerImage.SetActive(false);
-        //    }
-        //    ChangeImage();
-        //}
-
         if (!isTyping)
         {
             NextSentence();
             ClickButtonSound.Play();
             ChangeImage();
+            StartCoroutine(CheckSentences());
         }
-            
-
     }
 
-    void Update()
+    IEnumerator CheckSentences()
     {
-        if (text.text.Equals(currentSentences))
+        while (!text.text.Equals(currentSentences))
         {
-            nextText.SetActive(true);
-            isTyping = false;
+            yield return null;
         }
+        nextText.SetActive(true);
+        isTyping = false;
     }
 }

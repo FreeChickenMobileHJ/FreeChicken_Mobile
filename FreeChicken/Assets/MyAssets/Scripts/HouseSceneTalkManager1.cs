@@ -96,7 +96,7 @@ public class HouseSceneTalkManager1 : MonoBehaviour
         foreach (char ch in line.ToCharArray())
         {
             text.text += ch;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.00001f);
         }
     }
 
@@ -107,15 +107,17 @@ public class HouseSceneTalkManager1 : MonoBehaviour
             NextSentence();
             ClickSound.Play();
             ChangeImage();
+            StartCoroutine(CheckSentences());
         }
     }
 
-    void Update()
+    IEnumerator CheckSentences()
     {
-        if (text.text.Equals(currentSentences))
+        while (!text.text.Equals(currentSentences))
         {
-            nextText.SetActive(true);
-            isTyping = false;
+            yield return null;
         }
+        nextText.SetActive(true);
+        isTyping = false;
     }
 }
