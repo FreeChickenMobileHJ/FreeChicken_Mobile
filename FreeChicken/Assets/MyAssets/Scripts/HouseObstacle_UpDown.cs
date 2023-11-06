@@ -14,10 +14,13 @@ public class HouseObstacle_UpDown : MonoBehaviour
     private Transform player;
     private Vector3 originalPosition;
 
+    Rigidbody playerRigid;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         originalPosition = transform.position;
+        playerRigid = player.GetComponent<Rigidbody>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -38,14 +41,18 @@ public class HouseObstacle_UpDown : MonoBehaviour
                 if (isPlayerFollow)
                 {
                     transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-                    player.position += Vector3.up * moveSpeed * Time.deltaTime;
+                    //player.position += Vector3.up * moveSpeed * Time.deltaTime;
+
+                    playerRigid.MovePosition(player.position + Vector3.up * moveSpeed * Time.deltaTime);
                 }
                 break;
             case MoveObstacleType.B:
                 if (isPlayerFollow)
                 {
                     transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-                    player.position += Vector3.down * moveSpeed * Time.deltaTime;
+                    //player.position += Vector3.down * moveSpeed * Time.deltaTime;
+
+                    playerRigid.MovePosition(player.position + Vector3.down * moveSpeed * Time.deltaTime);
                 }
                 break;
         }

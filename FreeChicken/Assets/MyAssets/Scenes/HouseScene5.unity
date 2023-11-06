@@ -7862,6 +7862,14 @@ PrefabInstance:
       propertyPath: savePointAudio
       value: 
       objectReference: {fileID: 997325147}
+    - target: {fileID: 4701073560459613879, guid: 17a09d423219f824bba039eaed8819b8, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701073560459613879, guid: 17a09d423219f824bba039eaed8819b8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8135128065995695058, guid: 17a09d423219f824bba039eaed8819b8, type: 3}
       propertyPath: m_Name
       value: EvolutionCharacter
@@ -8152,9 +8160,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!95 &254029500
 Animator:
   serializedVersion: 5
@@ -8898,6 +8906,7 @@ GameObject:
   - component: {fileID: 302001416}
   - component: {fileID: 302001415}
   - component: {fileID: 302001417}
+  - component: {fileID: 302001418}
   m_Layer: 5
   m_Name: CameraJoyStick2
   m_TagString: Untagged
@@ -8921,9 +8930,9 @@ RectTransform:
   m_Father: {fileID: 1488214971}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 870, y: 230}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 350, y: 0}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302001415
@@ -8971,7 +8980,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302001412}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d9041a140b9d1a49abd5a3eec537b33, type: 3}
   m_Name: 
@@ -8982,6 +8991,24 @@ MonoBehaviour:
   evolutionPlayer: {fileID: 232130284}
   sensitivity: 3.5
   joystickType: 1
+--- !u!114 &302001418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302001412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eea89038c2dd8440b32b7327640ef1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lever: {fileID: 150695869}
+  mainCanvas: {fileID: 1488214970}
+  leverRange: 25
+  evolutionPlayer: {fileID: 232130284}
+  sensitivity: 3.5
+  joystickType: 0
 --- !u!1 &305207829
 GameObject:
   m_ObjectHideFlags: 0
@@ -54208,6 +54235,7 @@ GameObject:
   - component: {fileID: 2024882438}
   - component: {fileID: 2024882437}
   - component: {fileID: 2024882436}
+  - component: {fileID: 2024882439}
   m_Layer: 5
   m_Name: CameraJoyStick1
   m_TagString: Untagged
@@ -54231,9 +54259,9 @@ RectTransform:
   m_Father: {fileID: 1488214971}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 870, y: 230}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 350, y: 0}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2024882436
@@ -54243,7 +54271,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024882434}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04f1bf2e7584f104e84cfcba44262cec, type: 3}
   m_Name: 
@@ -54292,6 +54320,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024882434}
   m_CullTransparentMesh: 1
+--- !u!114 &2024882439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024882434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b63208dc50793c4389d4f9b1dfdf759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lever: {fileID: 1820835630}
+  mainCanvas: {fileID: 1488214970}
+  leverRange: 25
+  housePlayer2: {fileID: 254029502}
+  sensitivity: 3.5
+  joystickType: 0
 --- !u!1 &2029410565
 GameObject:
   m_ObjectHideFlags: 0

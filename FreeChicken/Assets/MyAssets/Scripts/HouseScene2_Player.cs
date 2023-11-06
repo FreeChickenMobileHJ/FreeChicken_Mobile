@@ -134,7 +134,8 @@ public class HouseScene2_Player : MonoBehaviour
             Vector3 moveVec = lookForward * moveInput.y + lookRight * moveInput.x;
 
             characterBody.forward = moveVec;
-            transform.position += moveVec * speed * Time.deltaTime;
+            //transform.position += moveVec * speed * Time.deltaTime;
+            rigid.MovePosition(transform.position + moveVec * speed * Time.deltaTime);
             runAudio.Play();
         }
     }
