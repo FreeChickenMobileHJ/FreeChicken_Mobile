@@ -8,6 +8,7 @@ public class CaveInteraction_Door : MonoBehaviour
     public GameObject OpenDoorText;
     public GameObject donotOpenDoorText;
     bool isOpen;
+    public bool isFin;
 
     CaveScenePlayer player;
     CaveItem_Key key;
@@ -36,11 +37,14 @@ public class CaveInteraction_Door : MonoBehaviour
     {
         OpenDoor();
 
-        while(isEnd)
+        while(true)
         {
-            dadAnim.SetBool("isWalk", true);
-            daddy.transform.position = Vector3.MoveTowards(daddy.transform.position, Target.transform.position, Time.deltaTime * 3f);
-
+            if (isEnd)
+            {
+                dadAnim.SetBool("isWalk", true);
+                daddy.transform.position = Vector3.MoveTowards(daddy.transform.position, Target.transform.position, Time.deltaTime * 3f);
+                
+            }
             yield return null;
         }
     }
@@ -55,7 +59,7 @@ public class CaveInteraction_Door : MonoBehaviour
             isOpen = true;
         }
 
-        if(other.gameObject.CompareTag("Player") && player.hasKey && !isEnd)
+        if(other.gameObject.CompareTag("Player") && player.hasKey && !isEnd && !isFin)
         {
             isOpen = true;
             OpenDoorText.SetActive(true);
@@ -92,7 +96,7 @@ public class CaveInteraction_Door : MonoBehaviour
             --player.keyCount;
 
             Door.SetActive(false);
-            
+            isFin = true;
             Thx.gameObject.SetActive(true);
             Invoke("Last", 6f);
             

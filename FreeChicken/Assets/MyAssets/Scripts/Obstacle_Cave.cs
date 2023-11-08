@@ -30,7 +30,7 @@ public class Obstacle_Cave : MonoBehaviour
 
     //MovePlatform
     public bool isMove;
-    public bool isPlayerFollow;
+    //public bool isPlayerFollow;
 
     //RT_Floor
     public float rotateSpeed;
@@ -71,6 +71,7 @@ public class Obstacle_Cave : MonoBehaviour
     Vector3 offSet;
 
     Rigidbody rigid;
+   
 
     void Awake()
     {
@@ -98,14 +99,14 @@ public class Obstacle_Cave : MonoBehaviour
             objAnimator = GetComponent<Animator>();
         }
         rigid = GetComponent<Rigidbody>();
-
-        Application.targetFrameRate = 30;
+        
+       
     }
 
     void Start()
     {
         player = GameObject.Find("CaveCharacter").GetComponent<CaveScenePlayer>();
-        isPlayerFollow = false;
+        //isPlayerFollow = false;
         isSense= false;
         removeObj = false;
 
@@ -144,12 +145,12 @@ public class Obstacle_Cave : MonoBehaviour
                     rotate_y();
                     break;
                 case MoveObstacleType.H:
-                    isPlayerFollow = false;
+                    //isPlayerFollow = false;
                     isMove = false;
                     leftRightZ();
                     break;
                 case MoveObstacleType.I:
-                    isPlayerFollow = false;
+                    //isPlayerFollow = false;
                     isMove = false;
                     rotate_z();
                     break;
@@ -200,19 +201,15 @@ public class Obstacle_Cave : MonoBehaviour
 
         if (turnSwitch)
         {
+           
             transform.position = transform.position + new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
-            {
-                player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime;
-            }
+          
         }
         else
         {
+           
             transform.position = transform.position + new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
-            {
-                player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime;
-            }
+        
         }
     }
 
@@ -220,10 +217,10 @@ public class Obstacle_Cave : MonoBehaviour
     {
         isSense = false;
         transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
-        if (isPlayerFollow)
+       /* if (isPlayerFollow)
         {
             player.gameObject.transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
-        }
+        }*/
     }
 
     void rotate_y()
@@ -255,18 +252,18 @@ public class Obstacle_Cave : MonoBehaviour
         if (turnSwitch)
         {
             this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+           /* if (isPlayerFollow)
             {
                 player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime;
-            }
+            }*/
         }
         else
         {
             this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+            /*if (isPlayerFollow)
             {
                 player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime;
-            }
+            }*/
         }
 
     }
@@ -288,36 +285,36 @@ public class Obstacle_Cave : MonoBehaviour
         {
             
             transform.position = transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+           /* if (isPlayerFollow)
             {
                 player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime;
-            }
+            }*/
         }
         else
         {
            
             transform.position = transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime;
-            if (isPlayerFollow)
+           /* if (isPlayerFollow)
             {
                 player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime;
-            }
+            }*/
         }
     }
    
     void OnTriggerEnter(Collider other) // Case E == Delay & Drop
     {
-        if (other.gameObject.tag == "Player" && isDropObj)
+        if (other.gameObject.CompareTag("Player") && isDropObj)
         {
 
             transform.position = Vector3.Lerp(transform.position, other.transform.position, dropSpeed);
         }
 
-        if(other.gameObject.tag == "Player" && this.Type == MoveObstacleType.N && !isSense)
+        if(other.gameObject.CompareTag("Player") && this.Type == MoveObstacleType.N && !isSense)
         {
             isSense = true;
         }
 
-        if(other.gameObject.tag == "Obstacle")
+        if(other.gameObject.CompareTag("Obstacle"))
         {
             isBallContact = true;
         }
@@ -325,7 +322,7 @@ public class Obstacle_Cave : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Wall"))
         {
             removeObj = true;  
         }
@@ -333,7 +330,7 @@ public class Obstacle_Cave : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" && isBigJump)
+        if (collision.gameObject.CompareTag("Player") && isBigJump)
         {
             collision.rigidbody.AddForce(Vector3.forward * BigJumpPower, ForceMode.Impulse);
 
@@ -439,12 +436,12 @@ public class Obstacle_Cave : MonoBehaviour
                                 orbitSpeed * Time.deltaTime);
         offSet = transform.position - Circletarget.position;
 
-        if (isPlayerFollow)
+       /* if (isPlayerFollow)
         {
             player.gameObject.transform.RotateAround(Circletarget.position,
                                 Vector3.up,
                                 orbitSpeed * Time.deltaTime);
-        }
+        }*/
     }
 
     void Circle()

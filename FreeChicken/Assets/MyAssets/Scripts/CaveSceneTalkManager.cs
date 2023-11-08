@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using Cinemachine;
 
 public class CaveSceneTalkManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class CaveSceneTalkManager : MonoBehaviour
     public AudioSource TalkSound;
     public AudioSource ClickButtonSound;
 
+    public CinemachineVirtualCamera NpcCam;
     private void Awake()
     {
         instance = this;
@@ -65,6 +67,8 @@ public class CaveSceneTalkManager : MonoBehaviour
         if (sentences.Count == 0)
         {
             Destroy(instance.gameObject);
+            if(NpcCam != null) { NpcCam.Priority = -100; }
+            
             Player.isTalk = false;
             Cursor.visible = false;
         }

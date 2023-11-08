@@ -2020,7 +2020,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 2
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -2480,6 +2479,7 @@ MonoBehaviour:
   isTalkEnd: 0
   TalkSound: {fileID: 94614535}
   ClickButtonSound: {fileID: 1344832499}
+  NpcCam: {fileID: 1604485495}
 --- !u!114 &95345145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2691,7 +2691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &98187491
@@ -2914,7 +2914,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 5
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -3286,7 +3285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &113514042
@@ -3930,6 +3929,7 @@ MonoBehaviour:
   isTalkEnd: 0
   TalkSound: {fileID: 94614535}
   ClickButtonSound: {fileID: 1344832499}
+  NpcCam: {fileID: 1617986032}
 --- !u!1 &145524284
 GameObject:
   m_ObjectHideFlags: 0
@@ -4423,7 +4423,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -4976,7 +4975,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253958218}
-  m_LocalRotation: {x: 0.19949831, y: -0.24898992, z: 0.052492898, w: 0.9462817}
+  m_LocalRotation: {x: 0.19949833, y: -0.24898995, z: 0.052492913, w: 0.9462817}
   m_LocalPosition: {x: 129.7157, y: 11.565064, z: 18.704351}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5132,7 +5131,8 @@ PrefabInstance:
       propertyPath: m_CookingOptions
       value: -1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6884474286417386214, guid: f1743b005e7bf2445ac2f4cd4c2f6279, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5148,6 +5148,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1404630661}
+    - targetCorrespondingSourceObject: {fileID: 3044799357886607768, guid: f1743b005e7bf2445ac2f4cd4c2f6279,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1404630662}
   m_SourcePrefab: {fileID: 100100000, guid: f1743b005e7bf2445ac2f4cd4c2f6279, type: 3}
 --- !u!1001 &262002421
 PrefabInstance:
@@ -6381,7 +6385,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -6497,6 +6500,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &333638238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 333638242}
+  - component: {fileID: 333638241}
+  - component: {fileID: 333638240}
+  - component: {fileID: 333638239}
+  m_Layer: 5
+  m_Name: DieCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &333638239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333638238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &333638240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333638238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0.5
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &333638241
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333638238}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
+  m_TargetDisplay: 0
+--- !u!224 &333638242
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333638238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1305730692}
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1001 &337851002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6849,7 +6955,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 5
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -8207,6 +8312,7 @@ MonoBehaviour:
   isTalkEnd: 0
   TalkSound: {fileID: 94614535}
   ClickButtonSound: {fileID: 1344832499}
+  NpcCam: {fileID: 2020658320}
 --- !u!114 &429658452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9309,7 +9415,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -10345,7 +10450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &584113593
@@ -14345,7 +14450,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -15263,7 +15367,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -15530,6 +15633,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -18.362974
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974580526033127401, guid: 21b6b9841f3e0a641b0daf89c15ad3b8,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3156881913318103509, guid: 21b6b9841f3e0a641b0daf89c15ad3b8,
         type: 3}
@@ -15886,6 +15994,11 @@ PrefabInstance:
       propertyPath: DadDieCam
       value: 
       objectReference: {fileID: 253958220}
+    - target: {fileID: 5434311415699193346, guid: 21b6b9841f3e0a641b0daf89c15ad3b8,
+        type: 3}
+      propertyPath: DieCanvas
+      value: 
+      objectReference: {fileID: 196961136}
     - target: {fileID: 5434311415699193346, guid: 21b6b9841f3e0a641b0daf89c15ad3b8,
         type: 3}
       propertyPath: FollowMom
@@ -19074,6 +19187,7 @@ MonoBehaviour:
   isTalkEnd: 0
   TalkSound: {fileID: 94614535}
   ClickButtonSound: {fileID: 1344832499}
+  NpcCam: {fileID: 691676892}
 --- !u!114 &1054380751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19311,6 +19425,7 @@ MonoBehaviour:
   isTalkEnd: 0
   TalkSound: {fileID: 94614535}
   ClickButtonSound: {fileID: 1344832499}
+  NpcCam: {fileID: 0}
 --- !u!114 &1064986457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22552,7 +22667,8 @@ PrefabInstance:
       propertyPath: m_CookingOptions
       value: -1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6884474286417386214, guid: f1743b005e7bf2445ac2f4cd4c2f6279, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -22568,6 +22684,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1245459954}
+    - targetCorrespondingSourceObject: {fileID: 3044799357886607768, guid: f1743b005e7bf2445ac2f4cd4c2f6279,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1245459955}
   m_SourcePrefab: {fileID: 100100000, guid: f1743b005e7bf2445ac2f4cd4c2f6279, type: 3}
 --- !u!4 &1245459950 stripped
 Transform:
@@ -22601,7 +22721,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 4.5
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -22642,7 +22761,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: -3
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: -1.5
   angle_z: 50
   isBigJump: 0
@@ -22678,6 +22796,29 @@ MonoBehaviour:
   player: {fileID: 0}
   newAudio: {fileID: 2137984607}
   proximityDistance: 3
+--- !u!136 &1245459955
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245459951}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.59694755
+  m_Height: 1.1873782
+  m_Direction: 1
+  m_Center: {x: 0.0000002682209, y: 0.00000038743028, z: 0.000000294298}
 --- !u!1001 &1256459202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22796,7 +22937,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -23653,6 +23793,82 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 688470349}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1305730691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305730692}
+  - component: {fileID: 1305730694}
+  - component: {fileID: 1305730693}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1305730692
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305730691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 333638242}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1305730693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305730691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1305730694
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305730691}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1308675096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24598,7 +24814,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335217148}
-  m_LocalRotation: {x: 0.24772742, y: 0.0000000038296055, z: -9.792204e-10, w: 0.9688298}
+  m_LocalRotation: {x: 0.24772742, y: 0.0000000038296037, z: -9.7922e-10, w: 0.9688298}
   m_LocalPosition: {x: 78.46569, y: 14.355065, z: -8.595648}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24899,7 +25115,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -25485,7 +25700,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -25858,7 +26072,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 5
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -25899,7 +26112,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 3
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 1.5
   angle_z: 50
   isBigJump: 0
@@ -25935,6 +26147,29 @@ MonoBehaviour:
   player: {fileID: 0}
   newAudio: {fileID: 2137984607}
   proximityDistance: 3
+--- !u!136 &1404630662
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404630657}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.59694755
+  m_Height: 1.1873782
+  m_Direction: 1
+  m_Center: {x: 0.0000021755695, y: 0.00000038743028, z: 0.00000053271657}
 --- !u!1001 &1406339982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26259,6 +26494,7 @@ MonoBehaviour:
   isTalkEnd: 0
   TalkSound: {fileID: 94614535}
   ClickButtonSound: {fileID: 1344832499}
+  NpcCam: {fileID: 372068942}
 --- !u!114 &1414317415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26739,7 +26975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1440087065
@@ -27397,7 +27633,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: -5
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 1
   angle_z: 0
   isBigJump: 0
@@ -27718,7 +27953,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 5
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 1
   angle_z: 50
   isBigJump: 0
@@ -30113,7 +30347,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 8
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 1
   angle_z: 50
   isBigJump: 0
@@ -30975,7 +31208,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 3
   angle_z: 50
   isBigJump: 0
@@ -31022,7 +31254,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 4
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -31358,7 +31589,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -32062,7 +32292,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -32471,7 +32700,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 5
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 1
   angle_z: 0
   isBigJump: 0
@@ -33945,7 +34173,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775754806}
-  m_LocalRotation: {x: 0.092541374, y: -0.000000004283136, z: 3.9807543e-10, w: 0.9957089}
+  m_LocalRotation: {x: 0.09254138, y: 0.000000004283138, z: -3.980756e-10, w: 0.9957089}
   m_LocalPosition: {x: 78.46569, y: 1.3550653, z: 9.904352}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34373,7 +34601,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 5
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -36209,7 +36436,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886375385}
-  m_LocalRotation: {x: 0.057217244, y: 0.0000000021472744, z: -1.2306277e-10, w: 0.99836177}
+  m_LocalRotation: {x: 0.057217244, y: -0.0000000021472735, z: 1.2306271e-10, w: 0.99836177}
   m_LocalPosition: {x: 78.46569, y: 3.8550653, z: -2.0956473}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37359,7 +37586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1944428401
@@ -38946,7 +39173,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 1.3
   angle_z: 50
   isBigJump: 0
@@ -39266,7 +39492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2085129464
@@ -39938,7 +40164,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 3
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -39985,7 +40210,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 1
   angle_z: 50
   isBigJump: 0
@@ -45212,7 +45436,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 10
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -45833,7 +46056,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0
@@ -45904,7 +46126,6 @@ MonoBehaviour:
   turnSwitch: 0
   moveSpeed: 0
   isMove: 0
-  isPlayerFollow: 0
   rotateSpeed: 0
   angle_z: 50
   isBigJump: 0

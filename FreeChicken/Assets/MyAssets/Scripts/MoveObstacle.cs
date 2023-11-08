@@ -275,7 +275,7 @@ public class MoveObstacle : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if(other.gameObject.tag == "Player" && isDropObj)
+        if(other.gameObject.CompareTag("Player") && isDropObj)
         {
            
             transform.position = Vector3.Lerp(transform.position, other.transform.position, dropSpeed);
@@ -285,16 +285,16 @@ public class MoveObstacle : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {  
        
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             isPlayerFollow = true;
         }
-        if (collision.gameObject.tag == "Player" && isContact &&!isChk)
+        if (collision.gameObject.CompareTag("Player") && isContact &&!isChk)
         {
             isChk = true;
             StartCoroutine("SmallObj");
         }
-        if (collision.gameObject.tag == "Player" && isDownandDestroy)
+        if (collision.gameObject.CompareTag("Player") && isDownandDestroy)
         {
             isDown = true;
             isDownandDestroy = false;
@@ -346,22 +346,22 @@ public class MoveObstacle : MonoBehaviour
     
     void OnCollisionStay(Collision collision) 
     {
-        if(collision.gameObject.tag == "Player" && isBigJump)
+        if(collision.gameObject.CompareTag("Player") && isBigJump)
         {
             collision.rigidbody.AddForce(Vector3.forward * BigJumpPower, ForceMode.Impulse);
            
             isBigJump = false;
         }
-        if (collision.gameObject.tag == "Player" && isMove) 
+        if (collision.gameObject.CompareTag("Player") && isMove) 
         {
             isPlayerFollow = true;
 
         }
        
     }
-    void OnCollisionExit(Collision collision)
+    void OnCollisionExit(Collision collision)   
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             isPlayerFollow = false;
         }
