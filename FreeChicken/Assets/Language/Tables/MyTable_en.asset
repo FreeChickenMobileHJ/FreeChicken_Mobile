@@ -169,7 +169,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 387206079201280
-    m_Localized: 'Let''s create a path(       key to change the route
+    m_Localized: 'Let''s create a path(                key to change the route
 
       key
       to confirm'
@@ -260,6 +260,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1430859594706944
     m_Localized: "There's a car over there! \nLet's get on it right away!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15615032446267392
+    m_Localized: 
     m_Metadata:
       m_Items: []
   references:
