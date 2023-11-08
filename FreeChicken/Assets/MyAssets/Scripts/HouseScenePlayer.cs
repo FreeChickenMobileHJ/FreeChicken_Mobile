@@ -25,7 +25,7 @@ public class HouseScenePlayer : MonoBehaviour
     [Header("Bool")]
     public bool isMove;
     public bool isJump;
-    bool Dead;
+    public bool Dead;
     public bool isfallingObstacle;
     public bool isSense;
     public bool isDoorOpen =false;
@@ -209,8 +209,8 @@ public class HouseScenePlayer : MonoBehaviour
             Vector3 moveVec = lookForward * moveInput.y + lookRight * moveInput.x;
 
             characterBody.forward = moveVec;
-            //transform.position += moveVec * speed * Time.deltaTime;
-            rigid.MovePosition(transform.position + moveVec * speed * Time.deltaTime);
+            transform.position += moveVec * speed * Time.deltaTime;
+            //rigid.MovePosition(transform.position + moveVec * speed * Time.deltaTime);
             runAudio.Play();
         }
     }

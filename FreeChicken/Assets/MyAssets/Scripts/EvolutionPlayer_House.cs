@@ -65,7 +65,6 @@ public class EvloutionPlayer : MonoBehaviour
 
     void Awake()
     {
-        //mainAudio.Play();
         anim = GetComponentInChildren<Animator>();
         rigid = GetComponent<Rigidbody>();
         isJump = false;
@@ -78,11 +77,12 @@ public class EvloutionPlayer : MonoBehaviour
         cameraJoyStick.SetActive(true);
         DiePs.gameObject.SetActive(false);
         DieCanvas.gameObject.SetActive(false);
+        StartCoroutine(CO_notDead());
     }
 
-    void Update()
+    IEnumerator CO_notDead()
     {
-        if (!Dead)
+        while (!Dead)
         {
             if (!isTalk2)
             {
@@ -91,6 +91,7 @@ public class EvloutionPlayer : MonoBehaviour
                     HandleCameraRotation();
                 }
             }
+            yield return null;
         }
     }
 
@@ -108,6 +109,7 @@ public class EvloutionPlayer : MonoBehaviour
 
             characterBody.forward = moveVec;
             transform.position += moveVec * speed * Time.deltaTime;
+            //rigid.MovePosition(transform.position + moveVec * speed * Time.deltaTime);
             runAudio.Play();
         }
     }
@@ -126,6 +128,7 @@ public class EvloutionPlayer : MonoBehaviour
     void DieMotion()
     {
         Dead = true;
+        DieCanvas.gameObject.SetActive(true);
         DiePs.gameObject.SetActive(true);
         anim.SetBool("isDead", true);
         dieAudio.Play();
@@ -137,58 +140,26 @@ public class EvloutionPlayer : MonoBehaviour
         anim.SetBool("isDead",false);
         DiePs.gameObject.SetActive(false);
         this.gameObject.transform.position = Pos.gameObject.transform.position;
-        //SceneManager.LoadScene("HouseScene2");
         DieCanvas.gameObject.SetActive(false);
-    }
-
-    void NextCityScene()
-    {
-        
     }
   
     void OnTriggerEnter(Collider other)
     {
-      
-
         if (other.CompareTag("evolu")) 
         {
             StartRotation();
             ReadygoCity.SetActive(true);
         }
 
-        //if (other.gameObject.name == "GoCitySense")
-        //{
-        //    isTalk2 = true;
-        //    GameSave.Level = 3;
-        //    GameSave.isCity = true;
-        //    PlayerData playerData = new PlayerData();
-        //    playerData.LevelChk = GameSave.Level;
-        //    string json = JsonUtility.ToJson(playerData);
-
-        //    File.WriteAllText("playerData.json", json);
-
-        //    PlayerPrefs.SetInt("GoCity", GameSave.isCity ? 1 : 0);
-
-
-
-        //    LoadSceneInfo.is2DEnterScene = true;
-        //    PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
-        //    LoadSceneInfo.LevelCnt = 2;
-        //    SceneManager.LoadScene("LoadingScene");
-        //}
-
         if (other.gameObject.name == "GoCitySense")
         {
-            Invoke("NextScene", 1.5f);
+            NextScene();
 
         }
     }
 
     void NextScene()
     {
-        /*LoadSceneInfo.isHouse_2 = true;
-        PlayerPrefs.SetInt("SceneHouse_2", LoadSceneInfo.isHouse_2 ? 1 : 0);*/
-
         if (File.Exists("PlayerData.json"))
         {
             GameSave.Level = 10;
@@ -208,6 +179,13 @@ public class EvloutionPlayer : MonoBehaviour
         {
             GameSave.Level = 10;
         }
+        PlayerData playerData = new PlayerData();
+        playerData.LevelChk = GameSave.Level;
+
+
+        string json = JsonUtility.ToJson(playerData);
+
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
 
 
         LoadSceneInfo.LevelCnt = 2;
@@ -219,10 +197,8 @@ public class EvloutionPlayer : MonoBehaviour
     {
         rotationTimer += Time.deltaTime;
 
-        // 회전 각도 계산 (0에서 720도까지)
-        float rotationAngle = Mathf.Lerp(0f, 720f, rotationTimer / rotationDuration); // 0부터 720도까지 두 바퀴 회전
+        float rotationAngle = Mathf.Lerp(0f, 720f, rotationTimer / rotationDuration);
 
-        // 회전
         cameraArm.RotateAround(transform.position, Vector3.up, rotationAngle * Time.deltaTime);
 
         EvoluPs.SetActive(true);
@@ -231,8 +207,6 @@ public class EvloutionPlayer : MonoBehaviour
         {
             rotationTimer = 0.0f;
             isRotating = false;
-
-            // 회전이 완료된 후에 원래 상태로 돌아가는 처리 추가
             cameraArm.rotation = originalCameraRotation;
             EvoluPs.SetActive(false);
         }
@@ -247,8 +221,6 @@ public class EvloutionPlayer : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-       
-
         if (other.CompareTag("evolu"))
         {
             other.gameObject.SetActive(false);
@@ -262,7 +234,6 @@ public class EvloutionPlayer : MonoBehaviour
         {
             Dead = true;
             DieMotion();
-            DieCanvas.gameObject.SetActive(true);
             Invoke("ReLoadScene", 3.5f);
         }
 

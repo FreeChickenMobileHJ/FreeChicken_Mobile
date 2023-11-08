@@ -74,6 +74,9 @@ public class HouseScene2_Player : MonoBehaviour
     public GameObject EvoluPs;
     public GameObject obj;
 
+    public GameObject DestroyObj;
+    public GameObject LineObj;
+
     void Awake()
     {
         mainAudio.Play();
@@ -213,6 +216,7 @@ public class HouseScene2_Player : MonoBehaviour
             UnicycleDialogue1.SetActive(true);
             anim.SetBool("Walk", false);
             anim.SetBool("Run", false);
+            DestroyObj.SetActive(false);
             unicycleCam.Priority = 10;
             mainCam.Priority = 1;
         }
@@ -223,6 +227,7 @@ public class HouseScene2_Player : MonoBehaviour
             UnicycleDialogue2.SetActive(true);
             anim.SetBool("Walk", false);
             anim.SetBool("Run", false);
+            DestroyObj.SetActive(false);
             unicycleCam.Priority = 10;
             mainCam.Priority = 1;
         }
@@ -231,6 +236,7 @@ public class HouseScene2_Player : MonoBehaviour
         {
             trumpetAudio.Play();
             StartRotation();
+            LineObj.SetActive(true);
             Invoke("Destroy_", 2f);
         }
 

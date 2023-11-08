@@ -8166,9 +8166,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!95 &551839793
 Animator:
   serializedVersion: 5
@@ -17782,6 +17782,8 @@ MonoBehaviour:
   objSpeed: 0
   Circletarget: {fileID: 1477119900}
   orbitSpeed: 50
+  isRigidCheck1: 0
+  isRigidCheck2: 0
 --- !u!65 &1477119904
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19253,6 +19255,22 @@ PrefabInstance:
     - target: {fileID: 3681288956428817346, guid: 955f9c0f0e24add47b4fd2d2f3d239d2, type: 3}
       propertyPath: m_LocalPosition.z
       value: 15.596
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688078229276286233, guid: 955f9c0f0e24add47b4fd2d2f3d239d2, type: 3}
+      propertyPath: m_Size.x
+      value: 13.227809
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688078229276286233, guid: 955f9c0f0e24add47b4fd2d2f3d239d2, type: 3}
+      propertyPath: m_Size.z
+      value: 23.046131
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688078229276286233, guid: 955f9c0f0e24add47b4fd2d2f3d239d2, type: 3}
+      propertyPath: m_Center.x
+      value: -1.1064733
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688078229276286233, guid: 955f9c0f0e24add47b4fd2d2f3d239d2, type: 3}
+      propertyPath: m_Center.z
+      value: -0.28025818
       objectReference: {fileID: 0}
     - target: {fileID: 3750241783966255945, guid: 955f9c0f0e24add47b4fd2d2f3d239d2, type: 3}
       propertyPath: m_Convex
