@@ -164,16 +164,22 @@ public class CaveScenePlayer : MonoBehaviour
     Animator NpcDad;
     public GameObject KissParticle;
 
-    private bool isRotating = false;
-    private float rotationTimer = 0.0f;
-    private float rotationDuration = 5.0f;
+   
     public GameObject GetUpgradePs;
 
     public GameManager gameManager;
     public CityMap_CountDown cnt;
     public TextMeshProUGUI vibrateText;
 
-    public Vector3 Pos;
+    public Vector3 Pos_0;
+    public Vector3 Pos_1;
+    public Vector3 Pos_2;
+    public Vector3 Pos_3;
+    public Vector3 Pos_4;
+    public Vector3 Pos_5;
+   
+    public Button DashButton;
+   
     void Awake()
     {
         Application.targetFrameRate = 30;
@@ -244,13 +250,7 @@ public class CaveScenePlayer : MonoBehaviour
         {
             anim.SetBool("isRun", false);
         }
-        if (Dead)
-        {
-            hAxis = 0;
-            vAxis = 0;
-
-
-        }
+       
     }
  
     IEnumerator CO_MomContact()
@@ -1047,35 +1047,41 @@ public class CaveScenePlayer : MonoBehaviour
     //------------restart_stage-----------------------------------------
     void restart_stage0()
     {
-       this.transform.position = Pos;
+       
+        rigid.MovePosition(Pos_0);
          FirstCam.Priority = 999;      
     }
     void restart_stage1()
     {       
-        this.transform.position = SavePoint1Obj.gameObject.transform.position;      
+        rigid.MovePosition(Pos_1);
+        //this.transform.position = SavePoint1Obj.gameObject.transform.position;      
     }
     void restart_stage2()
-    {       
-        this.transform.position = SavePoint2Obj.gameObject.transform.position;
+    {
+        rigid.MovePosition(Pos_2);
+        // this.transform.position = SavePoint2Obj.gameObject.transform.position;
     }
     void restart_stage3()
-    {       
-        this.transform.position = SavePoint3Obj.gameObject.transform.position;        
+    {
+        rigid.MovePosition(Pos_3);
+        //this.transform.position = SavePoint3Obj.gameObject.transform.position;        
     }
     void restart_stage4()
     {       
-        this.transform.position = SavePoint4Obj.gameObject.transform.position;      
+        rigid.MovePosition(Pos_4);
+        //this.transform.position = SavePoint4Obj.gameObject.transform.position;      
     }
     void restart_stage5()
-    {       
-        this.transform.position = SavePoint5Obj.gameObject.transform.position;       
+    {
+        rigid.MovePosition(Pos_5);    
+        //this.transform.position = SavePoint5Obj.gameObject.transform.position;       
     }
     void remove_dieUI()
     {
         DiePs.gameObject.SetActive(false);
         anim.SetBool("isDead",false);
         Dead = false;
-        //DieCanvas.SetActive(fal);
+       
         if (check_savepoint0)
         {
             restart_stage0();          
@@ -1099,13 +1105,38 @@ public class CaveScenePlayer : MonoBehaviour
         else if (check_savepoint5)
         {
             restart_stage5();
-        }       
+        }
+
+        DashButton.interactable = true;
+        if (PlayerData.isVibrate)
+        {
+            isVibrate = true;
+            vibrateText.color = Color.white;
+        }
+        else if (!PlayerData.isVibrate)
+        {
+            isVibrate = false;
+            vibrateText.color = Color.black;
+        }
+     
     }
-   
+
     void DieMotion()
     {
         if (Dead )
         {
+
+           
+             hAxis = 0;
+             vAxis = 0;
+             Dash = false;
+             isVibrate = false;
+ 
+         
+            Input.ResetInputAxes();
+           
+            DashButton.interactable = false;
+           
             dieAudio.Play();          
             DiePs.gameObject.SetActive(true);
             anim.SetTrigger("doDead");           

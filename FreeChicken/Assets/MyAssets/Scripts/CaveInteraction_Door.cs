@@ -35,10 +35,11 @@ public class CaveInteraction_Door : MonoBehaviour
 
     IEnumerator CO_OpenDoor()
     {
+        
         OpenDoor();
-
         while(true)
         {
+           
             if (isEnd)
             {
                 dadAnim.SetBool("isWalk", true);

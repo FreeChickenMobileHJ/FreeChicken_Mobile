@@ -159,7 +159,7 @@ public class FactoryPlayer_3 : MonoBehaviour
                 Invoke("Finish", 2f);
 
             }
-            if(DeadCount.count == curDeadCnt + 2 && !isChk)
+            if(DeadCount.count == curDeadCnt + 10 && !isChk)
             {
                 if (PlayerData.isEnglish)
                 {
