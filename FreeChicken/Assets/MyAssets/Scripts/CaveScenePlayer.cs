@@ -219,41 +219,40 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint5 = true;
         }
 
-        StartCoroutine("CO_notDead");
+        //StartCoroutine("CO_notDead");
         StartCoroutine("CO_MomContact");
         StartCoroutine("CO_TalkNPC2");
         StartCoroutine("CO_TimerCheck");
     }
-
-    IEnumerator CO_notDead()
+    private void Update()
     {
-        while(true)
+        if (!Dead && !isReversed && !isTalk)
         {
-            if (!Dead && !isReversed && !isTalk)
-            {
-                Move();
+            Move();
 
-                GetInput();
+            GetInput();
 
-            }
+        }
+        if (!Dead && isReversed && !isTalk)
+        {
+            ReversalMove();
+
+            GetInput();
+
+        }
+        if (isTalk)
+        {
+            anim.SetBool("isRun", false);
+        }
+        if (Dead)
+        {
+            hAxis = 0;
+            vAxis = 0;
 
 
-            else if (!Dead && isReversed && !isTalk)
-            {
-                ReversalMove();
-
-                GetInput();
-
-            }
-
-            if (isTalk)
-            {
-                anim.SetBool("isRun", false);
-            }
-            yield return null;
         }
     }
-
+ 
     IEnumerator CO_MomContact()
     {
         while(true)
@@ -332,6 +331,7 @@ public class CaveScenePlayer : MonoBehaviour
         {
             hAxis = joyStick.Horizontal;
             vAxis = joyStick.Vertical;
+            
         }
     }
     private void FixedUpdate()
