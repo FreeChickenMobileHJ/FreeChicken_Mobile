@@ -44,6 +44,10 @@ public class CityScenePlayer : MonoBehaviour
     public AudioSource ChangeAudio;
     public AudioSource RingAudio;
     public GameManager gameManager;
+
+    public GameObject SparksEffect;
+
+
     private void Awake()
     {
         Application.targetFrameRate = 30;
@@ -66,6 +70,7 @@ public class CityScenePlayer : MonoBehaviour
        
         startAudio.Stop();
         BGM.Play();
+        SparksEffect.SetActive(true);
         gameManager.isLoading = false;
         isAllStop = false;
         isStart = true;
@@ -136,7 +141,7 @@ public class CityScenePlayer : MonoBehaviour
     {
 
        
-            if (!isJump && !isAllStop)
+            if (!isJump && !isAllStop )
             {
                 
                 if (!isLast)
@@ -204,8 +209,10 @@ public class CityScenePlayer : MonoBehaviour
     
         if(other.tag == "LastZone" && !isChk)
         {
+           
             isAllStop = true;
             isChk = true;
+            isJump = true;
             BGM.Stop();
             RingAudio.Play();
             //LastSong.Play(); 8.16
@@ -218,7 +225,7 @@ public class CityScenePlayer : MonoBehaviour
     {
         TalkUI.gameObject.SetActive(false);
         isAllStop = false;
-
+        isJump = false;
         isLast = true;
         LastZonePlayer.SetActive(true);
         ChangeAudio.Play();

@@ -32,6 +32,8 @@ public class FactoryPlayer_3 : MonoBehaviour
     public GameObject StartParticle;
     public LoadingTyping Loading;
     public Joystick joystick;
+
+    public int curDeadCnt;
     //public GameState gameState;
     [Header("Camera")]
     public CinemachineVirtualCamera mainCam;
@@ -61,7 +63,7 @@ public class FactoryPlayer_3 : MonoBehaviour
     public bool isPotion;
 
     public bool isTouchText;
-
+    public bool isChk;
     [Header("UI")]
     public GameObject startUI;
     public GameObject mainUI;
@@ -90,6 +92,9 @@ public class FactoryPlayer_3 : MonoBehaviour
 
     public GameObject SavePosUI;
     public GameManager gameManager;
+
+    public GameObject HintKorean;
+    public GameObject HintEnglish;
     [Header("Audio")]
     public AudioSource jumpAudio;
     public AudioSource dieAudio;
@@ -115,6 +120,7 @@ public class FactoryPlayer_3 : MonoBehaviour
         BGM.Play();
         isTalk = true;
         StartSound.Play();
+        curDeadCnt = DeadCount.count;
         Invoke("ReStart", 3f);
     }
     void ReStart()
@@ -153,7 +159,33 @@ public class FactoryPlayer_3 : MonoBehaviour
                 Invoke("Finish", 2f);
 
             }
+            if(DeadCount.count == curDeadCnt + 2 && !isChk)
+            {
+                if (PlayerData.isEnglish)
+                {
+                    HintEnglish.SetActive(true);
+                }
+                else if(!PlayerData.isEnglish)
+                {
+                    HintKorean.SetActive(true);
+                }
+                isChk = true;
+                
+                StartCoroutine(UnHintText());
+            }
             yield return null;
+        }
+    }
+    IEnumerator UnHintText()
+    {
+        yield return new WaitForSeconds(3f);
+        if (HintKorean.activeSelf == true)
+        {
+            HintKorean.SetActive(false);
+        }
+        else if(HintEnglish.activeSelf == true)
+        {
+            HintEnglish.SetActive(false);
         }
     }
     void Finish()
