@@ -117,8 +117,8 @@ public class FactoryNPC_1 : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isNear = false;
-            npccam.Priority = 1;
-            maincam.Priority = 10;
+            //npccam.Priority = 1;
+            //maincam.Priority = 10;
             Ebutton.SetActive(false);
             isEbutton = false;
         }

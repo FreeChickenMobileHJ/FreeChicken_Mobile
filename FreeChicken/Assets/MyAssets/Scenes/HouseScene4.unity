@@ -8313,6 +8313,7 @@ MonoBehaviour:
   DieCanvas: {fileID: 1093671658}
   speed: 5
   JumpPower: 12
+  Dead: 0
   isMove: 0
   DiePs: {fileID: 806482468}
   JumpPs: {fileID: 2018737425}
@@ -8344,6 +8345,7 @@ MonoBehaviour:
   EvolutionSense: {fileID: 175236591}
   EvoluPs: {fileID: 1187453611}
   obj: {fileID: 1434262742}
+  UnicycleObj: {fileID: 0}
   DestroyObj: {fileID: 0}
   LineObj: {fileID: 0}
   ResPawnPos1: {x: 0, y: 0, z: 0}
@@ -19402,7 +19404,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419723465}
-  m_LocalRotation: {x: 0.20583321, y: 0.11101274, z: -0.023675114, w: 0.9719817}
+  m_LocalRotation: {x: 0.20583318, y: 0.11101273, z: -0.02367511, w: 0.9719817}
   m_LocalPosition: {x: 29.993488, y: 3.1588619, z: 35.80427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24256,7 +24258,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455634176}
-  m_LocalRotation: {x: 0.004992745, y: 0.9857045, z: -0.029687539, w: 0.16577229}
+  m_LocalRotation: {x: 0.0049927477, y: 0.9857045, z: -0.029687552, w: 0.16577229}
   m_LocalPosition: {x: -1, y: -0.29999995, z: 7.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25592,7 +25594,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541722525}
-  m_LocalRotation: {x: 0.011629723, y: -0.465569, z: 0.006118604, w: 0.88491404}
+  m_LocalRotation: {x: 0.011629725, y: -0.465569, z: 0.006118605, w: 0.88491404}
   m_LocalPosition: {x: 0.20372176, y: -0.8699213, z: 0.47367907}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27083,7 +27085,8 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 419723467}
-  Unicyclecam: {fileID: 0}
+  Unicyclecam: {fileID: 455634178}
+  StartVideoCam: {fileID: 0}
 --- !u!1 &675384553
 GameObject:
   m_ObjectHideFlags: 0
@@ -28473,7 +28476,8 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 541722527}
-  Unicyclecam: {fileID: 0}
+  Unicyclecam: {fileID: 455634178}
+  StartVideoCam: {fileID: 541722527}
 --- !u!1001 &783674961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38715,7 +38719,8 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 419723467}
-  Unicyclecam: {fileID: 0}
+  Unicyclecam: {fileID: 455634178}
+  StartVideoCam: {fileID: 0}
 --- !u!114 &1245439752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40140,7 +40145,8 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 419723467}
-  Unicyclecam: {fileID: 0}
+  Unicyclecam: {fileID: 455634178}
+  StartVideoCam: {fileID: 0}
 --- !u!114 &1366275737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41184,7 +41190,8 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 419723467}
-  Unicyclecam: {fileID: 0}
+  Unicyclecam: {fileID: 455634178}
+  StartVideoCam: {fileID: 0}
 --- !u!114 &1450703084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55035,7 +55042,8 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 541722527}
-  Unicyclecam: {fileID: 0}
+  Unicyclecam: {fileID: 455634178}
+  StartVideoCam: {fileID: 541722527}
 --- !u!114 &1715596073
 MonoBehaviour:
   m_ObjectHideFlags: 0
