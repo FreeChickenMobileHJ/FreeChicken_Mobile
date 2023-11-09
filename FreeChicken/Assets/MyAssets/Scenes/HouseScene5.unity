@@ -6411,7 +6411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &130058825
@@ -7021,6 +7021,59 @@ Transform:
   m_Father: {fileID: 1483295134}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &183263769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 183263770}
+  - component: {fileID: 183263771}
+  m_Layer: 0
+  m_Name: UnicycleObj
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &183263770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183263769}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 22.68, y: -12.56, z: -11.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 289263031}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &183263771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183263769}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.0577564, y: 4.1733427, z: 1}
+  m_Center: {x: 0.28859425, y: 1.5866716, z: 0}
 --- !u!1 &193130671
 GameObject:
   m_ObjectHideFlags: 0
@@ -7683,7 +7736,7 @@ AudioSource:
   m_GameObject: {fileID: 222101950}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1354855446766917854, guid: fac478529c6ec18429591939e2df55d4, type: 2}
+  OutputAudioMixerGroup: {fileID: 4092373985233158299, guid: fac478529c6ec18429591939e2df55d4, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9d4cea2ca565ee045805f5474bd13b83, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -8315,7 +8368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254029496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.46, y: 4.37, z: 37.11}
+  m_LocalPosition: {x: 21.46, y: 4.37, z: 39.54}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8346,6 +8399,7 @@ MonoBehaviour:
   DieCanvas: {fileID: 682543149}
   speed: 7
   JumpPower: 12
+  Dead: 0
   isMove: 0
   DiePs: {fileID: 806482468}
   JumpPs: {fileID: 2018737425}
@@ -8361,6 +8415,7 @@ MonoBehaviour:
   jumpAudio: {fileID: 1499276239}
   savePointAudio: {fileID: 997325147}
   trumpetAudio: {fileID: 1725126758}
+  duckAudio: {fileID: 0}
   NPCDialogue1: {fileID: 670423776}
   NPCDialogue2: {fileID: 1366275734}
   NPC: {fileID: 66862669}
@@ -8376,8 +8431,11 @@ MonoBehaviour:
   EvolutionSense: {fileID: 175236591}
   EvoluPs: {fileID: 1187453611}
   obj: {fileID: 1739154015}
+  UnicycleObj: {fileID: 183263769}
   DestroyObj: {fileID: 1873651316}
   LineObj: {fileID: 872125990}
+  ResPawnPos1: {x: 0, y: 1.24, z: -0.5}
+  ResPawnPos2: {x: 31.33, y: 1.24, z: 36.5}
 --- !u!1001 &256439357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8830,6 +8888,7 @@ Transform:
   - {fileID: 1432213315}
   - {fileID: 1410152441}
   - {fileID: 589772439}
+  - {fileID: 183263770}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14788,8 +14847,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419723465}
-  m_LocalRotation: {x: 0.20585246, y: 0.11022512, z: -0.023504836, w: 0.9720714}
-  m_LocalPosition: {x: 8.533489, y: 0.58886194, z: 38.074272}
+  m_LocalRotation: {x: 0.20583321, y: 0.11101274, z: -0.023675114, w: 0.9719817}
+  m_LocalPosition: {x: 8.533489, y: -2.3411384, z: 35.59427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19642,8 +19701,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455634176}
-  m_LocalRotation: {x: 0.00517477, y: 0.984669, z: -0.029656393, w: 0.17181578}
-  m_LocalPosition: {x: -1, y: -0.3000002, z: 7.200001}
+  m_LocalRotation: {x: 0.007651459, y: 0.967707, z: -0.02959165, w: 0.25021815}
+  m_LocalPosition: {x: 1.9934292, y: -3.6000004, z: -45.371845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19669,8 +19728,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 0
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 254029501}
-  m_Follow: {fileID: 254029501}
+  m_LookAt: {fileID: 1866512591}
+  m_Follow: {fileID: 1866512591}
   m_Lens:
     FieldOfView: 34.22
     OrthographicSize: 5
@@ -20803,7 +20862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &554163610
@@ -22007,6 +22066,7 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 419723467}
+  Unicyclecam: {fileID: 455634178}
 --- !u!1 &675384553
 GameObject:
   m_ObjectHideFlags: 0
@@ -22782,7 +22842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &719979200
 Transform:
   m_ObjectHideFlags: 0
@@ -23075,7 +23135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755216494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.46, y: 6.17, z: 33.91}
+  m_LocalPosition: {x: 21.46, y: 6.17, z: 36.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23294,6 +23354,7 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 541722527}
+  Unicyclecam: {fileID: 0}
 --- !u!1001 &786896735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25567,7 +25628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: -1, y: 1.5, z: 4}
+  m_FollowOffset: {x: 1.5, y: 1.5, z: 15}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -25588,7 +25649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: -4, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -25633,16 +25694,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentences:
-  - "\uC544\uAE30 \uBCD1\uC544\uB9AC!"
+  - "\uD504\uB9AC\uB2ED!"
   - ". . .?! \uB204\uAD6C\uC138\uC694?"
-  - "\uBD80\uBAA8\uB2D8\uC774 \uD639\uC2DC. .?"
-  - "\uC798 \uBAA8\uB974\uACA0\uB2ED. . .\uC65C\uC694. .?"
-  - "\uC544\uB9C8\uB3C4. .\uC608\uC804\uC5D0 \uB098\uC640 \uAC19\uC774 \uC788\uB358
-    \uCE5C\uAD6C\uB4E4\uC774 \uB124 \uBD80\uBAA8\uB2D8\uC778 \uAC83 \uAC19\uB2ED"
-  - "\uC815\uB9D0\uC694. .?"
-  - "\uADF8\uB7F0 \uAC83 \uAC19\uB2ED. \uC544\uC8FC \uB9CE\uC774 \uB2EE\uC558\uB2ED.
-    . ."
-  - "\uBD80\uBAA8\uB2D8\uC744 \uBCF4\uACE0\uC2F6\uB2ED. . ."
+  - "\uAE30\uC5B5 \uC548 \uB098\uB2C8? \uD558\uAE34. .\uB10C \uADF8\uB54C \uB108\uBB34
+    \uC5B4\uB838\uC5C8\uC73C\uB2C8\uAE4C. ."
+  - "\uC65C \uC774\uACF3\uC5D0 \uACC4\uC138\uC694? \uC800\uCC98\uB7FC \uAD6C\uB369\uC774\uC5D0
+    \uBE60\uC9C0\uC2E0 \uAC70\uC608\uC694?"
+  - "\uADF8\uB807\uB2ED. .\uD0C8\uCD9C\uD558\uB824 \uD574\uBD24\uC9C0\uB9CC \uC774\uB807\uAC8C
+    \uB9C8\uB2F9\uC5D0 \uBB36\uC5EC\uC788\uB2E8\uB2ED. ."
+  - "\uC65C \uC800\uD76C\uD55C\uD14C \uADF8\uB7EC\uB294\uC9C0 \uC774\uC81C \uB2E4
+    \uC54C\uAC8C \uB418\uC5C8\uC5B4\uC694. ."
+  - "\uC774\uAE30\uC801\uC778 \uC778\uAC04\uB4E4. .\uADF8\uB098\uC800\uB098 \uB108\uB124
+    \uBD80\uBAA8\uB2D8. .\uB110 \uCC3E\uC73C\uB824\uB2E4\uAC00. ."
+  - "\uC65C\uC694? \uC800\uD76C \uBD80\uBAA8\uB2D8\uC758 \uC18C\uC2DD\uC744 \uB4E4\uC73C\uC168\uB098\uC694?"
   - "\uC544\uB9C8. .\uB3D9\uAD74\uC5D0 \uAC07\uD600\uC788\uC744 \uAC83\uC774\uB2ED.
     \uADF8\uACF3\uC73C\uB85C \uAC08 \uAC70\uC57C?"
   - "\uC544\uC544 \uC5ED\uC2DC. .\uB3D9\uAD74\uC5D0. .\uB3D9\uAD74\uC740 \uC5B4\uB5BB\uAC8C
@@ -26190,7 +26254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1005214358
@@ -27847,7 +27911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -40}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1191888327
@@ -29119,6 +29183,7 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 419723467}
+  Unicyclecam: {fileID: 455634178}
 --- !u!114 &1245439752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29860,8 +29925,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.402313, y: 1, z: 1}
-  m_Center: {x: -0.53912735, y: 0, z: 0}
+  m_Size: {x: 7.0577564, y: 1.7009804, z: 1}
+  m_Center: {x: 0.28859425, y: 0.35049033, z: 0}
 --- !u!4 &1323865891
 Transform:
   m_ObjectHideFlags: 0
@@ -30352,6 +30417,7 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 419723467}
+  Unicyclecam: {fileID: 455634178}
 --- !u!114 &1366275737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31000,14 +31066,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentences:
-  - Baby chick!
+  - Free Chicken!
   - . . .?! Who are you?
-  - Who are your parents. .?
-  - I'm not sure. .Why do you ask?
-  - Maybe. .I think the friends I was with before are your parents.
-  - Really. .?
-  - It seems so. .You look very alike. . .
-  - I miss my parents. . .
+  - Don't you remember? Well. .you were too young back then. .
+  - Why are you here? Did you get stuck in a pit like me?
+  - Yeah. .I tried to escape, but ended up tied here in the yard like this. .
+  - I've figured out why they're doing this to us now. .
+  - Selfish humans. .By the way, your parents. .They were trying to find you, but.
+    .
+  - Why? Have you heard news about our parents?
   - Maybe. . .they're trapped in the cave. Are you going there?
   - Ah, I see. .the cave. .How do I get to the cave?
   - There's a truck that comes to my house every day. Ride your bicycle and chase
@@ -31797,6 +31864,7 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 419723467}
+  Unicyclecam: {fileID: 455634178}
 --- !u!114 &1450703084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40917,6 +40985,7 @@ MonoBehaviour:
   ClickButtonSound: {fileID: 1912565794}
   maincam: {fileID: 827083446}
   npccam: {fileID: 541722527}
+  Unicyclecam: {fileID: 0}
 --- !u!114 &1715596073
 MonoBehaviour:
   m_ObjectHideFlags: 0

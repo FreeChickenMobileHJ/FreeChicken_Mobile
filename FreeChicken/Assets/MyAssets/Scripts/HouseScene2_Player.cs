@@ -24,7 +24,7 @@ public class HouseScene2_Player : MonoBehaviour
     public float speed;
     public float JumpPower;
 
-    bool Dead;
+    public bool Dead;
     public bool isMove;
 
     public ParticleSystem DiePs;
@@ -49,6 +49,7 @@ public class HouseScene2_Player : MonoBehaviour
     public AudioSource jumpAudio;
     public AudioSource savePointAudio;
     public AudioSource trumpetAudio;
+    public AudioSource duckAudio;
 
     [Header("Dialogue")]
     public GameObject NPCDialogue1;
@@ -73,9 +74,13 @@ public class HouseScene2_Player : MonoBehaviour
     private float rotationDuration = 3.0f;
     public GameObject EvoluPs;
     public GameObject obj;
+    public GameObject UnicycleObj;
 
     public GameObject DestroyObj;
     public GameObject LineObj;
+
+    public Vector3 ResPawnPos1;
+    public Vector3 ResPawnPos2;
 
     void Awake()
     {
@@ -169,11 +174,13 @@ public class HouseScene2_Player : MonoBehaviour
 
         if (TalkEnd1)
         {
-            this.gameObject.transform.position = Pos2.gameObject.transform.position;
+            //this.gameObject.transform.position = Pos2.gameObject.transform.position;
+            rigid.MovePosition(ResPawnPos2);
         }
         else if (!TalkEnd1)
         {
-            this.gameObject.transform.position = Pos.gameObject.transform.position;
+            //this.gameObject.transform.position = Pos.gameObject.transform.position;
+            rigid.MovePosition(ResPawnPos1);
         }
         DiePs.gameObject.SetActive(false);
         DieCanvas.gameObject.SetActive(false);
@@ -219,6 +226,7 @@ public class HouseScene2_Player : MonoBehaviour
             DestroyObj.SetActive(false);
             unicycleCam.Priority = 10;
             mainCam.Priority = 1;
+            Invoke("UnicycleObj_Destroy", 1.5f);
         }
 
         if (other.gameObject.name == "Unicycle_Sense" && !isTalk2 && !TalkEnd2 && PlayerData.isEnglish)
@@ -230,6 +238,7 @@ public class HouseScene2_Player : MonoBehaviour
             DestroyObj.SetActive(false);
             unicycleCam.Priority = 10;
             mainCam.Priority = 1;
+            Invoke("UnicycleObj_Destroy", 1.5f);
         }
 
         if (other.gameObject.name == "EvolutionSense1")
@@ -243,6 +252,28 @@ public class HouseScene2_Player : MonoBehaviour
         if (other.gameObject.name == "NextScenePos")
         {
             NextScene();
+        }
+    }
+
+    void UnicycleObj_Destroy()
+    {
+        UnicycleObj.SetActive(false);
+    }
+
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("NPC"))
+        {
+            npc_cam.Priority = 1;
+            mainCam.Priority = 10;
+
+            TalkEnd1 = true;
+        }
+
+        if (other.gameObject.name == "Unicycle_Sense")
+        {
+            TalkEnd2 = true;
         }
     }
 
@@ -314,24 +345,7 @@ public class HouseScene2_Player : MonoBehaviour
         originalCameraRotation = cameraArm.rotation; 
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("NPC"))
-        {
-            npc_cam.Priority = 1;
-            mainCam.Priority = 10;
-
-            TalkEnd1 = true;
-        }
-
-        if (other.gameObject.name == "Unicycle_Sense")
-        {
-            unicycleCam.Priority = 1;
-            mainCam.Priority = 10;
-
-            TalkEnd2 = true;
-        }
-    }
+    
 
     void OnCollisionEnter(Collision collision)
     {
@@ -346,6 +360,12 @@ public class HouseScene2_Player : MonoBehaviour
         {
             isJump = false;
         }
+
+        if(collision.gameObject.name == "RubberDuck")
+        {
+            duckAudio.Play();
+        }
+
     }
 
     public void LookAround(Vector3 inputDirection)

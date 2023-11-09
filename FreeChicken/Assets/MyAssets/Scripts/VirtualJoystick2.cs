@@ -33,13 +33,31 @@ public class VirtualJoystick2 : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        ControlJoystickLever(eventData);
-        isInput = true;
+        //ControlJoystickLever(eventData);
+        //isInput = true;
+
+
+        //if (!housePlayer2.isTalk1 && !housePlayer2.isTalk2)  // isTalk1 또는 isTalk2가 false인 경우에만 레버 제어
+        //{
+        //    ControlJoystickLever(eventData);
+        //    isInput = true;
+        //}
+
+        if (!housePlayer2.Dead && (!housePlayer2.isTalk1 || !housePlayer2.isTalk2))  // isInput이 true이고 플레이어가 죽지 않았으며 isTalk1 또는 isTalk2가 false인 경우에만 레버 제어
+        {
+            ControlJoystickLever(eventData);
+            isInput = true;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        ControlJoystickLever(eventData);
+        //ControlJoystickLever(eventData);
+
+        if (isInput && !housePlayer2.Dead) 
+        {
+            ControlJoystickLever(eventData);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -58,41 +76,42 @@ public class VirtualJoystick2 : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     }
 
     private void ControlJoystickLever(PointerEventData eventData)
-    {
-        var scaledAnchoredPosition = rectTransform.anchoredPosition * mainCanvas.transform.localScale.x;
-        var inputPos = eventData.position - scaledAnchoredPosition;
-        var inputVector = inputPos.magnitude < leverRange ? inputPos : inputPos.normalized * leverRange;
-        lever.anchoredPosition = inputVector;
+    { 
+        if (!housePlayer2.Dead && (!housePlayer2.isTalk1 || !housePlayer2.isTalk2))
+        {
+            var scaledAnchoredPosition = rectTransform.anchoredPosition * mainCanvas.transform.localScale.x;
+            var inputPos = eventData.position - scaledAnchoredPosition;
+            var inputVector = inputPos.magnitude < leverRange ? inputPos : inputPos.normalized * leverRange;
+            lever.anchoredPosition = inputVector;
 
-        inputDirection = inputVector.normalized;
+            inputDirection = inputVector.normalized;
+        }
     }
 
     private void InputControlVector()
     {
-        if (isInput)  // 조이스틱 입력을 받는 동안에만 플레이어 움직임을 처리
+        if (!housePlayer2.Dead)
         {
-            switch (joystickType)
+            if (isInput)
             {
-                case JoysitckType.Move:
-                    housePlayer2.Move(inputDirection * sensitivity);
-                    break;
-                case JoysitckType.Rotate:
-                    housePlayer2.Move(Vector3.zero);
-                    housePlayer2.isMove = false;
-                    housePlayer2.LookAround(inputDirection * sensitivity);
-                    break;
+                switch (joystickType)
+                {
+                    case JoysitckType.Move:
+                        housePlayer2.Move(inputDirection * sensitivity);
+                        break;
+                    case JoysitckType.Rotate:
+                        housePlayer2.Move(Vector3.zero);
+                        housePlayer2.isMove = false;
+                        housePlayer2.LookAround(inputDirection * sensitivity);
+                        break;
+                }
             }
         }
     }
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
-        if (!housePlayer2.isTalk1 || housePlayer2.TalkEnd1 || !housePlayer2.isTalk2 || housePlayer2.TalkEnd2)
+        if (!housePlayer2.isTalk1 || housePlayer2.TalkEnd1 || !housePlayer2.isTalk2 /*|| housePlayer2.TalkEnd2*/)
         {
             InputControlVector();
 

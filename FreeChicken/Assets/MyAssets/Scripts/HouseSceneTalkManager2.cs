@@ -29,6 +29,8 @@ public class HouseSceneTalkManager2 : MonoBehaviour
 
     public CinemachineVirtualCamera maincam;
     public CinemachineVirtualCamera npccam;
+    public CinemachineVirtualCamera Unicyclecam;
+
     private void Awake()
     {
         instance = this;
@@ -73,6 +75,7 @@ public class HouseSceneTalkManager2 : MonoBehaviour
             maincam.Priority = 2;
             npccam.Priority = -5;
 
+            Unicyclecam.Priority = -5;
 
             if (gameObject != null)
             {

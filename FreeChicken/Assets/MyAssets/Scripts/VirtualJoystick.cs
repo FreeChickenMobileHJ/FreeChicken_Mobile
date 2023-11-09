@@ -18,6 +18,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private Vector2 inputDirection;
     private bool isInput;
+    private bool isDrag;
 
     [SerializeField]
     private HouseScenePlayer housePlayer1;
@@ -34,13 +35,24 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        ControlJoystickLever(eventData);
-        isInput = true;
+        //ControlJoystickLever(eventData);
+        //isInput = true;
+
+        if(!housePlayer1.Dead)
+        {
+            ControlJoystickLever(eventData);
+            isInput = true;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        ControlJoystickLever(eventData);
+        //ControlJoystickLever(eventData);
+
+        if(isInput && !housePlayer1.Dead)
+        {
+            ControlJoystickLever(eventData);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -60,36 +72,39 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void ControlJoystickLever(PointerEventData eventData)
     {
-        var scaledAnchoredPosition = rectTransform.anchoredPosition * mainCanvas.transform.localScale.x;
-        var inputPos = eventData.position - scaledAnchoredPosition;
-        var inputVector = inputPos.magnitude < leverRange ? inputPos : inputPos.normalized * leverRange;
+        if(!housePlayer1.Dead)
+        {
+            var scaledAnchoredPosition = rectTransform.anchoredPosition * mainCanvas.transform.localScale.x;
+            var inputPos = eventData.position - scaledAnchoredPosition;
+            var inputVector = inputPos.magnitude < leverRange ? inputPos : inputPos.normalized * leverRange;
 
-        lever.anchoredPosition = inputVector;
+            lever.anchoredPosition = inputVector;
 
-        inputDirection = inputVector.normalized;
+            inputDirection = inputVector.normalized;
+        }
+        
     }
 
     private void InputControlVector()
     {
-        if (isInput && !housePlayer1.isOpeningDoor && !housePlayer1.isRaisingDoor)  // 조이스틱 입력을 받는 동안에만 플레이어 움직임을 처리
+        if (!housePlayer1.Dead && !housePlayer1.isOpeningDoor && !housePlayer1.isRaisingDoor)  // 조이스틱 입력을 받는 동안에만 플레이어 움직임을 처리
         {
-            switch (joystickType)
+            if(isInput)
             {
-                case JoysitckType.Move:
-                    housePlayer1.Move(inputDirection * sensitivity);
-                    break;
-                case JoysitckType.Rotate:
-                    housePlayer1.Move(Vector3.zero);
-                    housePlayer1.isMove = false;
-                    housePlayer1.LookAround(inputDirection * sensitivity);
-                    break;
+                switch (joystickType)
+                {
+                    case JoysitckType.Move:
+                        housePlayer1.Move(inputDirection * sensitivity);
+                        break;
+                    case JoysitckType.Rotate:
+                        housePlayer1.Move(Vector3.zero);
+                        housePlayer1.isMove = false;
+                        housePlayer1.LookAround(inputDirection * sensitivity);
+                        break;
+                }
             }
+            
         }
-    }
-
-    void Start()
-    {
-
     }
 
     void Update()
