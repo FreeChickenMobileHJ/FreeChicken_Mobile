@@ -29,7 +29,11 @@ public class GameManager : MonoBehaviour
     public bool isHouse_2;
     public bool isHouse_3;
     public bool isHouse_4;
-    public bool isHouse_5;
+    //public bool isHouse_5;
+
+    public bool isHouse_5_Player2;
+    public bool isHouse_5_EvoluPlayer;
+
     public bool isCity;
     public bool isCave_1;
     public bool isCave_2;
@@ -146,25 +150,38 @@ public class GameManager : MonoBehaviour
                 housePlayer1.isTalk = true;
                 //isHouse_1 = true;
             }
-            else if (housePlayer2 != null)
+            else if (housePlayer2 != null || evolutionPlayer!= null)
             {
-                menuSet.SetActive(true);
-                housePlayer2.mainAudio.Pause();
-                housePlayer2.runAudio.Pause();
-                Time.timeScale = 0f;
-                housePlayer2.isTalk1 = true;
-                housePlayer2.isTalk2 = true;
+                //menuSet.SetActive(true);
+                if(isHouse_5_Player2)
+                {
+                    menuSet.SetActive(true);
+                    housePlayer2.mainAudio.Pause();
+                    housePlayer2.runAudio.Pause();
+                    Time.timeScale = 0f;
+                    housePlayer2.isTalk1 = true;
+                    housePlayer2.isTalk2 = true;
+                }
+                else if(isHouse_5_EvoluPlayer)
+                {
+                    menuSet.SetActive(true);
+                    evolutionPlayer.mainAudio.Pause();
+                    evolutionPlayer.runAudio.Pause();
+                    Time.timeScale = 0f;
+                    evolutionPlayer.isTalk2 = true;
+                }
+
                 //isHouse_2 = true;
             }
-            else if (evolutionPlayer != null)
-            {
-                menuSet.SetActive(true);
-                evolutionPlayer.mainAudio.Pause();
-                evolutionPlayer.runAudio.Pause();
-                Time.timeScale = 0f;
-                evolutionPlayer.isTalk2 = true;
-                //isHouse_2 = true;
-            }
+            //else if (evolutionPlayer != null)
+            //{
+            //    menuSet.SetActive(true);
+            //    evolutionPlayer.mainAudio.Pause();
+            //    evolutionPlayer.runAudio.Pause();
+            //    Time.timeScale = 0f;
+            //    evolutionPlayer.isTalk2 = true;
+            //    //isHouse_2 = true;
+            //}
             else if (cityPlayer != null)
             {
                 menuSet.SetActive(true);
@@ -266,7 +283,7 @@ public class GameManager : MonoBehaviour
             housePlayer2.runAudio.UnPause();
             housePlayer2.isTalk2 = false;
         }
-        else if (isHouse_5)
+        else if (isHouse_5_Player2 || isHouse_5_EvoluPlayer)
         {
             if (evolutionPlayer != null) {
                 evolutionPlayer.mainAudio.UnPause();
@@ -360,7 +377,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Enter2DScene");
         }
-        else if (isHouse_5)
+        else if (isHouse_5_Player2 || isHouse_5_EvoluPlayer)
         {
             SceneManager.LoadScene("Enter2DScene");
         }
@@ -428,7 +445,7 @@ public class GameManager : MonoBehaviour
         {
             GameSave.Level = 8;
         }
-        else if (isHouse_5)
+        else if (isHouse_5_Player2 || isHouse_5_EvoluPlayer)
         {
             GameSave.Level = 9;
         }
@@ -664,7 +681,7 @@ public class GameManager : MonoBehaviour
 
             SceneManager.LoadScene("HouseScene4");
         }
-        else if (isHouse_5)
+        else if (isHouse_5_Player2 || isHouse_5_EvoluPlayer)
         {
             SceneManager.LoadScene("HouseScene5");
         }
