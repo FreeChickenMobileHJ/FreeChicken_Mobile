@@ -1,3 +1,4 @@
+// H.ver
 1. HouseScene 수정
 - a. HouseScene_4에서 오브젝트 밟았을 때 소리 추가 (o)
 - b. HouseScene(1,2,3,4,5)에서 플레이어가 죽었을 때 조이스틱 drag안되게 설정 (o)
@@ -8,3 +9,14 @@
 - a. CaveScene(1,2,3,4,5)에서 벽뚫리는 곳 막기 (특히 2,4부분) 
 
 3. 모바일 발열/배터리 테스트해서 고치기
+
+
+// J.ver
+1. 모바일 버전 테스트
+- a. 모바일 버전 여러 오류 체크 후 수정 (o)
+
+2. CaveScene 수정
+- a. CaveScenePlayer Script 수정 (o)
+
+3. 2DEnterScene 수정
+- a. OnMouseDown() 함수 모바일 버전으로 변환 중

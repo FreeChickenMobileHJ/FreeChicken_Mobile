@@ -4,146 +4,150 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameState : MonoBehaviour
 {
-    
-    public bool isF_1;
-    public bool isF_2;
-    public bool isF_3;
-    public bool isF_4;
-    public bool isH_1;
-    public bool isH_2;
-    public bool isH_3;
-    public bool isH_4;
-    public bool isH_5;
-    public bool isCi;
-    public bool isCa_1;
-    public bool isCa_2;
-    public bool isCa_3;
-    public bool isCa_4;
-    public bool isCa_5;
+
+    public GameObject menuCanvas;
     public AudioSource BGM;
     public GameObject LoadingUI;
 
     public AudioSource ClickSound;
 
-    private void Awake()
+  
+    void Update()
     {
-        Application.targetFrameRate = 30;
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && menuCanvas.activeSelf == false)
+        {
+            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+
+       
+            Collider2D collider = Physics2D.OverlapPoint(touchPosition);
+           
+            
+            if (collider != null)
+            {
+               if(collider.name == "Factory_1")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("FactoryScene_1Play", 3f);
+
+                }
+               else if(collider.name == "Factory_2")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("FactoryScene_2Play", 3f);
+
+                }
+                else if (collider.name == "Factory_3")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("FactoryScene_3Play", 3f);
+
+                }
+                else if (collider.name == "Factory_4")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("FactoryScene_4Play", 3f);
+
+                }
+                else if (collider.name == "House_1")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("HouseScene_1Play", 3f);
+
+                }
+                else if (collider.name == "House_2")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("HouseScene_2Play", 3f);
+
+                }
+                else if (collider.name == "House_3")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("HouseScene_3Play", 3f);
+
+                }
+                else if (collider.name == "House_4")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("HouseScene_4Play", 3f);
+
+                }
+                else if (collider.name == "House_5")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("HouseScene_5Play", 3f);
+
+                }
+                else if (collider.name == "City")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("CityScenePlay", 3f);
+
+                }
+                else if (collider.name == "Cave_1")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("CaveScene_1Play", 3f);
+
+                }
+                else if (collider.name == "Cave_2")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("CaveScene_2Play", 3f);
+
+                }
+                else if (collider.name == "Cave_3")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("CaveScene_3Play", 3f);
+
+                }
+                else if (collider.name == "Cave_4")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("CaveScene_4Play", 3f);
+
+                }
+                else if (collider.name == "Cave_5")
+                {
+                    ClickSound.Play();
+
+                    SetLoadingUI();
+                    Invoke("CaveScene_5Play", 3f);
+
+                }
+
+            }
+        }
     }
-    public void OnMouseDown()
-    {
-        if (isF_1)
-        {
-            ClickSound.Play();
-           
-            SetLoadingUI();
-            Invoke("FactoryScene_1Play",3f);
-           
-            
-        }
-        else if (isF_2)
-        {
-            ClickSound.Play();
-
-            SetLoadingUI();
-            Invoke("FactoryScene_2Play", 3f);
-        }
-        else if (isF_3)
-        {
-            ClickSound.Play();
-
-            SetLoadingUI();
-            Invoke("FactoryScene_3Play", 3f);
-        }
-        else if (isF_4)
-        {
-            ClickSound.Play();
-
-            SetLoadingUI();
-            Invoke("FactoryScene_4Play", 3f);
-        }
-        else if (isH_1)
-        {
-            ClickSound.Play();
-           
-            SetLoadingUI();
-            Invoke("HouseScene_1Play",3f);
-            
-        }
-        else if (isH_2)
-        {
-            ClickSound.Play();
-
-            SetLoadingUI();
-            Invoke("HouseScene_2Play", 3f);
-
-        }
-        else if (isH_3)
-        {
-            ClickSound.Play();
-
-            SetLoadingUI();
-            Invoke("HouseScene_3Play", 3f);
-
-        }
-        else if (isH_4)
-        {
-            ClickSound.Play();
-
-            SetLoadingUI();
-            Invoke("HouseScene_4Play", 3f);
-
-        }
-        else if (isH_5)
-        {
-            ClickSound.Play();
-
-            SetLoadingUI();
-            Invoke("HouseScene_5Play", 3f);
-
-        }
-        else if (isCi)
-        {
-            ClickSound.Play();
-            SetLoadingUI();
-            Invoke("CityScenePlay", 3f);
-          
-            
-        }
-        else if (isCa_1)
-        {
-            ClickSound.Play();
-            SetLoadingUI();
-            Invoke("CaveScene_1Play", 3f);
-         
-        }
-        else if (isCa_2)
-        {
-            ClickSound.Play();
-            SetLoadingUI();
-            Invoke("CaveScene_2Play", 3f);
-
-        }
-        else if (isCa_3)
-        {
-            ClickSound.Play();
-            SetLoadingUI();
-            Invoke("CaveScene_3Play", 3f);
-
-        }
-        else if (isCa_4)
-        {
-            ClickSound.Play();
-            SetLoadingUI();
-            Invoke("CaveScene_4Play", 3f);
-
-        }
-        else if (isCa_5)
-        {
-            ClickSound.Play();
-            SetLoadingUI();
-            Invoke("CaveScene_5Play", 3f);
-        }
-    }  
     void SetLoadingUI()
     {
         LoadingUI.SetActive(true);
@@ -152,11 +156,9 @@ public class GameState : MonoBehaviour
       
     }
     public void FactoryScene_1Play()
-    {
-        
+    {        
         SceneManager.LoadScene("FactoryScene_1");
-       
-       
+
     }
     public void FactoryScene_2Play()
     {

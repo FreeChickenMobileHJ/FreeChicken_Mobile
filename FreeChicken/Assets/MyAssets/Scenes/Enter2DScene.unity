@@ -139,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: CaveEnterProps_5
+      value: Cave_5
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -295,10 +295,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 11384833}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -5115,36 +5111,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &11384833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 11384830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 1
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!4 &21823385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7509736641193634087, guid: a0a66c9b152e801409fc26c4ca493d18,
@@ -5262,7 +5228,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: FactoryEnterProps_1
+      value: Factory_1
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064898, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -5422,11 +5388,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1880773999}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d6991dbbdeecb1488bbf78c063d1235, type: 3}
 --- !u!4 &38852972 stripped
 Transform:
@@ -8388,7 +8350,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: HouseEnterProps_5
+      value: House_5
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -8544,10 +8506,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 281489558}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -13364,36 +13322,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &281489558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281489555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 1
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!4 &307898235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7947911505737750448, guid: c5bdca1933fde624698bb8c6d6daa44b,
@@ -16546,7 +16474,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: CaveEnterProps_2
+      value: Cave_2
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -16702,10 +16630,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 585872523}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -21522,36 +21446,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &585872523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585872520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 1
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!1001 &591055262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21757,7 +21651,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: CityEnterProps
+      value: City
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -21916,10 +21810,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 597904835}
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 597904839}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -21932,36 +21822,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 597904833}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &597904835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238778569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 1
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!198 &597904838
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -28849,7 +28709,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: HouseEnterProps_4
+      value: House_4
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -29005,10 +28865,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 787570314}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -33825,36 +33681,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &787570314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787570311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 1
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!1001 &790162712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34333,6 +34159,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 814731418}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &814883823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 814883825}
+  - component: {fileID: 814883824}
+  m_Layer: 0
+  m_Name: GameState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &814883824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814883823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuCanvas: {fileID: 3298636660015498088}
+  BGM: {fileID: 1145742160}
+  LoadingUI: {fileID: 830937518}
+  ClickSound: {fileID: 961885732}
+--- !u!4 &814883825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814883823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &816182095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36312,7 +36186,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: CaveEnterProps_4
+      value: Cave_4
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -36468,10 +36342,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 974810765}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -41288,36 +41158,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &974810765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974810762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 1
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!4 &980514647 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 413081fc53a78a043b38591243616398,
@@ -41414,6 +41254,7 @@ MonoBehaviour:
   - {fileID: 1409450261}
   - {fileID: 974810762}
   - {fileID: 11384830}
+  Images: []
   ShowSound: {fileID: 894569100}
   ShowParticle_Factory_2: {fileID: 1729805102}
   ShowParticle_Factory_3: {fileID: 1013474116}
@@ -41631,7 +41472,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: FactoryEnterProps_3
+      value: Factory_3
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -41787,10 +41628,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1013474117}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -46607,36 +46444,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &1013474117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013474114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 1
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!1001 &1018047922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50342,7 +50149,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: FactoryEnterProps_4
+      value: Factory_4
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -50498,10 +50305,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1325446536}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -55318,36 +55121,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &1325446536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325446533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 1
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!1001 &1380285739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55761,7 +55534,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: CaveEnterProps_3
+      value: Cave_3
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -55917,10 +55690,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1409450264}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -60737,36 +60506,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1409450264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409450261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 1
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!1001 &1422194563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62984,7 +62723,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: CaveEnterProps_1
+      value: Cave_1
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -63143,10 +62882,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1659690840}
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1659690844}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -63159,36 +62894,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1659690838}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1659690840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386362910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 1
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!198 &1659690843
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -68817,7 +68522,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: FactoryEnterProps_2
+      value: Factory_2
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -68973,10 +68678,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1729805103}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -73793,36 +73494,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &1729805103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729805100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 1
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!4 &1753417890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2577585254963922481, guid: f6a5710827e32d3489da2c249e3bc400,
@@ -75346,36 +75017,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 38852971}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1880773999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880773998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 1
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!1001 &1884382207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75983,7 +75624,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: HouseEnterProps_2
+      value: House_2
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -76139,10 +75780,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1932762682}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -80959,36 +80596,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &1932762682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932762679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 1
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!1001 &1939880838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81857,7 +81464,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: HouseEnterProps_3
+      value: House_3
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -82013,10 +81620,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2042897400}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
@@ -86833,36 +86436,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &2042897400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042897397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 0
-  isH_2: 0
-  isH_3: 1
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!4 &2049992580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7947911505737750448, guid: c5bdca1933fde624698bb8c6d6daa44b,
@@ -88189,7 +87762,7 @@ PrefabInstance:
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       propertyPath: m_Name
-      value: HouseEnterProps_1
+      value: House_1
       objectReference: {fileID: 0}
     - target: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -88348,10 +87921,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2143022185}
-    - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2143022189}
     - targetCorrespondingSourceObject: {fileID: 5055698509961064897, guid: 6d6991dbbdeecb1488bbf78c063d1235,
         type: 3}
@@ -88364,36 +87933,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2143022183}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2143022185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989893280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81b88bf62afd0b428651479191637c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isF_1: 0
-  isF_2: 0
-  isF_3: 0
-  isF_4: 0
-  isH_1: 1
-  isH_2: 0
-  isH_3: 0
-  isH_4: 0
-  isH_5: 0
-  isCi: 0
-  isCa_1: 0
-  isCa_2: 0
-  isCa_3: 0
-  isCa_4: 0
-  isCa_5: 0
-  BGM: {fileID: 1145742160}
-  LoadingUI: {fileID: 830937518}
-  ClickSound: {fileID: 961885732}
 --- !u!199 &2143022188
 ParticleSystemRenderer:
   serializedVersion: 6
