@@ -151,7 +151,7 @@ public class GameState : MonoBehaviour
     void SetLoadingUI()
     {
         LoadingUI.SetActive(true);
-        Cursor.visible = false;
+       
         BGM.Stop();
       
     }
