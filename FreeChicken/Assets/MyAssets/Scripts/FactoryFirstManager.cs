@@ -30,14 +30,12 @@ public class FactoryFirstManager : MonoBehaviour
     public GameObject attackBox;
     public GameObject Wall;
 
-    private void Awake()
-    {
-        Application.targetFrameRate = 30;
-    }
+    public GameObject attackParticle;
     void Start()
     {
         anim = GetComponent<Animator>();
         player = GameObject.Find("FactoryPlayer").GetComponent<FactoryPlayer>();
+        //attackParticle = GetComponent<ParticleSystem>();
         StartCoroutine(Contact());
       
     }
@@ -106,8 +104,10 @@ public class FactoryFirstManager : MonoBehaviour
         player.isSetEggFinish = false;
         player.isClick = false;
         player.Pos();
+      
         anim.SetBool("isAttack", false);
         isChk = false;
+        //attackParticle.SetActive(false);
     }
     void Turn()
     {
@@ -145,5 +145,6 @@ public class FactoryFirstManager : MonoBehaviour
     void PlayHitSound()
     {
         hitAudio.Play();
+        attackParticle.SetActive(true);
     }
 }

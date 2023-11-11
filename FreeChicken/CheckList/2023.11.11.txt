@@ -1,0 +1,16 @@
+
+// J.ver
+1. 모바일 버전 테스트 진행 중 (QA)
+- a. 모바일 버전 여러 오류 체크 후 수정 진행 중
+
+2. FactoryScene 수정
+- a. FactoryScene_2 공격 파티클 추가
+- b. FactoryScene_2 콜라이더 수정
+
+3. 2DEnterScene 수정 완(GameSave)
+- a. OnMouseDown() 함수 모바일 버전으로 변환(o)
+
+// 해야할 것
+1. 모바일 버전 테스트 오류 잡기
+
+2. 최적화 계속 하기

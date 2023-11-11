@@ -24,7 +24,7 @@ public class DropEgg : MonoBehaviour
    
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             
             getEggSound.Play();
@@ -33,8 +33,8 @@ public class DropEgg : MonoBehaviour
             SavePoint.SetActive(true);
             isGetEgg = true;
             fixSound.Play();
-            Destroy(this.gameObject);
-           
+            this.gameObject.SetActive(false);
+         
         }    
 
     }
