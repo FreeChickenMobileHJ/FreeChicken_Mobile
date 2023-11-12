@@ -51,19 +51,12 @@ SpriteAtlas:
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
     - 03c2a090f2d0fb84485064bd21a2d1d6: 21300000
-    - 8f763a51a957446499e3da2bfaf10dc5: 21300000
-    - 115d49c1826b2d04e8f0c1fc60567cf0: 21300000
     - 7f7543e18b89d7549996cf0e9cdaaf97: 21300000
     - 8f060872e3bbf50408c67f59736b478d: 21300000
     - f0951b929161fef4cb7b4d5af4245de5: 21300000
-    - a96acb139432fdd48ac3f0b5343544c4: 21300000
-    - a7765504d5e22404db1c88dc91d19597: 21300000
     - 9b77f0f434ed23d46a7774a968dd81d7: 21300000
-    - 6e20f035899aa3e47a6770776515b092: 21300000
     - 49038c46cc169ca4f80182166a9c4acc: 21300000
     - 15864a763609fe04b98dedc13599358d: 21300000
-    - f2a895c7313e6e84396af6859f3728a7: 21300000
-    - fd7e1849d6902a740a6c2a7e01e139c7: 21300000
     - a73ec2992ca135e48987416ecdcdc2c3: 21300000
     - ddc5908b1f733fa45a7ffefb205fc4d3: -22675704
     - ddc5908b1f733fa45a7ffefb205fc4d3: -2062719028
@@ -82,26 +75,17 @@ SpriteAtlas:
     - 7e43ca8be54e1c54aa7cf14635191ad0: 21300000
     - 536ff88cc4545de41909527aabec51b2: 21300000
     - 2c792d5d4d99e0e418e821b3fe8dc063: 21300000
-    - 9a4c19dd6f237fb4f91ecad704793c8b: 21300000
-    - b200b89eb9709dc4084e06b7010a2004: 21300000
     - 5085830f83096514e97144f57c0aa8de: 21300000
     - e14856af1ef6fc9449b0c62fc9e5ed9b: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 03c2a090f2d0fb84485064bd21a2d1d6, type: 3}
-  - {fileID: 21300000, guid: 8f763a51a957446499e3da2bfaf10dc5, type: 3}
-  - {fileID: 21300000, guid: 115d49c1826b2d04e8f0c1fc60567cf0, type: 3}
   - {fileID: 21300000, guid: 7f7543e18b89d7549996cf0e9cdaaf97, type: 3}
   - {fileID: 21300000, guid: 8f060872e3bbf50408c67f59736b478d, type: 3}
   - {fileID: 21300000, guid: f0951b929161fef4cb7b4d5af4245de5, type: 3}
-  - {fileID: 21300000, guid: a96acb139432fdd48ac3f0b5343544c4, type: 3}
-  - {fileID: 21300000, guid: a7765504d5e22404db1c88dc91d19597, type: 3}
   - {fileID: 21300000, guid: 9b77f0f434ed23d46a7774a968dd81d7, type: 3}
-  - {fileID: 21300000, guid: 6e20f035899aa3e47a6770776515b092, type: 3}
   - {fileID: 21300000, guid: 49038c46cc169ca4f80182166a9c4acc, type: 3}
   - {fileID: 21300000, guid: 15864a763609fe04b98dedc13599358d, type: 3}
-  - {fileID: 21300000, guid: f2a895c7313e6e84396af6859f3728a7, type: 3}
-  - {fileID: 21300000, guid: fd7e1849d6902a740a6c2a7e01e139c7, type: 3}
   - {fileID: 21300000, guid: a73ec2992ca135e48987416ecdcdc2c3, type: 3}
   - {fileID: -22675704, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
   - {fileID: -2062719028, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
@@ -120,25 +104,16 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7e43ca8be54e1c54aa7cf14635191ad0, type: 3}
   - {fileID: 21300000, guid: 536ff88cc4545de41909527aabec51b2, type: 3}
   - {fileID: 21300000, guid: 2c792d5d4d99e0e418e821b3fe8dc063, type: 3}
-  - {fileID: 21300000, guid: 9a4c19dd6f237fb4f91ecad704793c8b, type: 3}
-  - {fileID: 21300000, guid: b200b89eb9709dc4084e06b7010a2004, type: 3}
   - {fileID: 21300000, guid: 5085830f83096514e97144f57c0aa8de, type: 3}
   - {fileID: 21300000, guid: e14856af1ef6fc9449b0c62fc9e5ed9b, type: 3}
   m_PackedSpriteNamesToIndex:
   - image-removebg-preview
-  - KakaoTalk_20230811_152415067
-  - KakaoTalk_20230817_143929619_10
   - BabyChicken
   - FreeChicken_P
   - Dad-removebg-preview
-  - KakaoTalk_20230817_143929619_06
-  - FactoryPNG
   - Nextbutton
-  - KakaoTalk_20230817_143929619_08
   - clipart60103
   - BackyardNPC-removebg-preview
-  - KakaoTalk_20230817_143929619_05
-  - KakaoTalk_20230817_143929619_04
   - 3button_green_middle
   - OD4LX10-removebg-preview_5
   - OD4LX10-removebg-preview_4
@@ -157,8 +132,6 @@ SpriteAtlas:
   - 20bttn-midl
   - chicken-24-512
   - image-removebg-preview (1)
-  - KakaoTalk_20230817_143929619_07
-  - KakaoTalk_20230817_143929619_09
   - Pause
   - 16bttn-little
   m_RenderDataMap: {}
