@@ -38,7 +38,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         //ControlJoystickLever(eventData);
         //isInput = true;
 
-        if(!housePlayer1.Dead)
+        if(!housePlayer1.Dead && !housePlayer1.isRotating)
         {
             ControlJoystickLever(eventData);
             isInput = true;
@@ -72,7 +72,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void ControlJoystickLever(PointerEventData eventData)
     {
-        if(!housePlayer1.Dead)
+        if(!housePlayer1.Dead && !housePlayer1.isRotating)
         {
             var scaledAnchoredPosition = rectTransform.anchoredPosition * mainCanvas.transform.localScale.x;
             var inputPos = eventData.position - scaledAnchoredPosition;
@@ -87,7 +87,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void InputControlVector()
     {
-        if (!housePlayer1.Dead && !housePlayer1.isOpeningDoor && !housePlayer1.isRaisingDoor)  // 조이스틱 입력을 받는 동안에만 플레이어 움직임을 처리
+        if (!housePlayer1.Dead && !housePlayer1.isOpeningDoor && !housePlayer1.isRaisingDoor && !housePlayer1.isRotating)  // 조이스틱 입력을 받는 동안에만 플레이어 움직임을 처리
         {
             if(isInput)
             {

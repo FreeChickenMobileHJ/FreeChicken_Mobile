@@ -40,7 +40,7 @@ public class HouseScenePlayer : MonoBehaviour
     public bool isHouse1;
     public bool isHouse2;
     public bool isEnglish;
-    private bool isRotating = false;
+    public bool isRotating = false;
     private Quaternion originalCameraRotation;
     private float rotationTimer = 0.0f;
     private float rotationDuration = 3.0f;
@@ -130,8 +130,6 @@ public class HouseScenePlayer : MonoBehaviour
 
             MemoryCount.memCount = 2;
         }    
-
-        //MemoryCount.memCount = 0;
 
         StartCoroutine(CO_notDead());
     }

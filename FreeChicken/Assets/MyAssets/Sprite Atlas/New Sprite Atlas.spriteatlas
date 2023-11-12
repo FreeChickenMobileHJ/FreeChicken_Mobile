@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: New Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 74e646f39031b6848bab263316d8762d, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 03c2a090f2d0fb84485064bd21a2d1d6: 21300000
+    - 8f763a51a957446499e3da2bfaf10dc5: 21300000
+    - 115d49c1826b2d04e8f0c1fc60567cf0: 21300000
+    - 7f7543e18b89d7549996cf0e9cdaaf97: 21300000
+    - 8f060872e3bbf50408c67f59736b478d: 21300000
+    - f0951b929161fef4cb7b4d5af4245de5: 21300000
+    - a96acb139432fdd48ac3f0b5343544c4: 21300000
+    - a7765504d5e22404db1c88dc91d19597: 21300000
+    - 9b77f0f434ed23d46a7774a968dd81d7: 21300000
+    - 6e20f035899aa3e47a6770776515b092: 21300000
+    - 49038c46cc169ca4f80182166a9c4acc: 21300000
+    - 15864a763609fe04b98dedc13599358d: 21300000
+    - f2a895c7313e6e84396af6859f3728a7: 21300000
+    - fd7e1849d6902a740a6c2a7e01e139c7: 21300000
+    - a73ec2992ca135e48987416ecdcdc2c3: 21300000
+    - ddc5908b1f733fa45a7ffefb205fc4d3: -22675704
+    - ddc5908b1f733fa45a7ffefb205fc4d3: -2062719028
+    - ddc5908b1f733fa45a7ffefb205fc4d3: -1060574872
+    - ddc5908b1f733fa45a7ffefb205fc4d3: 994730089
+    - ddc5908b1f733fa45a7ffefb205fc4d3: -220793907
+    - ddc5908b1f733fa45a7ffefb205fc4d3: -1500985986
+    - ddc5908b1f733fa45a7ffefb205fc4d3: -1912865934
+    - ddc5908b1f733fa45a7ffefb205fc4d3: 583535840
+    - ddc5908b1f733fa45a7ffefb205fc4d3: 218136559
+    - ddc5908b1f733fa45a7ffefb205fc4d3: 118890028
+    - ddc5908b1f733fa45a7ffefb205fc4d3: 29287748
+    - ddc5908b1f733fa45a7ffefb205fc4d3: 1091979518
+    - ddc5908b1f733fa45a7ffefb205fc4d3: 1737999198
+    - ddc5908b1f733fa45a7ffefb205fc4d3: 1859957985
+    - 7e43ca8be54e1c54aa7cf14635191ad0: 21300000
+    - 536ff88cc4545de41909527aabec51b2: 21300000
+    - 2c792d5d4d99e0e418e821b3fe8dc063: 21300000
+    - 9a4c19dd6f237fb4f91ecad704793c8b: 21300000
+    - b200b89eb9709dc4084e06b7010a2004: 21300000
+    - 5085830f83096514e97144f57c0aa8de: 21300000
+    - e14856af1ef6fc9449b0c62fc9e5ed9b: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 03c2a090f2d0fb84485064bd21a2d1d6, type: 3}
+  - {fileID: 21300000, guid: 8f763a51a957446499e3da2bfaf10dc5, type: 3}
+  - {fileID: 21300000, guid: 115d49c1826b2d04e8f0c1fc60567cf0, type: 3}
+  - {fileID: 21300000, guid: 7f7543e18b89d7549996cf0e9cdaaf97, type: 3}
+  - {fileID: 21300000, guid: 8f060872e3bbf50408c67f59736b478d, type: 3}
+  - {fileID: 21300000, guid: f0951b929161fef4cb7b4d5af4245de5, type: 3}
+  - {fileID: 21300000, guid: a96acb139432fdd48ac3f0b5343544c4, type: 3}
+  - {fileID: 21300000, guid: a7765504d5e22404db1c88dc91d19597, type: 3}
+  - {fileID: 21300000, guid: 9b77f0f434ed23d46a7774a968dd81d7, type: 3}
+  - {fileID: 21300000, guid: 6e20f035899aa3e47a6770776515b092, type: 3}
+  - {fileID: 21300000, guid: 49038c46cc169ca4f80182166a9c4acc, type: 3}
+  - {fileID: 21300000, guid: 15864a763609fe04b98dedc13599358d, type: 3}
+  - {fileID: 21300000, guid: f2a895c7313e6e84396af6859f3728a7, type: 3}
+  - {fileID: 21300000, guid: fd7e1849d6902a740a6c2a7e01e139c7, type: 3}
+  - {fileID: 21300000, guid: a73ec2992ca135e48987416ecdcdc2c3, type: 3}
+  - {fileID: -22675704, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: -2062719028, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: -1060574872, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: 994730089, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: -220793907, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: -1500985986, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: -1912865934, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: 583535840, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: 218136559, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: 118890028, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: 29287748, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: 1091979518, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: 1737999198, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: 1859957985, guid: ddc5908b1f733fa45a7ffefb205fc4d3, type: 3}
+  - {fileID: 21300000, guid: 7e43ca8be54e1c54aa7cf14635191ad0, type: 3}
+  - {fileID: 21300000, guid: 536ff88cc4545de41909527aabec51b2, type: 3}
+  - {fileID: 21300000, guid: 2c792d5d4d99e0e418e821b3fe8dc063, type: 3}
+  - {fileID: 21300000, guid: 9a4c19dd6f237fb4f91ecad704793c8b, type: 3}
+  - {fileID: 21300000, guid: b200b89eb9709dc4084e06b7010a2004, type: 3}
+  - {fileID: 21300000, guid: 5085830f83096514e97144f57c0aa8de, type: 3}
+  - {fileID: 21300000, guid: e14856af1ef6fc9449b0c62fc9e5ed9b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - image-removebg-preview
+  - KakaoTalk_20230811_152415067
+  - KakaoTalk_20230817_143929619_10
+  - BabyChicken
+  - FreeChicken_P
+  - Dad-removebg-preview
+  - KakaoTalk_20230817_143929619_06
+  - FactoryPNG
+  - Nextbutton
+  - KakaoTalk_20230817_143929619_08
+  - clipart60103
+  - BackyardNPC-removebg-preview
+  - KakaoTalk_20230817_143929619_05
+  - KakaoTalk_20230817_143929619_04
+  - 3button_green_middle
+  - OD4LX10-removebg-preview_5
+  - OD4LX10-removebg-preview_4
+  - OD4LX10-removebg-preview_7
+  - OD4LX10-removebg-preview_6
+  - OD4LX10-removebg-preview_1
+  - OD4LX10-removebg-preview_0
+  - OD4LX10-removebg-preview_3
+  - OD4LX10-removebg-preview_2
+  - OD4LX10-removebg-preview_9
+  - OD4LX10-removebg-preview_8
+  - OD4LX10-removebg-preview_10
+  - OD4LX10-removebg-preview_11
+  - OD4LX10-removebg-preview_12
+  - OD4LX10-removebg-preview_13
+  - 20bttn-midl
+  - chicken-24-512
+  - image-removebg-preview (1)
+  - KakaoTalk_20230817_143929619_07
+  - KakaoTalk_20230817_143929619_09
+  - Pause
+  - 16bttn-little
+  m_RenderDataMap: {}
+  m_Tag: New Sprite Atlas
+  m_IsVariant: 0
