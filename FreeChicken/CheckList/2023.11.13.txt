@@ -1,0 +1,34 @@
+
+// J.ver
+1. 모바일 버전 테스트 진행 중 (QA)
+- a. 모바일 버전 여러 오류 체크 후 수정 진행 중
+
+2. FactoryScene 수정
+- a. FactoryScene_2 공격 파티클 추가
+- b. FactoryScene_2 콜라이더 수정
+
+3. 2DEnterScene 수정 완(GameSave)
+- a. OnMouseDown() 함수 모바일 버전으로 변환(o)
+
+// 해야할 것
+1. 모바일 버전 테스트 오류 잡기
+
+2. 최적화 계속 하기
+
+// H.ver
+1. HouseScene
+- a. 플레이어가 카메라 회전 능력 얻었을때 조이스틱 움직임 막기 (o)
+
+2. 모바일 최적화 (//Draw Call 줄이기)
+- a. 불필요한 shadow 연산 off 하기 (housescene1완료)
+- b. 움직이지 않는 오브젝트라면 static 처리하기 (housescene1완료)
+- c. Sprite Atlas 하기 (완)
+- d. URP설치 후 설정해주기(O) (-> 레벨이 어두워지는 오류발견 -> 고치기)
+- e. housescene1 (batches 100이하로 나오게 고쳤음. 중간에 200대 나올때에 문제되는 스크립트 고치기(melting스크립트 or updaown or 플레이어 능력얻었을때 회전 코드)
+- f. house2,3 최적화 (o)
+- g. house4,5 최적화하기 
+
+// 계속 해야할 것
+1. 모바일 버전 테스트 오류 잡기 (batches줄이기 + 스크립트 최적화)
+
+2. 최적화 계속 하기(배터리, 발열 잡기)
