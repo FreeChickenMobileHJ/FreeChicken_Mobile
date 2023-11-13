@@ -1,19 +1,22 @@
-
 // J.ver
 1. 모바일 버전 테스트 진행 중 (QA)
 - a. 모바일 버전 여러 오류 체크 후 수정 진행 중
 
-2. FactoryScene 수정
-- a. FactoryScene_2 공격 파티클 추가
-- b. FactoryScene_2 콜라이더 수정
+2. 맵 수정 
+- a. 전반적으로 오브젝트 수 줄이기 (factory_1,2 완료)
 
-3. 2DEnterScene 수정 완(GameSave)
-- a. OnMouseDown() 함수 모바일 버전으로 변환(o)
+3. 모바일 최적화
+- a. shadow 연산 off (factory_1,2 완료)
+- b. 움직이지 않는 오브젝트 static 처리 (factory_1,2 완료)
+- c. 안드로이드 디바이스 프로파일링 진행 중 
+- d. URP설치 후 설정해주기(O)
+- e. factory_1,2 batches 최대 150 
+- f. 프로파일링하면서 병목현상 잡기 진행(factory_1,2 완료)
+- g. unity korea 자료 확인
 
 // 해야할 것
-1. 모바일 버전 테스트 오류 잡기
-
-2. 최적화 계속 하기
+1. PC버전 게임 인디페스티벌 올리기(~11.15)
+2. 병목현상 잡기(factory_3,4, City, Cave_1,2)
 
 // H.ver
 1. HouseScene
