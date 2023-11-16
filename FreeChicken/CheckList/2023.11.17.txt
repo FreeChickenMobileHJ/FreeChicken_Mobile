@@ -1,0 +1,22 @@
+// J.ver
+1. 모바일 버전 테스트 진행 중 (QA)
+- a. 모바일 버전 여러 오류 체크 후 수정 진행 중
+
+2. FactoryScene 수정
+- a. FactoryScene_1,2,3 최적화 완료
+- b. FactoryScene_4 최적화 완료 (카메라 뷰 수정)
+- c. mesh combine 완료
+- d. 스크립트 수정( 물리엔진 => FixedUpdate())
+
+3. 2DEnterScene,StartScene, StartFinalScene 수정
+- a. 최적화 완료
+- b. Light bake로 변경 & static 오브젝트 모두 체크해주기 
+      & Light off로 모두 변경 & shadow끄기
+
+4. Cave_1,2 수정
+- a. 최적화 완료
+
+// 해야할 것 (11.17 ~ )
+1. 최적화 버전 플레이하면서 추가 병목현상 잡기
+
+2. EndingScene 최적화 하기
