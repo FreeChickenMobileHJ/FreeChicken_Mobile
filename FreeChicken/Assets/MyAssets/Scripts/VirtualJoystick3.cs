@@ -85,11 +85,6 @@ public class VirtualJoystick3 : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         }
     }
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (!evolutionPlayer.isTalk2 || evolutionPlayer.TalkEnd2)

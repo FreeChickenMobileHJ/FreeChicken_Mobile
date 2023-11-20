@@ -71,6 +71,7 @@ public class HouseScenePlayer : MonoBehaviour
     public CinemachineVirtualCamera StartCam;
     public CinemachineVirtualCamera openDoorCam;
     public GameObject CameraJoy;
+    public GameObject Camera;
 
     [Header("Audio")]
     public AudioSource mainAudio;
@@ -153,45 +154,45 @@ public class HouseScenePlayer : MonoBehaviour
 
     IEnumerator CO_isOpeningDoor()
     {
-        while (true)
+        if (isOpeningDoor) yield break; // 이미 실행 중이면 중지
+
+        yield return new WaitUntil(() => isOpeningDoor);
+
+        doorOpenTimer = 0.0f;
+
+        while (doorOpenTimer < doorOpenDuration)
         {
-            yield return new WaitUntil(() => isOpeningDoor);
-
-            doorOpenTimer = 0.0f;
-
-            while (doorOpenTimer < doorOpenDuration)
-            {
-                doorOpenTimer += Time.deltaTime;
-                yield return null;
-            }
-
-            isOpeningDoor = false;
-            isRaisingDoor = true;
+            doorOpenTimer += Time.deltaTime;
+            yield return null;
         }
+
+        isOpeningDoor = false;
+        isRaisingDoor = true;
+       
     }
 
     IEnumerator CO_isRaisingDoor()
     {
-        while (true)
+        if (isRaisingDoor) yield break; // 이미 실행 중이면 중지
+
+        yield return new WaitUntil(() => isRaisingDoor);
+
+        while (startDoor.transform.position.y < 2f)
         {
-            yield return new WaitUntil(() => isRaisingDoor);
-
-            while (startDoor.transform.position.y < 2f)
-            {
-                startDoor.transform.Translate(Vector3.up * doorRaiseSpeed * Time.deltaTime);
-                yield return null;
-            }
-
-            startDoor.SetActive(false);
-            isRaisingDoor = false;
-            isTalk = false;
-            mainCam.Priority = 10;
-            openDoorCam.Priority = 0;
-            pushBell = false;
-            PushBell_text.SetActive(false);
-            isReadyDoorOpen = false;
-            isDoorOpen = true;
+            startDoor.transform.Translate(Vector3.up * doorRaiseSpeed * Time.deltaTime);
+            yield return null;
         }
+
+        startDoor.SetActive(false);
+        isRaisingDoor = false; // 실행 종료 후 플래그 해제
+        isTalk = false;
+        mainCam.Priority = 10;
+        openDoorCam.Priority = 0;
+        pushBell = false;
+        PushBell_text.SetActive(false);
+        isReadyDoorOpen = false;
+        isDoorOpen = true;
+        Camera.SetActive(false);
     }
 
     public void Move(Vector2 moveInput)

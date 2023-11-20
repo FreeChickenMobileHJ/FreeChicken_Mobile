@@ -324,10 +324,13 @@ public class HouseScene2_Player : MonoBehaviour
     {
         rotationTimer += Time.deltaTime;
 
-        float rotationAngle = Mathf.Lerp(0f, 720f, rotationTimer / rotationDuration); 
+        float rotationAngle = Mathf.Lerp(0f, 720f, rotationTimer / rotationDuration);
 
-        cameraArm.RotateAround(transform.position, Vector3.up, rotationAngle * Time.deltaTime);
-        EvoluPs.SetActive(true);
+        if (rotationAngle != 0f)  // 회전이 발생했을 때만 처리
+        {
+            cameraArm.RotateAround(transform.position, Vector3.up, rotationAngle * Time.deltaTime);
+            EvoluPs.SetActive(true);
+        }
 
         if (rotationTimer >= rotationDuration)
         {

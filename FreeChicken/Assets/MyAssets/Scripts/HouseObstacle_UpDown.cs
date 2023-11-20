@@ -33,28 +33,6 @@ public class HouseObstacle_UpDown : MonoBehaviour
         }
     }
 
-    //IEnumerator UpDownType()
-    //{
-    //    switch (Type)
-    //    {
-    //        case MoveObstacleType.A:
-    //            if (isPlayerFollow)
-    //            {
-    //                transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-    //                player.position += Vector3.up * moveSpeed * Time.deltaTime;
-    //            }
-    //            break;
-    //        case MoveObstacleType.B:
-    //            if (isPlayerFollow)
-    //            {
-    //                transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-    //                player.position += Vector3.down * moveSpeed * Time.deltaTime;
-    //                playerRigid.MovePosition(player.position + Vector3.down * moveSpeed * Time.deltaTime);
-    //            }
-    //            break;
-    //    }
-    //    yield return null;
-    //}
 
     void FixedUpdate()
     {
