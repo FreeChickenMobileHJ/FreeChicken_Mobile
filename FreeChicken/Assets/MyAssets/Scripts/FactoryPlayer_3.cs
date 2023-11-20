@@ -103,19 +103,21 @@ public class FactoryPlayer_3 : MonoBehaviour
     public AudioSource BGM;
     public AudioSource PipeMagicSound;
     public AudioSource StartSound;
+    public MemoryCount memCnt;
 
     void Awake()
     {
-        Application.targetFrameRate =  30;
+        
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
         NPC = GameObject.FindWithTag("NPC");
-
+        memCnt = memCnt.GetComponent<MemoryCount>();
     }
     void Start()
     {
-        MemoryCount.memCount = 3;
+       
+        memCnt.MemCntChange(3,4);
         Loading = GetComponent<LoadingTyping>();
         BGM.Play();
         isTalk = true;

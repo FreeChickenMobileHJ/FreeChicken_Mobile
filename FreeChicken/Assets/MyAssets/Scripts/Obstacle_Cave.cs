@@ -110,81 +110,84 @@ public class Obstacle_Cave : MonoBehaviour
         isSense= false;
         removeObj = false;
 
-        StartCoroutine(SetEverything());
+        //StartCoroutine(SetEverything());
     }
-
-    IEnumerator SetEverything()
+    private void FixedUpdate()
+    {
+        switch (Type)
+        {
+            case MoveObstacleType.A:
+                isMove = false;
+                upDown();
+                break;
+            case MoveObstacleType.B:
+                isMove = false;
+                leftRight();
+                break;
+            case MoveObstacleType.C:
+                isMove = false;
+                rotate();
+                break;
+            case MoveObstacleType.D:
+                isBigJump = true;
+                break;
+            case MoveObstacleType.E:
+                isDropObj = true;
+                break;
+            case MoveObstacleType.F:
+                isMove = false;
+                Swing();
+                break;
+            case MoveObstacleType.G:
+                rotate_y();
+                break;
+            case MoveObstacleType.H:
+                //isPlayerFollow = false;
+                isMove = false;
+                leftRightZ();
+                break;
+            case MoveObstacleType.I:
+                //isPlayerFollow = false;
+                isMove = false;
+                rotate_z();
+                break;
+            case MoveObstacleType.L:
+                isMove = true;
+                deguldegul();
+                break;
+            case MoveObstacleType.M:
+                isMove = false;
+                GetFire();
+                break;
+            case MoveObstacleType.N:
+                if (isSense)
+                {
+                    moveObj.SetActive(true);
+                    this.gameObject.SetActive(false);
+                }
+                break;
+            case MoveObstacleType.O:
+                isMove = true;
+                Accel();
+                break;
+            case MoveObstacleType.P:
+                Orbit();
+                isMove = false;
+                break;
+            case MoveObstacleType.Q:
+                isMove = true;
+                Accel_z();
+                break;
+        }
+    }
+  /*  IEnumerator SetEverything()
     {
         while (true)
         {
-            switch (Type)
-            {
-                case MoveObstacleType.A:
-                    isMove = false;
-                    upDown();
-                    break;
-                case MoveObstacleType.B:
-                    isMove = false;
-                    leftRight();
-                    break;
-                case MoveObstacleType.C:
-                    isMove = false;
-                    rotate();
-                    break;
-                case MoveObstacleType.D:
-                    isBigJump = true;
-                    break;
-                case MoveObstacleType.E:
-                    isDropObj = true;
-                    break;
-                case MoveObstacleType.F:
-                    isMove = false;
-                    Swing();
-                    break;
-                case MoveObstacleType.G:
-                    rotate_y();
-                    break;
-                case MoveObstacleType.H:
-                    //isPlayerFollow = false;
-                    isMove = false;
-                    leftRightZ();
-                    break;
-                case MoveObstacleType.I:
-                    //isPlayerFollow = false;
-                    isMove = false;
-                    rotate_z();
-                    break;
-                case MoveObstacleType.L:
-                    isMove = true;
-                    deguldegul();
-                    break;
-                case MoveObstacleType.M:
-                    isMove = false;
-                    GetFire();
-                    break;
-                case MoveObstacleType.N:
-                    if (isSense)
-                    {
-                        moveObj.SetActive(true);
-                        this.gameObject.SetActive(false);
-                    }
-                    break;
-                case MoveObstacleType.O:
-                    isMove = true;
-                    Accel();
-                    break;
-                case MoveObstacleType.P:
-                    Orbit();
-                    isMove = false;
-                    break;
-                case MoveObstacleType.Q:
-                    isMove = true;
-                    Accel_z();
-                    break;
-            }
+           
             yield return null;
         }
-    }
+    }*/
     void upDown()
     {
         isSense = false;

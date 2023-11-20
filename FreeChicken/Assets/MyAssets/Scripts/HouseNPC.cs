@@ -18,13 +18,18 @@ public class HouseNPC : MonoBehaviour
    
     public GameObject npc;
     public AudioSource getMemorySound;
-
+    public MemoryCount memCnt;
     public float t;
+    public bool isHouse_1;
+    public bool isHouse_2;
+    public bool isHouse_3;
+
 
     void Start()
     {
         Ebutton.SetActive(false);
         player = GameObject.FindWithTag("Player").GetComponent<HouseScenePlayer>();
+        memCnt = memCnt.GetComponent<MemoryCount>();
         t = 0;
     }
 
@@ -38,7 +43,18 @@ public class HouseNPC : MonoBehaviour
             getMemorySound.Play();
             GetMemoryUI.SetActive(true);
             Ebutton.SetActive(false);
-            MemoryCount.memCount++;
+            if (isHouse_1)
+            {
+                memCnt.MemCntChange(1, 1);
+            }
+            else if(isHouse_2)
+            {
+                memCnt.MemCntChange(2, 2);
+            }
+            else if (isHouse_3)
+            {
+                memCnt.MemCntChange(3, 3);
+            }
 
             Invoke("ReStart", 2f);
         }

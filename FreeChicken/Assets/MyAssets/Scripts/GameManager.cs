@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
    
     public LocaleManager LocaleManager;
     string path;
+    public MemoryCount memCnt;
     private void Awake()
     {
         Application.targetFrameRate = 30;
@@ -79,7 +80,10 @@ public class GameManager : MonoBehaviour
             cityPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CityScenePlayer>();
             cavePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CaveScenePlayer>();
         }
-        
+        if (memCnt != null)
+        {
+            memCnt = memCnt.GetComponent<MemoryCount>();
+        }
         if (File.Exists(path))
         {
    
@@ -87,7 +91,7 @@ public class GameManager : MonoBehaviour
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             isEnglish = loadedData.isEng;
-            Debug.Log(isEnglish);
+           
         }
         if (isEnglish)
         {
@@ -410,36 +414,43 @@ public class GameManager : MonoBehaviour
     {
 
         Time.timeScale = 1f;
-        MemoryCount.memCount = 0;
+      
+       
         if (isFactory_1)
         {
             GameSave.Level = 1;
-          
+            memCnt.MemCntChange(0, 0);
 
         }
         else if (isFactory_2)
         {
             GameSave.Level = 2;
+            memCnt.MemCntChange(0, 0);
         }
         else if (isFactory_3)
         {
             GameSave.Level = 3;
+            memCnt.MemCntChange(0, 0);
         }
         else if (isFactory_4)
         {
             GameSave.Level = 4;
+            memCnt.MemCntChange(0, 0);
         }
         else if (isHouse_1)
         {
             GameSave.Level = 5;
+            memCnt.MemCntChange(0, 0);
         }
         else if (isHouse_2)
         {
             GameSave.Level = 6;
+            memCnt.MemCntChange(0, 0);
         }
         else if (isHouse_3)
         {
             GameSave.Level = 7;
+            memCnt.MemCntChange(0, 0);
         }
         else if (isHouse_4)
         {
@@ -637,43 +648,44 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         if (isFactory_1)
         {
-            MemoryCount.memCount = 0;
+           
+            memCnt.MemCntChange(0,1);
             SceneManager.LoadScene("FactoryScene_1");
         }
         else if (isFactory_2)
         {
 
-            MemoryCount.memCount = 1;
-            
+           
+            memCnt.MemCntChange(1,2);
             SceneManager.LoadScene("FactoryScene_2");
         }
         else if (isFactory_3)
         {
 
-            MemoryCount.memCount = 2;
             
+            memCnt.MemCntChange(2,3);
             SceneManager.LoadScene("FactoryScene_3");
         }
         else if (isFactory_4)
         {
 
-            MemoryCount.memCount = 3;
+            memCnt.MemCntChange(3,4);
             
             SceneManager.LoadScene("FactoryScene_4");
         }
         else if (isHouse_1)
         {
-            MemoryCount.memCount = 0;
+            memCnt.MemCntChange(0,1);
             SceneManager.LoadScene("HouseScene1");
         }
         else if (isHouse_2)
         {
-            MemoryCount.memCount = 1;
+            memCnt.MemCntChange(1,2);
             SceneManager.LoadScene("HouseScene2");
         }
         else if (isHouse_3)
         {
-            MemoryCount.memCount = 2;
+            memCnt.MemCntChange(2,3);
             SceneManager.LoadScene("HouseScene3");
         }
         else if (isHouse_4)

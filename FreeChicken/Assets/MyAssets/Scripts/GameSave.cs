@@ -5,7 +5,7 @@ using System.IO;
 public class GameSave : MonoBehaviour
 {
     public bool isChk;
-    public static bool isFactory_2;
+  /*  public static bool isFactory_2;
     public static bool isFactory_3;
     public static bool isFactory_4;
     public static bool isHouse_1;
@@ -17,7 +17,7 @@ public class GameSave : MonoBehaviour
     public static bool isCave_1;
     public static bool isCave_2;
     public static bool isCave_3;
-    public static bool isCave_4;
+    public static bool isCave_4;*/
 
     [Header("GameObject")]
     public GameObject Factory_2; // 2
@@ -38,6 +38,7 @@ public class GameSave : MonoBehaviour
     public GameObject Cave_5;
 
     public GameObject[] Objects;
+   
     public AudioSource ShowSound;
 
     [Header("Particle")]
@@ -64,7 +65,7 @@ public class GameSave : MonoBehaviour
     private void Awake()
     {
 
-        Application.targetFrameRate = 30;
+      
         if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
 
@@ -78,6 +79,7 @@ public class GameSave : MonoBehaviour
         for (int i = 1; i < Level; i++)
         {
             Objects[i].SetActive(true);
+           
         }
       
 

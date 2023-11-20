@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 using Cinemachine;
 using System.IO;
 
-
 public class FactoryPlayer : MonoBehaviour
 {
     [Header("Setting")]
@@ -99,6 +98,8 @@ public class FactoryPlayer : MonoBehaviour
     public GameObject BlockWall;
     public GameManager gameManager;
     public LoadingTyping Loading;
+
+    public MemoryCount memCnt;
     [Header("Camera")]
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera stopConCam;
@@ -120,40 +121,40 @@ public class FactoryPlayer : MonoBehaviour
     public AudioSource fixAudio;
     public bool isEng;
     public bool isKorean;
-    void Awake()
-    {
-        Application.targetFrameRate = 30;
-        
-       
-    }
-
+  
     private void Start()
     {
         mainAudio.Play();
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         isTalk = false;
-        Cursor.visible = false;
-        MemoryCount.memCount = 0;
+        memCnt = memCnt.GetComponent<MemoryCount>();
+        memCnt.MemCntChange(0, 1);
+       
         if (isFactory_2)
         {
-            MemoryCount.memCount = 1;
+            memCnt.MemCntChange(1, 2);
+           
         }
         StartCoroutine(PickUPStart());
 
     }
-    void Update()
+    private void Update()
     {
-        
-        if (!isTalk && !isEgg && !isDie && !isStart &&!isPickUp &&!isStamp)
+        if (!isTalk && !isEgg && !isDie && !isStart && !isPickUp && !isStamp)
         {
-            Move();
-            GetInput();
             Turn();
-          
+
         }
-      
-        
+    }
+    private void FixedUpdate()
+    {
+       if (!isTalk && !isEgg && !isDie && !isStart && !isPickUp && !isStamp)
+       {
+           Move();
+           GetInput();
+           
+       }     
     }
     IEnumerator PickUPStart()
     {
@@ -203,7 +204,7 @@ public class FactoryPlayer : MonoBehaviour
 
             transform.position += moveVec * speed * Time.deltaTime * 1f;
             anim.SetBool("isWalk", true);
-
+           
             runAudio.Play();
 
         }
@@ -217,7 +218,7 @@ public class FactoryPlayer : MonoBehaviour
     }
     void Turn()
     {
-        transform.LookAt(transform.position + moveVec); 
+        transform.LookAt(transform.position + moveVec);
     }
     public void Jump()
     {
@@ -275,7 +276,7 @@ public class FactoryPlayer : MonoBehaviour
                 Invoke("UpstairExit", 2f);
             
         }
-        if (collision.gameObject.CompareTag("ObstacleZone1") || collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             if (!isDie && !isPickUp)
             {
@@ -289,15 +290,11 @@ public class FactoryPlayer : MonoBehaviour
                 mainCam.Priority = 1;
 
                 dieAudio.Play();
+
+
+
+                Invoke("ExitCanvas", 2f);
                 
-                if (isSetEggFinish)
-                {
-                    Invoke("ReLoadScene_2", 2f);
-                }
-                else
-                {
-                    Invoke("ExitCanvas", 2f);
-                }
             }
             
         }
@@ -412,37 +409,9 @@ public class FactoryPlayer : MonoBehaviour
             SavePointTxt.SetActive(true);
             Invoke("DestroySavePointTxt", 2f);
         }
-        if(other.CompareTag("SavePoint_2"))
-        {
-            savePointAudio.Play();
-            savePointPos_2.SetActive(false);
-            SavePointTxt.SetActive(true);
-            UpstairCanvas.SetActive(false);
-            Invoke("ReLoadScene_2", 1f);
-            
-        }
+       
     }
     
-    void ReLoadScene_2()
-
-    {
-
-        GameSave.isFactory_3 = true;
-        PlayerPrefs.SetInt("GoFactory_3", GameSave.isFactory_3 ? 1 : 0);
-        GameSave.Level = 3;
-        
-        PlayerData playerData = new PlayerData();
-        if (playerData.LevelChk <= GameSave.Level)
-        {
-            playerData.LevelChk = GameSave.Level;
-        }
-      
-        LoadSceneInfo.is2DEnterScene = true;
-        PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
-        LoadSceneInfo.LevelCnt = 2;
-        SceneManager.LoadScene("LoadingScene");
-
-    }
   
     void DestroySavePointTxt()
     {
@@ -461,7 +430,7 @@ public class FactoryPlayer : MonoBehaviour
             heartBeatAudio.Play();
             isTalk = false;
             turnEggCanvas.SetActive(false);
-            //changeEggCanvas.SetActive(false);
+            
         }
     }
     void OnTriggerStay(Collider other)
@@ -526,7 +495,7 @@ public class FactoryPlayer : MonoBehaviour
         EggPrefab.gameObject.SetActive(true);
         EggPrefab.transform.position = pos;
         turnEggCanvas.gameObject.SetActive(false);
-        //changeEggCanvas.gameObject.SetActive(true);
+      
         isEgg = true;
         StartCoroutine(Egg());
     }

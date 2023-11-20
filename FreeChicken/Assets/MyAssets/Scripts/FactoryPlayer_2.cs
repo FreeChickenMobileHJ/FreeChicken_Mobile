@@ -40,6 +40,8 @@ public class FactoryPlayer_2 : MonoBehaviour
     public GameObject pickUpParticle;
 
     public GameObject SpawnPos;
+    public MemoryCount memCnt;
+    public FactoryNPC npc;
     [Header("UI")]
     public GameObject scene2LastUI;
     
@@ -56,10 +58,7 @@ public class FactoryPlayer_2 : MonoBehaviour
     public AudioSource BGM;
     public AudioSource dieAudio;
     public AudioSource changeConAudio;
-    void Awake()
-    {
-        Application.targetFrameRate = 30;
-    }
+   
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -67,7 +66,10 @@ public class FactoryPlayer_2 : MonoBehaviour
         isTalk = false;
         changeZone = GameObject.Find("ChangeConveyorZone").GetComponent<FactorySceneChangeZone>();
         BGM.Play();
-        MemoryCount.memCount = 2;
+        memCnt = memCnt.GetComponent<MemoryCount>();
+        memCnt.MemCntChange(2, 3);
+        npc = npc.GetComponent<FactoryNPC>();
+       
         StartCoroutine(PickUPStart());
     }
     void Update()
@@ -224,12 +226,12 @@ public class FactoryPlayer_2 : MonoBehaviour
     {
         if (other.gameObject.name == "Rail")
         {
-            if (MemoryCount.memCount == 3)
+            if (npc.cnt == 3)
             {
                 scene2LastUI.gameObject.SetActive(true);
                 Invoke("RoadScene", 2f);
             }
-            else if(MemoryCount.memCount < 3)
+            else if(npc.cnt < 3)
             {
                 MemCountUI.gameObject.SetActive(true);
                 Invoke("ExitCanvas", 1.5f);

@@ -12,54 +12,51 @@ public class MoveObstacle : MonoBehaviour
 
     public enum MoveObstacleType { A, B, C, D, E, F ,G,H,I,J,K,L,M};
     public MoveObstacleType Type;
-    //PlayerController player;
+
     GameObject player;
 
-    //UD_Floor
     float initPositionY;
     float initPositionX;
     float initPositionZ;
     public float distance;
     public float turningPoint;
-    //UD_Floor & LR_Floor
+
     public bool turnSwitch;
     public float moveSpeed;
 
-    //MovePlatform
     public bool isMove;
     public bool isPlayerFollow;
 
-    //RT_Floor
+  
     public float rotateSpeed;
     public int angle_z = 50;
 
-    //Big Jump
     public bool isBigJump;
     public float BigJumpPower;
-    //Drop
+  
     public float dropSpeed;
     public bool isDropObj;
-    //Swing
+ 
     public float angle = 0;
     private float lerpTime = 0;
     private float speed = 2f;
 
-    //Fire
+ 
     public ParticleSystem firePs;
     public bool playerFirePs;
 
-    //Attack
+   
     public bool isPlayerAttack;
 
-    public float circleR; // 반지름
-    public float deg; // 각도
-    public float objSpeed; // 원운동 속도
+    public float circleR; 
+    public float deg; 
+    public float objSpeed; 
 
     public Transform Circletarget;
     public float orbitSpeed;
     Vector3 offSet;
 
-    // ChangeSmallObj
+    
     public bool isContact;
     public bool isChk;
     private Vector3 pos;
@@ -67,16 +64,10 @@ public class MoveObstacle : MonoBehaviour
     public ParticleSystem ChangeParticle;
     public AudioSource ChangeSound;
 
-    //Down & Destory Obj
+   
     public bool isDown;
     public bool isDownandDestroy;
-    void Awake()
-    {
-
-
-        Application.targetFrameRate = 30;
-
-    }
+    
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -99,77 +90,72 @@ public class MoveObstacle : MonoBehaviour
             initPositionZ = transform.position.z;
             turningPoint = initPositionZ - distance;
         }
-        StartCoroutine(SetEverything());
+      
     }
-    
-   IEnumerator SetEverything()
+    private void FixedUpdate()
     {
-        while (true)
+        switch (Type)
         {
+            case MoveObstacleType.A:
+                isMove = true;
 
-            switch (Type)
-            {
-                case MoveObstacleType.A:
-                    isMove = true;
+                upDown();
 
-                    upDown();
+                break;
+            case MoveObstacleType.B:
+                isMove = true;
 
-                    break;
-                case MoveObstacleType.B:
-                    isMove = true;
+                leftRight();
+                break;
+            case MoveObstacleType.C:
+                isMove = true;
+                rotate();
+                break;
+            case MoveObstacleType.D:
+                isBigJump = true;
+                break;
+            case MoveObstacleType.E:
+                isDropObj = true;
+                break;
+            case MoveObstacleType.F:
+                isPlayerAttack = true;
+                Swing();
+                break;
+            case MoveObstacleType.G:
+                isPlayerAttack = true;
 
-                    leftRight();
-                    break;
-                case MoveObstacleType.C:
-                    isMove = true;
-                    rotate();
-                    break;
-                case MoveObstacleType.D:
-                    isBigJump = true;
-                    break;
-                case MoveObstacleType.E:
-                    isDropObj = true;
-                    break;
-                case MoveObstacleType.F:
-                    isPlayerAttack = true;
-                    Swing();
-                    break;
-                case MoveObstacleType.G:
-                    isPlayerAttack = true;
+                break;
+            case MoveObstacleType.H:
+                isMove = true;
+                leftRightZ();
+                break;
+            case MoveObstacleType.I:
+                isMove = false;
 
-                    break;
-                case MoveObstacleType.H:
-                    isMove = true;
-                    leftRightZ();
-                    break;
-                case MoveObstacleType.I:
-                    isMove = false;
+                break;
+            case MoveObstacleType.J:
+                isMove = true;
+                Orbit();
+                break;
+            case MoveObstacleType.K:
+                Circle();
+                break;
+            case MoveObstacleType.L: 
+                isContact = true;
+                break;
+            case MoveObstacleType.M:
+                isDownandDestroy = true;
+                if (isDown)
+                {
+                    DownandDestroy();
 
-                    break;
-                case MoveObstacleType.J:
-                    isMove = true;
-                    Orbit();
-                    break;
-                case MoveObstacleType.K:
-                    Circle();
-                    break;
-                case MoveObstacleType.L: // 밟으면 작아지는 obj
-                    isContact = true;
-                    break;
-                case MoveObstacleType.M:
-                    isDownandDestroy = true;
-                    if (isDown)
-                    {
-                        DownandDestroy();
-
-                    }
-                    break;
+                }
+                break;
 
 
-            }
-            yield return null;
         }
     }
+   
     void upDown()
     {
         float currentPositionY = transform.position.y;

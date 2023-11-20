@@ -69,6 +69,7 @@ public class CaveScenePlayer : MonoBehaviour
 
     public bool isVibrate;
     public bool canHandleCollision = true;
+    public bool isSaveChk;
     [Header("Camera")]
     
     public CinemachineVirtualCamera mainCam;
@@ -397,8 +398,7 @@ public class CaveScenePlayer : MonoBehaviour
         rvAxis = joyStick.Horizontal;
 
         moveVec = new Vector3(rhAxis, 0, rvAxis).normalized;
-        transform.position += moveVec * speed * (wDown ? 0.3f : 1f) * Time.deltaTime;
-
+        rigid.MovePosition(transform.position + moveVec * speed * (wDown ? 0.3f : 1f) * Time.deltaTime);
         anim.SetBool("isRun", moveVec != Vector3.zero);
         anim.SetBool("isWalk", wDown);
 
@@ -429,7 +429,7 @@ public class CaveScenePlayer : MonoBehaviour
            
                 canHandleCollision = false;
                 Dead = true;
-                //DieCanvas.SetActive(false);
+               
                 DeadCount.count += 1;
 
                 DieMotion();
@@ -690,7 +690,7 @@ public class CaveScenePlayer : MonoBehaviour
            
         }
 
-        if (other.CompareTag("SavePoint1"))
+        if (other.CompareTag("SavePoint1") && !isSaveChk)
         {
             check_savepoint1 = true;
             check_savepoint0 = false;
@@ -698,12 +698,13 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint3 = false;
             check_savepoint4 = false;
             savePointAudio.Play();
+            isSaveChk = true;
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj1", 1.5f);
             Invoke("Destroy_SavePointImage", 2f);
         }
 
-        if (other.CompareTag("SavePoint2") && !isCave_2)
+        if (other.CompareTag("SavePoint2") && !isCave_2 && !isSaveChk)
         {
             check_savepoint2 = true;
             check_savepoint0 = false;
@@ -711,12 +712,13 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint3 = false;
             check_savepoint4 = false;
             savePointAudio.Play();
+            isSaveChk = true;
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj2", 1.5f);
             Invoke("Destroy_SavePointImage", 2f);
         }
 
-        if (other.CompareTag("SavePoint3") && !isCave_3)
+        if (other.CompareTag("SavePoint3") && !isCave_3 && !isSaveChk)
         {
             check_savepoint3 = true;
             check_savepoint0 = false;
@@ -724,12 +726,13 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint2 = false;
             check_savepoint4 = false;
             savePointAudio.Play();
+            isSaveChk = true;
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj3", 1.5f);
             Invoke("Destroy_SavePointImage", 2f);
         }
 
-        if (other.CompareTag("SavePoint4") && !isCave_4)
+        if (other.CompareTag("SavePoint4") && !isCave_4 && !isSaveChk)
         {
             check_savepoint4 = true;
             check_savepoint0 = false;
@@ -737,12 +740,13 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint2 = false;
             check_savepoint3 = false;
             savePointAudio.Play();
+            isSaveChk = true;
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj4", 1.5f);
             Invoke("Destroy_SavePointImage", 2f);
         }
 
-        if (other.CompareTag("SavePoint5") && !isCave_5)
+        if (other.CompareTag("SavePoint5") && !isCave_5 && !isSaveChk)
         {
             check_savepoint5 = true;
             check_savepoint0 = false;
@@ -751,6 +755,7 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint3 = false;
             check_savepoint4 = false;
             savePointAudio.Play();
+            isSaveChk = true;
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj5", 1.5f);
             Invoke("Destroy_SavePointImage", 2f);
@@ -802,7 +807,7 @@ public class CaveScenePlayer : MonoBehaviour
         if (other.CompareTag("NPC5") && !isMomContact &&!isTalk)
         {
             MomDownAnim.SetTrigger("Down");
-            
+            TogetherCam.Priority = 10;
             isMomContact = true;
             
         }
@@ -882,6 +887,7 @@ public class CaveScenePlayer : MonoBehaviour
     void Destroy_SavePointImage()
     {
         SavePointImage.gameObject.SetActive(false);
+        isSaveChk = false;
     }
 
     //------------Destroy_SavePointObj-----------------------------------------
@@ -893,7 +899,7 @@ public class CaveScenePlayer : MonoBehaviour
 
     void Destroy_SavePointObj2()
     {
-        SavePoint1Obj.gameObject.SetActive(false);
+        SavePoint2Obj.gameObject.SetActive(false);
         GameSave.Level = 12;
 
         if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
@@ -932,6 +938,7 @@ public class CaveScenePlayer : MonoBehaviour
 
     void Destroy_SavePointObj3()
     {
+        SavePoint3Obj.gameObject.SetActive(false);
         GameSave.Level = 13;
 
         if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
@@ -970,7 +977,7 @@ public class CaveScenePlayer : MonoBehaviour
 
     void Destroy_SavePointObj4()
     {
-        SavePoint1Obj.gameObject.SetActive(false);
+        SavePoint4Obj.gameObject.SetActive(false);
         GameSave.Level = 14;
 
         if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))

@@ -24,11 +24,7 @@ public class CityMoveObj : MonoBehaviour
    
 
     public float rotateSpeed;
-    void Awake()
-    {
-        Application.targetFrameRate = 30;
-    }
- 
+   
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<CityScenePlayer>();
@@ -38,7 +34,39 @@ public class CityMoveObj : MonoBehaviour
             turningPoint = initPositionX - distance;
 
         }
-        StartCoroutine(SetEverything());
+       
+    }
+    private void FixedUpdate()
+    {
+        switch (Type)
+        {
+            case MoveObstacleType.A:
+                isMove = true;
+
+                rotate();
+
+                break;
+            case MoveObstacleType.B:
+                isMove = true;
+
+                leftRight();
+
+                break;
+            case MoveObstacleType.C:
+                if (player.ishurdleUp == true)
+                {
+                    hurdleUp();
+                }
+                else if (player.ishurdleUp == false)
+                {
+                    hurdleDown();
+                }
+                break;
+            case MoveObstacleType.D:
+                Swing();
+                break;
+
+        }
     }
 
     void Swing()
@@ -101,42 +129,6 @@ public class CityMoveObj : MonoBehaviour
             
         }
 
-    }
-    IEnumerator SetEverything()
-    {
-        while (true)
-        {
-            switch (Type)
-            {
-                case MoveObstacleType.A:
-                    isMove = true;
-                 
-                    rotate();
-
-                    break;
-                case MoveObstacleType.B:
-                    isMove = true;
-
-                    leftRight();
-
-                    break;
-                case MoveObstacleType.C:
-                    if (player.ishurdleUp == true)
-                    {
-                        hurdleUp();
-                    }
-                    else if (player.ishurdleUp == false)
-                    {
-                        hurdleDown();
-                    }
-                    break;
-                case MoveObstacleType.D:
-                    Swing();
-                    break;
-
-            }
-            yield return null;
-        }
     }
    
  

@@ -33,11 +33,11 @@ public class FactoryNPC : MonoBehaviour
 
     public bool isFactory_2;
     public bool isFactory_3;
+    public bool isF_3;
     
-    private void Awake()
-    {
-        Application.targetFrameRate = 30;
-    }
+    public MemoryCount memCnt;
+    public int cnt;
+  
     void Start()
     {
         
@@ -45,9 +45,10 @@ public class FactoryNPC : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<FactoryPlayer>();
         player_2 = GameObject.FindWithTag("Player").GetComponent<FactoryPlayer_2>();
         player_3 = GameObject.FindWithTag("Player").GetComponent<FactoryPlayer_3>();
-        
-     
+        memCnt = memCnt.GetComponent<MemoryCount>();
+
        
+      
     }
   
  
@@ -62,12 +63,19 @@ public class FactoryNPC : MonoBehaviour
             player.isStopSlide = true;
             player.isSlide = false;
             player.isTalk = true;
+            cnt = 1;
+
         }
         else if (player_2 != null)
         {
             player_2.isStopSlide = true;
             player_2.isSlide = false;
             player_2.isTalk = true;
+            cnt = 2;
+            if (isF_3)
+            {
+                cnt = 3;
+            }
         }
         else if (player_3 != null)
         {
@@ -75,6 +83,8 @@ public class FactoryNPC : MonoBehaviour
             player_3.isSlide = false;
             player_3.isTalk = true;
 
+            cnt = 4;
+        
         }
 
         getMemorySound.Play();
@@ -82,8 +92,8 @@ public class FactoryNPC : MonoBehaviour
 
         Ebutton.SetActive(false);
 
-        MemoryCount.memCount++;
-
+      
+        memCnt.MemCntChange(cnt,cnt);
         Invoke("ReStart", 2f);
 
     }

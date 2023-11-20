@@ -145,6 +145,9 @@ public class FactoryFirstManager : MonoBehaviour
     void PlayHitSound()
     {
         hitAudio.Play();
-        attackParticle.SetActive(true);
+        if (attackParticle != null)
+        {
+            attackParticle.SetActive(true);
+        }
     }
 }

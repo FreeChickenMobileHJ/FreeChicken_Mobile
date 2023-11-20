@@ -88,6 +88,7 @@ public class HouseScenePlayer : MonoBehaviour
     public GameObject PushBell_text;
     public GameObject GetUpgradeBox_text;
 
+    public MemoryCount memCnt;
     void Awake()
     {
         mainAudio.Play();
@@ -101,6 +102,8 @@ public class HouseScenePlayer : MonoBehaviour
 
             isEnglish = loadedData.isEng;
         }
+        memCnt = memCnt.GetComponent<MemoryCount>();
+     
     }
 
     void Start()
@@ -121,7 +124,7 @@ public class HouseScenePlayer : MonoBehaviour
             shouldLookAround = true;
             check_savepoint2 = true;
 
-            MemoryCount.memCount = 1;
+            
 
         }
         else
@@ -129,9 +132,20 @@ public class HouseScenePlayer : MonoBehaviour
             shouldLookAround = true;
             check_savepoint3 = true;
 
-            MemoryCount.memCount = 2;
-        }    
-
+           
+        }
+        if (isHouse1)
+        {
+            memCnt.MemCntChange(0, 1);
+        }
+        else if (isHouse2)
+        {
+            memCnt.MemCntChange(1, 2);
+        }
+        else
+        {
+            memCnt.MemCntChange(2, 3);
+        }
         StartCoroutine(CO_notDead());
     }
 
