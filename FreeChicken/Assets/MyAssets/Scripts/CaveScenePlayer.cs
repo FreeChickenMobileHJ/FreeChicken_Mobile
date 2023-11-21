@@ -70,6 +70,7 @@ public class CaveScenePlayer : MonoBehaviour
     public bool isVibrate;
     public bool canHandleCollision = true;
     public bool isSaveChk;
+    public bool MomContacting;
     [Header("Camera")]
     
     public CinemachineVirtualCamera mainCam;
@@ -619,6 +620,7 @@ public class CaveScenePlayer : MonoBehaviour
 
         if (other.CompareTag("NPC5") && !Talk_NPC5)
         {
+            MomContacting = true;
             image5.SetActive(true);
             MomCam.Priority = 10;
             mainCam.Priority = 1;
