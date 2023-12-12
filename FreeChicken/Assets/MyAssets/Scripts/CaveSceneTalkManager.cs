@@ -35,7 +35,7 @@ public class CaveSceneTalkManager : MonoBehaviour
         sentences = new Queue<string>();
         isTalkEnd = false;
         isPlayerImage = true;
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<CaveScenePlayer>();
+        Player = GameObject.Find("CaveCharacter").GetComponent<CaveScenePlayer>();
         Player.isTalk = true;
         Cursor.visible = true;
 

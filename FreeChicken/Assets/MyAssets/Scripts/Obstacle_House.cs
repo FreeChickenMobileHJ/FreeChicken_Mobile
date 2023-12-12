@@ -262,26 +262,22 @@ public class Obstacle_House : MonoBehaviour
     void rotate_z()
     {
         transform.Rotate(0, 0, -angle_z / 50 * rotateSpeed);
-        //ObjRigid.MoveRotation(ObjRigid.rotation * Quaternion.Euler(0, 0, -angle_z / 50 * rotateSpeed));
     }
 
     void rotate_y()
     {
         transform.Rotate(0, rotateSpeed, 0);
-        //ObjRigid.MoveRotation(ObjRigid.rotation * Quaternion.Euler(0, rotateSpeed, 0));
     }
 
 
     void rotatae_x()
     {
         transform.Rotate(-angle_z / 50 * rotateSpeed, 0, 0);
-        //ObjRigid.MoveRotation(ObjRigid.rotation * Quaternion.Euler(-angle_z / 50 * rotateSpeed, 0, 0));
     }
 
     void rotate_xyz()
     {
         transform.Rotate(-angle_z / 50, -angle_z / 50, -angle_z / 50);
-        //ObjRigid.MoveRotation(ObjRigid.rotation * Quaternion.Euler(-angle_z / 50, -angle_z / 50, -angle_z / 50));
     }    
 
     void leftRight_x()

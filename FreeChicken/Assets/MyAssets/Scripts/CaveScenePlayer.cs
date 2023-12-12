@@ -412,6 +412,19 @@ public class CaveScenePlayer : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (canHandleCollision)
+        {
+            if (collision.gameObject.CompareTag("Obstacle") && !Dead)
+            {
+                canHandleCollision = false;
+                Dead = true;
+               
+                DeadCount.count += 1;
+
+                DieMotion();
+                StartCoroutine(ReactivateCollision());
+            }
+        }
 
         if (collision.gameObject.name == "Basement_Var3")
         {
@@ -422,21 +435,6 @@ public class CaveScenePlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJump = false;
-        }
-        if (canHandleCollision)
-        {
-            if (collision.gameObject.CompareTag("Obstacle") && !Dead)
-            {
-           
-                canHandleCollision = false;
-                Dead = true;
-               
-                DeadCount.count += 1;
-
-                DieMotion();
-                StartCoroutine(ReactivateCollision());
-               
-            }
         }
     }
     private IEnumerator ReactivateCollision()
@@ -482,7 +480,15 @@ public class CaveScenePlayer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "LastTalkPoint" && !isLastUI)
+        if (other.CompareTag("Door") && !isMoveUp)
+        {
+            other.gameObject.transform.position =
+                new Vector3(other.gameObject.transform.position.x,
+                other.gameObject.transform.position.y + 3f,
+                other.gameObject.transform.position.z);
+        }
+
+        if (other.gameObject.name == "LastTalkPoint" && !isLastUI)
         {
             if(LastUI!=null) LastUI.SetActive(true);
             isLastUI = true;
@@ -523,12 +529,7 @@ public class CaveScenePlayer : MonoBehaviour
         }
 
 
-        if (other.CompareTag("Door") && !isMoveUp)
-        {
-            other.gameObject.transform.position = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y + 3f, other.gameObject.transform.position.z);
-        }
-
-       
+             
 
         if (other.CompareTag("NPC1") && !Talk_NPC1)
         {
@@ -771,7 +772,6 @@ public class CaveScenePlayer : MonoBehaviour
             SceneManager.LoadScene("LoadingScene");
         }
 
-      
         if(other.CompareTag("Poison")&&!isReversed)
         {
             StartCoroutine(ReversePlayerMovement());

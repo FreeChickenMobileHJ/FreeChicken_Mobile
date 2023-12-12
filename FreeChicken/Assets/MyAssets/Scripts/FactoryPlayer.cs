@@ -52,7 +52,7 @@ public class FactoryPlayer : MonoBehaviour
     public bool isClick;
 
     public bool isEnglish;
-    
+    public bool isChk;
     [Header("UI")]
     public GameObject turnEggCanvas;
     public GameObject changeEggCanvas;
@@ -362,7 +362,7 @@ public class FactoryPlayer : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
        
-        if(other.CompareTag("Rock"))
+        if(other.CompareTag("Rock") && !isChk)
         {
             mainAudio.Stop();
             mainCam.Priority = -1;
@@ -370,6 +370,7 @@ public class FactoryPlayer : MonoBehaviour
             BlockWall.SetActive(true);
             eggChangeZoneAudio.Play();
             isTalk = true;
+            isChk = true;
             anim.SetBool("isWalk", false);
             turnEggCanvas.gameObject.SetActive(true);
         }

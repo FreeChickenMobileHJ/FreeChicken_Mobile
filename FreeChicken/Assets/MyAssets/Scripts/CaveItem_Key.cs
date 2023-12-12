@@ -15,7 +15,7 @@ public class CaveItem_Key : MonoBehaviour
     public AudioSource getKeySound;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CaveScenePlayer>();
+        player = GameObject.Find("CaveCharacter").GetComponent<CaveScenePlayer>();
         pickUpKeyItemText.gameObject.SetActive(false);
         nearKeyItemText.gameObject.SetActive(false);
         ai = GameObject.FindGameObjectWithTag("Slide").GetComponent<AI_Cave>();
@@ -29,9 +29,8 @@ public class CaveItem_Key : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals( "Player"))
+        if (other.gameObject.tag.Equals("Player"))
         {
-            Debug.Log("ø≠ºËø° ∞°±Ó¿Ã ∞¨¥ﬂ");
             nearKeyItemText.gameObject.SetActive(true);
             isPickUp = true;
         }

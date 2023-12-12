@@ -35,9 +35,6 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //ControlJoystickLever(eventData);
-        //isInput = true;
-
         if(!housePlayer1.Dead && !housePlayer1.isRotating)
         {
             ControlJoystickLever(eventData);
@@ -47,8 +44,6 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        //ControlJoystickLever(eventData);
-
         if(isInput && !housePlayer1.Dead)
         {
             ControlJoystickLever(eventData);

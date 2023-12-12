@@ -24,7 +24,7 @@ public class CaveInteraction_Door : MonoBehaviour
     public bool isEnd;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CaveScenePlayer>();
+        player = GameObject.Find("CaveCharacter").GetComponent<CaveScenePlayer>();
         dadAnim = daddy.GetComponent<Animator>();
         if (key != null)
         {
@@ -36,7 +36,7 @@ public class CaveInteraction_Door : MonoBehaviour
     IEnumerator CO_OpenDoor()
     {
         
-        OpenDoor();
+        //OpenDoor();
         while(true)
         {
            

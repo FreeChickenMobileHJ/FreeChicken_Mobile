@@ -248,7 +248,7 @@ public class CityScenePlayer : MonoBehaviour
             dieCam.Priority = 100;
             anim_1.SetTrigger("doDie");
             anim_1.SetBool("isRun", false);
-            rigid.isKinematic = true;
+            //rigid.isKinematic = true;
             if(!isAllStop) Invoke("ReLoadScene", 1f);
         }
     }

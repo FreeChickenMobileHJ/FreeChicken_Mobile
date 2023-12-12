@@ -104,7 +104,7 @@ public class FactoryFirstManager : MonoBehaviour
         player.isSetEggFinish = false;
         player.isClick = false;
         player.Pos();
-      
+        player.isChk = false;
         anim.SetBool("isAttack", false);
         isChk = false;
         //attackParticle.SetActive(false);

@@ -87,8 +87,8 @@ public class HouseScenePlayer : MonoBehaviour
     [Header("UI")]
     public GameObject PushBell_text;
     public GameObject GetUpgradeBox_text;
-
     public MemoryCount memCnt;
+
     void Awake()
     {
         mainAudio.Play();
@@ -123,16 +123,11 @@ public class HouseScenePlayer : MonoBehaviour
         {
             shouldLookAround = true;
             check_savepoint2 = true;
-
-            
-
         }
         else
         {
             shouldLookAround = true;
             check_savepoint3 = true;
-
-           
         }
         if (isHouse1)
         {
@@ -198,7 +193,7 @@ public class HouseScenePlayer : MonoBehaviour
         }
 
         startDoor.SetActive(false);
-        isRaisingDoor = false; // 실행 종료 후 플래그 해제
+        isRaisingDoor = false;
         isTalk = false;
         mainCam.Priority = 10;
         openDoorCam.Priority = 0;
@@ -223,7 +218,6 @@ public class HouseScenePlayer : MonoBehaviour
 
             characterBody.forward = moveVec;
             transform.position += moveVec * speed * Time.deltaTime;
-            //rigid.MovePosition(transform.position + moveVec * speed * Time.deltaTime);
             runAudio.Play();
         }
     }
@@ -376,7 +370,6 @@ public class HouseScenePlayer : MonoBehaviour
 
         if (other.CompareTag("SavePoint3"))
         {
-            
             check_savepoint3 = true;
             check_savepoint1 = false;
             check_savepoint2 = false;
@@ -555,7 +548,6 @@ public class HouseScenePlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle") && !Dead)
         {
             Dead = true;
-            //Invoke("RestartStage", 3f);
             RestartStage(); // 바로 죽는모션 나오게 수정
         }
 

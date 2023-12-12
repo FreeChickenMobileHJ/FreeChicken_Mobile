@@ -77,7 +77,9 @@ public class GameManager : MonoBehaviour
             housePlayer2 = GameObject.FindGameObjectWithTag("Player").GetComponent<HouseScene2_Player>();
             evolutionPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<EvloutionPlayer>();
             cityPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CityScenePlayer>();
-            cavePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CaveScenePlayer>();
+            //cavePlayer = GameObject.Find("CaveCharacter").GetComponent<CaveScenePlayer>();
+            cavePlayer = GameObject.Find("CaveCharacter")?.GetComponent<CaveScenePlayer>();
+
         }
         if (memCnt != null)
         {
