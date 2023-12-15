@@ -7,40 +7,25 @@ using System.IO;
 public class TypingEffect : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public GameObject LoadingUI;
+   
     public GameObject TalkCanvas;
     public CanvasGroup canvasGroup;
     public List<string> dialogueList1;
     public List<string> dialogueList2;
     private int currentDialogueIndex = 0;
 
-    public float fadeDuration = 1.0f;
+    public float fadeDuration = 0.5f;
     public float initialDelay = 2.0f; 
     public string nextSceneName;
 
     private bool waitForClick = false;
     public AudioSource ButtonClickSound;
     public AudioSource BGM;
-    public GameObject Video;
-    public GameObject MainCanvas;
-    private void Awake()
-    {
-        Application.targetFrameRate = 30;
-    }
+   
     private void Start()
     {
-
+        
         Cursor.visible = true;
-
-        Video.SetActive(true);
-        Invoke("ReStart", 24f);
-
-    }
-    void ReStart()
-    {
-        Video.SetActive(false);
-        MainCanvas.SetActive(true);
-        BGM.Play();
         canvasGroup.alpha = 1f;
         if (dialogueList1.Count > 0 && !PlayerData.isEnglish)
         {
@@ -54,16 +39,10 @@ public class TypingEffect : MonoBehaviour
             StartCoroutine(InitialDelayCoroutine2());
         }
     }
-    public void FirstSkip()
-    {
-        ReStart();
-    }
+   
     public void Skip()
     {
-        BGM.Stop();
-        LoadingUI.SetActive(true);
-
-        Invoke("StartScene", 2f);
+       // 로딩씬 -> 2DEnterScene 이동 구현 12.15
     }
     private IEnumerator InitialDelayCoroutine1()
     {
@@ -91,9 +70,11 @@ public class TypingEffect : MonoBehaviour
             waitForClick = true; 
             while (waitForClick)
             {
-                if (Input.GetMouseButtonDown(0))
+               
+                if (Input.GetMouseButton(0) || Input.GetKeyDown(KeyCode.Space))
                 {
                     ButtonClickSound.Play();
+                    
                     waitForClick = false;
                     break;
 
@@ -129,9 +110,11 @@ public class TypingEffect : MonoBehaviour
             waitForClick = true;
             while (waitForClick)
             {
-                if (Input.GetMouseButtonDown(0))
+               
+                if (Input.GetMouseButton(0) || Input.GetKeyDown(KeyCode.Space))
                 {
                     ButtonClickSound.Play();
+                    
                     waitForClick = false;
                     break;
 
@@ -156,22 +139,22 @@ public class TypingEffect : MonoBehaviour
     private IEnumerator FadeOutAndLoadScene()
     {
         float elapsedTime = 0f;
+       
         while (elapsedTime < fadeDuration)
         {
             canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+       
         canvasGroup.alpha = 0f;
         Cursor.visible = false;
         BGM.Stop();
-        LoadingUI.SetActive(true);
-       
-        Invoke("StartScene", 2f);
+        StartScene();
+
     }
     void StartScene()
     {
-        
-        SceneManager.LoadScene(nextSceneName);
+        // 로딩씬 -> 2DEnterScene 이동 구현 12.15
     }
 }

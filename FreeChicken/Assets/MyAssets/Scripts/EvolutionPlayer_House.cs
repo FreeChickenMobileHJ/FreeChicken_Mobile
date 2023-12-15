@@ -160,37 +160,8 @@ public class EvloutionPlayer : MonoBehaviour
 
     void NextScene()
     {
-        if (File.Exists("PlayerData.json"))
-        {
-            GameSave.Level = 10;
-            string jsonData = File.ReadAllText("playerData.json");
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-            if (loadedData.LevelChk >= GameSave.Level)
-            {
-                GameSave.Level = loadedData.LevelChk;
-            }
-            else
-            {
-                GameSave.Level = 10;
-            }
-        }
-        else
-        {
-            GameSave.Level = 10;
-        }
-        PlayerData playerData = new PlayerData();
-        playerData.LevelChk = GameSave.Level;
-
-
-        string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-
-
-        LoadSceneInfo.LevelCnt = 2;
-
-        SceneManager.LoadScene("LoadingScene");
+        GameSave.Level = 10;
+        LoadingSceneManager.LoadScene("Enter2DScene");
     }
 
     private void HandleCameraRotation()

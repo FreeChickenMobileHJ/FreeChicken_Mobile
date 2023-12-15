@@ -135,19 +135,12 @@ public class FactoryPlayer_3 : MonoBehaviour
     }
     void Update()
     {
-
         if (!isTalk && !isDie && !isAttack && !isTruckGo && !isPotion)
         {
             Move();
             GetInput();
             Turn();
-
-
         }
-
-        
-     
-
     }
     IEnumerator TruckGoStart()
     {
@@ -191,39 +184,9 @@ public class FactoryPlayer_3 : MonoBehaviour
         }
     }
     void Finish()
-    {
-       
-        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
-        {
-            GameSave.Level = 5;
-            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-            if (loadedData.LevelChk >= GameSave.Level)
-            {
-                GameSave.Level = loadedData.LevelChk;
-            }
-            else
-            {
-                GameSave.Level = 5;
-            }
-        }
-        else
-        {
-            GameSave.Level = 5;
-        }
-
-        PlayerData playerData = new PlayerData();
-        playerData.LevelChk = GameSave.Level;
-
-
-        string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-        LoadSceneInfo.is2DEnterScene = true;
-        PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
-        LoadSceneInfo.LevelCnt = 2;
-        SceneManager.LoadScene("LoadingScene");
+    {            
+        GameSave.Level = 5;       
+        LoadingSceneManager.LoadScene("Enter2DScene"); // 12.15 ¼öÁ¤¿Ï
     }
  
     public void TouchText()

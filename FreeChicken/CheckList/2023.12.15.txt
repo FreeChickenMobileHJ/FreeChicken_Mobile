@@ -1,0 +1,12 @@
+// J.ver
+1. StartSceneShow 씬 변경 & 최적화 완료
+2. Enter2DScene 레벨 디자인 변경 & 최적화 완료
+3. Enter2DScene GameState 수정 완료
+4. File 저장 로드 부분 수정 완료
+ (GameSave, FactoryNPC, FactoryPlayer3,CaveScenePlayer,HousePlayer1,2,3,EvolustionPlayer, CityToCave.cs)
+
+// 해야할 것 
+1. GameManager isTalk 부분 전면 수정
+2. FactoryScene3 PC_2.0처럼 레벨 수정
+3. FactoryScene4 PC_2.0_Easy 처럼 레벨 수정
+4. 코드 정형화 진행

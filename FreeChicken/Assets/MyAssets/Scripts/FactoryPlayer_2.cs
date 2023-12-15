@@ -240,36 +240,8 @@ public class FactoryPlayer_2 : MonoBehaviour
     }
     void RoadScene()
     {
-        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
-        {
-            GameSave.Level = 4;
-            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-            if (loadedData.LevelChk >= GameSave.Level)
-            {
-                GameSave.Level = loadedData.LevelChk;
-            }
-            else
-            {
-                GameSave.Level = 4;
-            }
-        }
-        else
-        {
-            GameSave.Level = 4;
-        }
-
-        PlayerData playerData = new PlayerData();
-        playerData.LevelChk = GameSave.Level;
-
-
-        string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-        LoadSceneInfo.LevelCnt = 2;
-        
-        SceneManager.LoadScene("LoadingScene");
+        GameSave.Level = 4;
+        LoadingSceneManager.LoadScene("Enter2DScene");
         
        
     }

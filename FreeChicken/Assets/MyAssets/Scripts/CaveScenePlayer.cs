@@ -765,11 +765,8 @@ public class CaveScenePlayer : MonoBehaviour
         }
 
         if (other.gameObject.name == "FinalPoint")
-        {
-            LoadSceneInfo.isEndScene = true;
-            PlayerPrefs.SetInt("SceneEnd", LoadSceneInfo.isEndScene ? 1 : 0);
-            LoadSceneInfo.LevelCnt = 3;
-            SceneManager.LoadScene("LoadingScene");
+        {           
+            LoadingSceneManager.LoadScene("EndingScene"); // 12.15
         }
 
         if(other.CompareTag("Poison")&&!isReversed)
@@ -903,38 +900,8 @@ public class CaveScenePlayer : MonoBehaviour
     {
         SavePoint2Obj.gameObject.SetActive(false);
         GameSave.Level = 12;
-
-        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
-            {
-                
-                string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-                PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-                if (loadedData.LevelChk >= GameSave.Level)
-                {
-                    GameSave.Level = loadedData.LevelChk;
-                }
-            else
-            {
-                GameSave.Level = 12;
-            }
-        }
-        else
-        {
-            GameSave.Level = 12;
-        }
-
-        PlayerData playerData = new PlayerData();
-        playerData.LevelChk = GameSave.Level;
-
-
-        string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-
-        LoadSceneInfo.LevelCnt = 2;
-
-        SceneManager.LoadScene("LoadingScene");
+        LoadingSceneManager.LoadScene("Enter2DScene");
+        //SceneManager.LoadScene("LoadingScene");
 
     }
 
@@ -942,38 +909,7 @@ public class CaveScenePlayer : MonoBehaviour
     {
         SavePoint3Obj.gameObject.SetActive(false);
         GameSave.Level = 13;
-
-        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
-        {
-
-            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-            if (loadedData.LevelChk >= GameSave.Level)
-            {
-                GameSave.Level = loadedData.LevelChk;
-            }
-            else
-            {
-                GameSave.Level = 13;
-            }
-        }
-        else
-        {
-            GameSave.Level = 13;
-        }
-
-        PlayerData playerData = new PlayerData();
-        playerData.LevelChk = GameSave.Level;
-
-
-        string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-
-        LoadSceneInfo.LevelCnt = 2;
-
-        SceneManager.LoadScene("LoadingScene");
+        LoadingSceneManager.LoadScene("Enter2DScene");
 
     }
 
@@ -981,109 +917,41 @@ public class CaveScenePlayer : MonoBehaviour
     {
         SavePoint4Obj.gameObject.SetActive(false);
         GameSave.Level = 14;
-
-        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
-        {
-
-            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-            if (loadedData.LevelChk >= GameSave.Level)
-            {
-                GameSave.Level = loadedData.LevelChk;
-            }
-            else
-            {
-                GameSave.Level = 14;
-            }
-        }
-        else
-        {
-            GameSave.Level = 14;
-        }
-
-        PlayerData playerData = new PlayerData();
-        playerData.LevelChk = GameSave.Level;
-
-
-        string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-
-        LoadSceneInfo.LevelCnt = 2;
-
-        SceneManager.LoadScene("LoadingScene");
+        LoadingSceneManager.LoadScene("Enter2DScene");
 
     }
     void Destroy_SavePointObj5()
     {
         //SavePoint5Obj.gameObject.SetActive(false);
         GameSave.Level = 15;
-
-        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
-        {
-
-            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-            if (loadedData.LevelChk >= GameSave.Level)
-            {
-                GameSave.Level = loadedData.LevelChk;
-            }
-            else
-            {
-                GameSave.Level = 15;
-            }
-        }
-        else
-        {
-            GameSave.Level = 15;
-        }
-
-        PlayerData playerData = new PlayerData();
-        playerData.LevelChk = GameSave.Level;
-
-
-        string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-
-        LoadSceneInfo.LevelCnt = 2;
-
-        SceneManager.LoadScene("LoadingScene");
+        LoadingSceneManager.LoadScene("Enter2DScene");
 
     }
     //------------restart_stage-----------------------------------------
     void restart_stage0()
-    {
-       
+    {      
         rigid.MovePosition(Pos_0);
-         FirstCam.Priority = 999;      
+        FirstCam.Priority = 999;      
     }
     void restart_stage1()
     {       
-        rigid.MovePosition(Pos_1);
-        //this.transform.position = SavePoint1Obj.gameObject.transform.position;      
+        rigid.MovePosition(Pos_1);      
     }
     void restart_stage2()
     {
-        rigid.MovePosition(Pos_2);
-        // this.transform.position = SavePoint2Obj.gameObject.transform.position;
+        rigid.MovePosition(Pos_2);       
     }
     void restart_stage3()
     {
-        rigid.MovePosition(Pos_3);
-        //this.transform.position = SavePoint3Obj.gameObject.transform.position;        
+        rigid.MovePosition(Pos_3);       
     }
     void restart_stage4()
     {       
-        rigid.MovePosition(Pos_4);
-        //this.transform.position = SavePoint4Obj.gameObject.transform.position;      
+        rigid.MovePosition(Pos_4);       
     }
     void restart_stage5()
     {
-        rigid.MovePosition(Pos_5);    
-        //this.transform.position = SavePoint5Obj.gameObject.transform.position;       
+        rigid.MovePosition(Pos_5);           
     }
     void remove_dieUI()
     {
@@ -1134,8 +1002,6 @@ public class CaveScenePlayer : MonoBehaviour
     {
         if (Dead )
         {
-
-           
              hAxis = 0;
              vAxis = 0;
              Dash = false;

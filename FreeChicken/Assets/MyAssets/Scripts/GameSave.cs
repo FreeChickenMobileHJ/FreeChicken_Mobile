@@ -20,6 +20,7 @@ public class GameSave : MonoBehaviour
     public static bool isCave_4;*/
 
     [Header("GameObject")]
+   
     public GameObject Factory_2; // 2
     public GameObject Factory_3; // 3
     public GameObject Factory_4; // 4
@@ -35,13 +36,14 @@ public class GameSave : MonoBehaviour
     public GameObject Cave_2;    // 12
     public GameObject Cave_3;    // 13
     public GameObject Cave_4;    // 14
-    public GameObject Cave_5;
+    public GameObject Cave_5;    // 15
 
     public GameObject[] Objects;
    
     public AudioSource ShowSound;
 
     [Header("Particle")]
+    public ParticleSystem ShowParticle_Factory_1;
     public ParticleSystem ShowParticle_Factory_2;
     public ParticleSystem ShowParticle_Factory_3;
     public ParticleSystem ShowParticle_Factory_4;
@@ -63,17 +65,15 @@ public class GameSave : MonoBehaviour
     public bool isExist;
   
     private void Awake()
-    {
-
-      
+    {     
         if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
-
             string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-
-            Level = loadedData.LevelChk;
+            if(loadedData.LevelChk >= Level)
+            { 
+                Level = loadedData.LevelChk;
+            }
 
         }
         for (int i = 1; i < Level; i++)
@@ -87,6 +87,15 @@ public class GameSave : MonoBehaviour
 
     public void Start()
     {
+        if(Level == 0 && !isChk)
+        {
+            
+            ShowSound.Play();
+
+            ShowParticle_Factory_1.Play();
+            SetFile();
+            isChk = true;
+        }
 
         if (Level == 2 && !isChk)
         {
@@ -243,7 +252,7 @@ public class GameSave : MonoBehaviour
         }
         string json = JsonUtility.ToJson(playerData);
         
-        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", json);
         
 
     }

@@ -5,23 +5,10 @@
 - c. Housescene_5에서 Unicycle대화할 때 플레이어 카메라 수정 + 움직임 막기 (o)
 - HouseScene4,5에서 대화 모바일 버전에 맞게 바꾸기 (o)
 
-2. GameManager 스크립트 수정
-- a. HouseScene5에서 EvolutionPlayer도 일시정지 구현되게 수정 (o)
-
-3. 모든 레벨 UI 알맞게 조정 및 맞추기 (o)
-- a. StartScene_Final 
-- b. FactoryScene 1,2,3,4
-- c. HouseScene 1,2,3,4,5
-- d. CityScene
-- e. CaveScene(1,2,3,4,5)
-
-4. CaveScene 수정
+2. CaveScene 수정
 - a. CaveScene(1,2,3,4,5)에서 벽뚫리는 곳 막기 (특히 2,4부분) 
 
-5. 모바일 발열/배터리 테스트해서 고치는 중 
-
-6. StartScene
-- a. 검은색배경말고 나레이션과 맞게끔 씬 수정할지 고민
+3. 모바일 발열/배터리 테스트해서 고치기
 
 
 // J.ver

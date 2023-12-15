@@ -102,79 +102,14 @@ public class FactoryNPC : MonoBehaviour
         if(player != null && !isFactory_2)
         {
            
-            GameSave.Level = 2;
-            if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
-            {
-                
-                string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-                PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-                if (loadedData.LevelChk >= GameSave.Level)
-                {
-                    GameSave.Level = loadedData.LevelChk;
-                }
-                else
-                {
-                    GameSave.Level = 2;
-                }
-            }
-            else
-            {
-                GameSave.Level = 2;
-            }
-
-
-            PlayerData playerData = new PlayerData();
-            playerData.LevelChk = GameSave.Level;
-
-
-            string json = JsonUtility.ToJson(playerData);
-
-            File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-
-            LoadSceneInfo.is2DEnterScene = true;
-            PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
-            LoadSceneInfo.LevelCnt = 2;
-            SceneManager.LoadScene("LoadingScene");
+            GameSave.Level = 2;           
+            LoadingSceneManager.LoadScene("Enter2DScene"); // 12.15 ¼öÁ¤¿Ï
         }
         if(player != null && isFactory_2)
         {
            
-
             GameSave.Level = 3;
-
-            if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
-            {
-                
-                string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-                PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-                if (loadedData.LevelChk >= GameSave.Level)
-                {
-                    GameSave.Level = loadedData.LevelChk;
-                }
-                else
-                {
-                    GameSave.Level = 3;
-                }
-            }
-            else
-            {
-                GameSave.Level = 3;
-            }
-            PlayerData playerData = new PlayerData();
-            playerData.LevelChk = GameSave.Level;
-
-
-            string json = JsonUtility.ToJson(playerData);
-
-            File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-
-
-            LoadSceneInfo.is2DEnterScene = true;
-            PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
-            LoadSceneInfo.LevelCnt = 2;
-            SceneManager.LoadScene("LoadingScene");
+            LoadingSceneManager.LoadScene("Enter2DScene");
         }
         CamImage.SetActive(false);
         GetMemoryUI.SetActive(false);
