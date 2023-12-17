@@ -20,7 +20,7 @@ MonoBehaviour:
     - rid: 6879290521237585920
   m_TableData:
   - m_Id: 408735858688
-    m_Localized: Play
+    m_Localized: Easy
     m_Metadata:
       m_Items: []
   - m_Id: 599937400832
@@ -36,7 +36,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1382456115200
-    m_Localized: Settings
+    m_Localized: Option
     m_Metadata:
       m_Items: []
   - m_Id: 2831332294656
@@ -112,10 +112,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 79090225659904
-    m_Localized: 'Obtained Camera Rotation Ability!
+    m_Localized: 'Obtained Walking Ability (SHIFT) + Mouse Rotation Ability!
 
-      Use these abilities to
-      escape from the house!'
+      Use
+      these abilities to escape from the house!'
     m_Metadata:
       m_Items: []
   - m_Id: 80904698347520
@@ -169,7 +169,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 387206079201280
-    m_Localized: 'Let''s create a path(                key to change the route
+    m_Localized: 'Let''s create a path(       key to change the route
 
       key
       to confirm'
@@ -234,8 +234,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 406401298874368
-    m_Localized: "Gain the dash ability! Press Dash to speed up! \nLet's use the
-      ability to escape the cave!"
+    m_Localized: "Gain the dash ability! Press X to speed up! \nLet's use the ability
+      to escape the cave!"
     m_Metadata:
       m_Items: []
   - m_Id: 407142650494976
@@ -262,8 +262,19 @@ MonoBehaviour:
     m_Localized: "There's a car over there! \nLet's get on it right away!"
     m_Metadata:
       m_Items: []
-  - m_Id: 15615032446267392
-    m_Localized: 
+  - m_Id: 30815550658461696
+    m_Localized: You. . . Die. . . Try. . . Again. . .
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31109908146307072
+    m_Localized: Hard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32461238212341760
+    m_Localized: 'You. . . Stupid Chick. . .
+
+      Not. . . Hear. . . Try. . . Again.
+      . .'
     m_Metadata:
       m_Items: []
   references:

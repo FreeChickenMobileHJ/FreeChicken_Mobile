@@ -25,6 +25,8 @@ public class FactorySceneChangeZone : MonoBehaviour
 
     public TextMeshProUGUI Rtxt;
     public TextMeshProUGUI Etxt;
+
+    public ObjectPool objectPool;
     [Header("Bool")]
     public bool isButton;
     public bool isL;
@@ -34,9 +36,7 @@ public class FactorySceneChangeZone : MonoBehaviour
     public bool isScene_2;
     public bool isChk;
     public bool isEnd;
-   
-   
-
+ 
     [Header("Camera")]
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera ChangeCam;
@@ -47,10 +47,7 @@ public class FactorySceneChangeZone : MonoBehaviour
     }
     void Update()
     {
-        /*if (isButton)
-        {
-            Chk();
-        }*/
+       
         if(Player.GetComponent<FactoryPlayer_2>().isDie)
         {
 
@@ -153,8 +150,7 @@ public class FactorySceneChangeZone : MonoBehaviour
             isButton = true;
             ChangeCam.Priority = 3;
             mainCam.Priority = 1;
-            Invoke("SpawnBigEgg", 3f);
-           
+            StartCoroutine(SpawnBigEgg());
         }
     }
     private void OnTriggerExit(Collider other)
@@ -168,11 +164,13 @@ public class FactorySceneChangeZone : MonoBehaviour
             mainCam.Priority = 3;
         }
     }
-    void SpawnBigEgg()
+    IEnumerator SpawnBigEgg()
     {
-        Instantiate(BigEgg, Pos.transform.position, Quaternion.identity);
-       
-       
+        yield return new WaitForSeconds(2f);
+        GameObject obj = objectPool.GetObjectFromPool(Pos.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(3f);
+        objectPool.ReturnObjectToPool(obj);
+
     }
    
 }

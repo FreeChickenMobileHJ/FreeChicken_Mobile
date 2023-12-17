@@ -28,6 +28,7 @@ public class CityScenePlayer : MonoBehaviour
 
     public bool isLast;
     public bool isAllStop;
+   
     public GameObject TalkUI;
 
     public GameObject Cam;

@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        path = Path.Combine(Application.persistentDataPath, "playerData.json");
+        path = Path.Combine(Application.persistentDataPath, "/PlayerData.json");
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
             factoryPlayer1 = GameObject.FindGameObjectWithTag("Player").GetComponent<FactoryPlayer>();
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
             evolutionPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<EvloutionPlayer>();
             cityPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CityScenePlayer>();
             //cavePlayer = GameObject.Find("CaveCharacter").GetComponent<CaveScenePlayer>();
-            cavePlayer = GameObject.Find("CaveCharacter")?.GetComponent<CaveScenePlayer>();
+            cavePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CaveScenePlayer>();
 
         }
         if (memCnt != null)
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
                 factoryPlayer1.mainAudio.Pause();
                 factoryPlayer1.runAudio.Pause();
                 Time.timeScale = 0f;
-                factoryPlayer1.isTalk = true;
+                factoryPlayer1.isUnActive = true;
                 //isFactory_1 = true;
             }
             else if (factoryPlayer2 != null)
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
                 menuSet.SetActive(true);
                 factoryPlayer2.BGM.Pause();
                 Time.timeScale = 0f;
-                factoryPlayer2.isTalk = true;
+                factoryPlayer2.isUnActive = true;
                 //isFactory_2 = true;
             }
             else if (factoryPlayer3 != null)
@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
                 menuSet.SetActive(true);
                 factoryPlayer3.BGM.Pause();
                 Time.timeScale = 0f;
-                factoryPlayer3.isTalk = true;
+                factoryPlayer3.isUnActive = true;
                 //isFactory_3 = true;
             }
             else if (housePlayer1 != null)
@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
                 housePlayer1.mainAudio.Pause();
                 housePlayer1.runAudio.Pause();
                 Time.timeScale = 0f;
-                housePlayer1.isTalk = true;
+                housePlayer1.isUnActive = true;
             }
             else if (housePlayer2 != null || evolutionPlayer != null)
             {
@@ -162,8 +162,8 @@ public class GameManager : MonoBehaviour
                     housePlayer2.mainAudio.Pause();
                     housePlayer2.runAudio.Pause();
                     Time.timeScale = 0f;
-                    housePlayer2.isTalk1 = true;
-                    housePlayer2.isTalk2 = true;
+                    housePlayer2.isUnActive = true;
+                   
                 }
                 else if (isHouse_5_Player2)
                 {
@@ -171,8 +171,8 @@ public class GameManager : MonoBehaviour
                     housePlayer2.mainAudio.Pause();
                     housePlayer2.runAudio.Pause();
                     Time.timeScale = 0f;
-                    housePlayer2.isTalk1 = true;
-                    housePlayer2.isTalk2 = true;
+                    housePlayer2.isUnActive = true;
+                    
                 }
                 else if (isHouse_5_EvoluPlayer)
                 {
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
                     evolutionPlayer.mainAudio.Pause();
                     evolutionPlayer.runAudio.Pause();
                     Time.timeScale = 0f;
-                    evolutionPlayer.isTalk2 = true;
+                    evolutionPlayer.isUnActive = true;
                 }
             }
             else if (cityPlayer != null)
@@ -197,18 +197,14 @@ public class GameManager : MonoBehaviour
                 menuSet.SetActive(true);
                 cavePlayer.mainAudio.Pause();
                 Time.timeScale = 0f;
-                cavePlayer.isTalk = true;
-                //isCave = true;
+                cavePlayer.isUnActive = true;
+                
             }
             else if (isMain)
             {
                 menuSet.SetActive(true);
                 Time.timeScale = 0f;
-                /*if (MainBGM != null)
-                {
-                    MainBGM.Pause();
-                }*/
-
+               
             }
         }
     }

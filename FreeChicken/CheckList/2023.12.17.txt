@@ -1,0 +1,10 @@
+// J.ver
+1. GameManager isTalk 부분 전면 수정 완료
+2. FactoryScene3 PC_2.0처럼 레벨 수정 완료
+3. FactoryScene4 PC_2.0_Easy 처럼 레벨 수정 완료
+4. 모든 Scene DieCanvas -> Text Table 추가 완료
+5. 코드 정형화 진행 중
+
+// 해야할 것 
+1. QA 진행
+2. 오브젝트 풀 진행

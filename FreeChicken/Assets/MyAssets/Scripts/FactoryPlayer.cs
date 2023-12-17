@@ -53,6 +53,7 @@ public class FactoryPlayer : MonoBehaviour
 
     public bool isEnglish;
     public bool isChk;
+    public bool isUnActive;
     [Header("UI")]
     public GameObject turnEggCanvas;
     public GameObject changeEggCanvas;
@@ -141,20 +142,12 @@ public class FactoryPlayer : MonoBehaviour
     }
     private void Update()
     {
-        if (!isTalk && !isEgg && !isDie && !isStart && !isPickUp && !isStamp)
+        if (!isUnActive &&!isTalk && !isEgg && !isDie && !isStart && !isPickUp && !isStamp)
         {
             Turn();
-
+            Move();
+            GetInput();
         }
-    }
-    private void FixedUpdate()
-    {
-       if (!isTalk && !isEgg && !isDie && !isStart && !isPickUp && !isStamp)
-       {
-           Move();
-           GetInput();
-           
-       }     
     }
     IEnumerator PickUPStart()
     {

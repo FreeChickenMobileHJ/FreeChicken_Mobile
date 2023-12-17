@@ -9,7 +9,8 @@ public class FactorySceneSmallManager : MonoBehaviour
     public bool isAttack;
     Animator animator;
     public GameObject pos;
-  
+    public GameObject obj;
+    public ObjectPool objectPool;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -17,6 +18,7 @@ public class FactorySceneSmallManager : MonoBehaviour
         if (EggBox != null)
         {
             InvokeRepeating("SpawnEggBox", 2f, 3f);
+            
         }
 
         int n = Random.Range(0, 2);
@@ -46,8 +48,10 @@ public class FactorySceneSmallManager : MonoBehaviour
     }
     void SpawnEggBox()
     {
-        Instantiate(EggBox, pos.transform.position,pos.transform.rotation);
+        obj = objectPool.GetObjectFromPool(pos.transform.position, Quaternion.identity);        
     }
+   
+        
     IEnumerator Attack()
     {
         animator.SetBool("isAttack", true);

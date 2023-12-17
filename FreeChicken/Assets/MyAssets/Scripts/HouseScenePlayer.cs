@@ -40,6 +40,7 @@ public class HouseScenePlayer : MonoBehaviour
     public bool isHouse1;
     public bool isHouse2;
     public bool isEnglish;
+    public bool isUnActive;
     public bool isRotating = false;
     private Quaternion originalCameraRotation;
     private float rotationTimer = 0.0f;
@@ -146,7 +147,7 @@ public class HouseScenePlayer : MonoBehaviour
 
     IEnumerator CO_notDead()
     {
-        while (!Dead)
+        while (isUnActive && !Dead)
         {
             DiePs.gameObject.SetActive(false);
 

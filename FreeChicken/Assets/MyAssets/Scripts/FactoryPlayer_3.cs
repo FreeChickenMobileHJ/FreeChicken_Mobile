@@ -64,6 +64,7 @@ public class FactoryPlayer_3 : MonoBehaviour
 
     public bool isTouchText;
     public bool isChk;
+    public bool isUnActive;
     [Header("UI")]
     public GameObject startUI;
     public GameObject mainUI;
@@ -135,7 +136,7 @@ public class FactoryPlayer_3 : MonoBehaviour
     }
     void Update()
     {
-        if (!isTalk && !isDie && !isAttack && !isTruckGo && !isPotion)
+        if (!isUnActive && !isTalk && !isDie && !isAttack && !isTruckGo && !isPotion)
         {
             Move();
             GetInput();

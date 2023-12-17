@@ -32,7 +32,7 @@ public class FactoryMoveObj : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("PickUpPoc"))
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

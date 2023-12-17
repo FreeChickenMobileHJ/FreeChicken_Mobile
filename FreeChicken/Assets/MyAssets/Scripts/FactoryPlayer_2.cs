@@ -30,6 +30,7 @@ public class FactoryPlayer_2 : MonoBehaviour
     public bool isStopSlide; 
     public bool isContact;
     public bool isLoading;
+    public bool isUnActive;
     
     [Header("Stats")]
     public GameObject StampTMP;
@@ -42,6 +43,9 @@ public class FactoryPlayer_2 : MonoBehaviour
     public GameObject SpawnPos;
     public MemoryCount memCnt;
     public FactoryNPC npc;
+    public GameObject slidePs_1;
+    public GameObject slidePs_2;
+
     [Header("UI")]
     public GameObject scene2LastUI;
     
@@ -73,18 +77,14 @@ public class FactoryPlayer_2 : MonoBehaviour
         StartCoroutine(PickUPStart());
     }
     void Update()
-    { 
+    {
 
-        if (!isTalk && !isDie)
+        if (!isTalk && !isDie && !isUnActive)
         {
             Move();
             GetInput();
             Turn();
-            
-            
-        }
-       
-      
+        }    
     }
     IEnumerator PickUPStart()
     {
@@ -118,31 +118,22 @@ public class FactoryPlayer_2 : MonoBehaviour
    
     public void GetInput()
     {
-
         hAxis = joystick.Horizontal;
         vAxis = joystick.Vertical;
-
     }
 
     void Move()
     {
-
-
         if (!(hAxis == 0 && vAxis == 0))
         {
             moveVec = new Vector3(hAxis, 0, vAxis).normalized;
-
             transform.position += moveVec * speed * Time.deltaTime * 1f;
             anim.SetBool("isWalk", true);
-
-
         }
         else if (hAxis == 0 && vAxis == 0)
         {
             anim.SetBool("isWalk", false);
         }
-
-
     }
     void Turn()
     {
@@ -150,7 +141,6 @@ public class FactoryPlayer_2 : MonoBehaviour
     }
     public void Jump()
     {
-
         if (!isJump)
         {
             anim.SetTrigger("doJump");
@@ -158,12 +148,7 @@ public class FactoryPlayer_2 : MonoBehaviour
             isJump = true;
             jumpAudio.Play();
             jumpParticle.Play();
-
-
-        }
-
-        
-
+        }       
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -175,6 +160,17 @@ public class FactoryPlayer_2 : MonoBehaviour
             isSlide = false;
             isStamp = true;
             thisRealObj.gameObject.transform.localScale = new Vector3(2f, 0.5f, 2f);
+            pickUpParticle.SetActive(true);
+            Invoke("PickUP", 2f);
+
+        }
+        if (collision.gameObject.CompareTag("PickUpPoc") && !isStamp)
+        {
+            StampTMP = collision.gameObject;
+            pickUpCam.Priority = 100;
+            mainCam.Priority = 1;
+            isSlide = false;
+            isStamp = true;
             pickUpParticle.SetActive(true);
             Invoke("PickUP", 2f);
 
@@ -236,6 +232,12 @@ public class FactoryPlayer_2 : MonoBehaviour
                 MemCountUI.gameObject.SetActive(true);
                 Invoke("ExitCanvas", 1.5f);
             }
+        }
+        if (other.CompareTag("Item"))
+        {
+            this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 7f, Space.World);
+            slidePs_1.SetActive(true);
+            slidePs_2.SetActive(true);  
         }
     }
     void RoadScene()

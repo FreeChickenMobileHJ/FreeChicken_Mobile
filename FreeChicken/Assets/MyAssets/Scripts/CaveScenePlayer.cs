@@ -71,6 +71,7 @@ public class CaveScenePlayer : MonoBehaviour
     public bool canHandleCollision = true;
     public bool isSaveChk;
     public bool MomContacting;
+    public bool isUnActive;
     [Header("Camera")]
     
     public CinemachineVirtualCamera mainCam;
@@ -234,21 +235,21 @@ public class CaveScenePlayer : MonoBehaviour
     }
     private void Update()
     {
-        if (!Dead && !isReversed && !isTalk)
+        if (!isUnActive && !Dead && !isReversed && !isTalk)
         {
             Move();
 
             GetInput();
 
         }
-        if (!Dead && isReversed && !isTalk)
+        if (!isUnActive && !Dead && isReversed && !isTalk)
         {
             ReversalMove();
 
             GetInput();
 
         }
-        if (isTalk)
+        if (isUnActive && isTalk)
         {
             anim.SetBool("isRun", false);
         }

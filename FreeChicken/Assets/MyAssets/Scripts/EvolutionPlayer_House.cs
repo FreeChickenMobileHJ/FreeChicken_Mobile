@@ -53,6 +53,7 @@ public class EvloutionPlayer : MonoBehaviour
     public GameObject ReadygoCity;
     public bool isTalk2;
     public bool TalkEnd2;
+    public bool isUnActive;
 
     // 진화효과
     private bool isRotating = false;
@@ -82,7 +83,7 @@ public class EvloutionPlayer : MonoBehaviour
 
     IEnumerator CO_notDead()
     {
-        while (!Dead)
+        while (!isUnActive && !Dead)
         {
             if (!isTalk2)
             {

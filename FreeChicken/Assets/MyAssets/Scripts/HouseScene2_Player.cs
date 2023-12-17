@@ -81,6 +81,7 @@ public class HouseScene2_Player : MonoBehaviour
 
     public Vector3 ResPawnPos1;
     public Vector3 ResPawnPos2;
+    public bool isUnActive;
 
     void Awake()
     {
@@ -102,7 +103,7 @@ public class HouseScene2_Player : MonoBehaviour
     {
         while(true)
         {
-            if (!Dead)
+            if (!isUnActive && !Dead)
             {
                 if (!isTalk1 || !isTalk2)
                 {
@@ -279,35 +280,8 @@ public class HouseScene2_Player : MonoBehaviour
 
     void NextScene()
     {
-        if (File.Exists("PlayerData.json"))
-        {
-            GameSave.Level = 9;
-            string jsonData = File.ReadAllText("playerData.json");
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-            if (loadedData.LevelChk >= GameSave.Level)
-            {
-                GameSave.Level = loadedData.LevelChk;
-            }
-            else
-            {
-                GameSave.Level = 9;
-            }
-        }
-        else
-        {
-            GameSave.Level = 9;
-        }
-
-        PlayerData playerData = new PlayerData();
-        playerData.LevelChk = GameSave.Level;
-
-
-        string json = JsonUtility.ToJson(playerData);
-
-        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-        LoadSceneInfo.LevelCnt = 2;
-        SceneManager.LoadScene("LoadingScene");
+        GameSave.Level = 9;
+        LoadingSceneManager.LoadScene("Enter2DScene");
     }
 
     void Destroy_()
