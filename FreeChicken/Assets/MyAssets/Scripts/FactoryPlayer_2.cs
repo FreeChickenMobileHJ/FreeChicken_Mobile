@@ -31,7 +31,7 @@ public class FactoryPlayer_2 : MonoBehaviour
     public bool isContact;
     public bool isLoading;
     public bool isUnActive;
-    
+    public bool isSave;
     [Header("Stats")]
     public GameObject StampTMP;
     public GameObject DieCanvas;
@@ -45,12 +45,14 @@ public class FactoryPlayer_2 : MonoBehaviour
     public FactoryNPC npc;
     public GameObject slidePs_1;
     public GameObject slidePs_2;
+    public GameObject SavePos;
 
     [Header("UI")]
     public GameObject scene2LastUI;
     
     public GameManager gameManager;
     public GameObject MemCountUI;
+    public GameObject savePointImage;
 
     [Header("Camera")]
     public CinemachineVirtualCamera mainCam;
@@ -63,6 +65,8 @@ public class FactoryPlayer_2 : MonoBehaviour
     public AudioSource dieAudio;
     public AudioSource changeConAudio;
     public AudioSource bombAudio;
+    public AudioSource saveAudio;
+
    
     private void Start()
     {
@@ -177,7 +181,7 @@ public class FactoryPlayer_2 : MonoBehaviour
 
         }
 
-        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Slide") || collision.gameObject.CompareTag("EggBox"))
+        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Slide") || collision.gameObject.CompareTag("EggBox") || collision.gameObject.CompareTag("Item"))
         {
 
             isJump = false;
@@ -213,7 +217,14 @@ public class FactoryPlayer_2 : MonoBehaviour
         isDie = false;
         thisRealObj.gameObject.transform.localScale = new Vector3(2f, 2f, 2f);
         pickUpParticle.SetActive(false);
-        this.gameObject.transform.position = SpawnPos.transform.position;
+        if (!isSave)
+        {
+            this.gameObject.transform.position = SpawnPos.transform.position;
+        }
+        else if (isSave)
+        {
+            this.gameObject.transform.position = SavePos.transform.position;
+        }
         pickUpCam.Priority = -1;
        
         DieCam.Priority = 1;
@@ -236,18 +247,28 @@ public class FactoryPlayer_2 : MonoBehaviour
         }
         if (other.CompareTag("Item"))
         {
-            this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 7f, Space.World);
+            
             slidePs_1.SetActive(true);
             slidePs_2.SetActive(true);
             bombAudio.Play();
         }
+        if (other.CompareTag("SavePoint_1"))
+        {
+            isSave = true;
+            saveAudio.Play();
+            savePointImage.SetActive(true);
+            other.gameObject.SetActive(false);
+            Invoke("SetActiveFalseImage", 2f);
+        }
+    }
+    void SetActiveFalseImage()
+    {
+        savePointImage.SetActive(false);
     }
     void RoadScene()
     {
         GameSave.Level = 4;
-        LoadingSceneManager.LoadScene("Enter2DScene");
-        
-       
+        LoadingSceneManager.LoadScene("Enter2DScene");     
     }
    
     void OnTriggerStay(Collider other)
@@ -277,6 +298,11 @@ public class FactoryPlayer_2 : MonoBehaviour
 
             this.gameObject.transform.Translate(Vector3.back * Time.deltaTime * 1f, Space.World);
 
+        }
+        if (other.CompareTag("Item"))
+        {
+            this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 15f, Space.World);
+           
         }
     }
     void OnTriggerExit(Collider other)
