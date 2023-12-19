@@ -5,20 +5,6 @@ using System.IO;
 public class GameSave : MonoBehaviour
 {
     public bool isChk;
-  /*  public static bool isFactory_2;
-    public static bool isFactory_3;
-    public static bool isFactory_4;
-    public static bool isHouse_1;
-    public static bool isHouse_2;
-    public static bool isHouse_3;
-    public static bool isHouse_4;
-    public static bool isHouse_5;
-    public static bool isCity;
-    public static bool isCave_1;
-    public static bool isCave_2;
-    public static bool isCave_3;
-    public static bool isCave_4;*/
-
     [Header("GameObject")]
    
     public GameObject Factory_2; // 2
@@ -66,9 +52,9 @@ public class GameSave : MonoBehaviour
   
     private void Awake()
     {     
-        if (File.Exists(Application.persistentDataPath + "/PlayerData.json"))
+        if (File.Exists(Application.persistentDataPath + "/playerData.json"))
         {
-            string jsonData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/playerData.json");
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
             if(loadedData.LevelChk >= Level)
             { 
@@ -252,7 +238,7 @@ public class GameSave : MonoBehaviour
         }
         string json = JsonUtility.ToJson(playerData);
         
-        File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
         
 
     }

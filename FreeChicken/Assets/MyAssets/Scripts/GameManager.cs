@@ -56,8 +56,7 @@ public class GameManager : MonoBehaviour
     public GameObject Control_UI;
     public GameObject WarnningUI;
     public GameObject ExitUI;
-    public GameObject LoadingUI;
-
+  
     public LocaleManager LocaleManager;
     string path;
     public MemoryCount memCnt;
@@ -67,7 +66,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        path = Path.Combine(Application.persistentDataPath, "/PlayerData.json");
+        path = Path.Combine(Application.persistentDataPath + "/playerData.json");
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
             factoryPlayer1 = GameObject.FindGameObjectWithTag("Player").GetComponent<FactoryPlayer>();
@@ -77,7 +76,6 @@ public class GameManager : MonoBehaviour
             housePlayer2 = GameObject.FindGameObjectWithTag("Player").GetComponent<HouseScene2_Player>();
             evolutionPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<EvloutionPlayer>();
             cityPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CityScenePlayer>();
-            //cavePlayer = GameObject.Find("CaveCharacter").GetComponent<CaveScenePlayer>();
             cavePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<CaveScenePlayer>();
 
         }
@@ -233,22 +231,22 @@ public class GameManager : MonoBehaviour
         {
             factoryPlayer1.mainAudio.UnPause();
             factoryPlayer1.runAudio.UnPause();
-            factoryPlayer1.isTalk = false;
+            factoryPlayer1.isUnActive = false;
         }
         else if (isFactory_2 && factoryPlayer1 != null)
         {
             factoryPlayer1.mainAudio.UnPause();
-            factoryPlayer1.isTalk = false;
+            factoryPlayer1.isUnActive = false;
         }
         else if (isFactory_3 && factoryPlayer2 != null)
         {
             factoryPlayer2.BGM.UnPause();
-            factoryPlayer2.isTalk = false;
+            factoryPlayer2.isUnActive = false;
         }
         else if (isFactory_4 && factoryPlayer3 != null)
         {
             factoryPlayer3.BGM.UnPause();
-            factoryPlayer3.isTalk = false;
+            factoryPlayer3.isUnActive = false;
         }
         else if (isCity && cityPlayer != null)
         {
@@ -260,25 +258,25 @@ public class GameManager : MonoBehaviour
         {
             housePlayer1.mainAudio.UnPause();
             housePlayer1.runAudio.UnPause();
-            housePlayer1.isTalk = false;
+            housePlayer1.isUnActive = false;
         }
         else if (isHouse_2 && housePlayer1 != null)
         {
             housePlayer1.mainAudio.UnPause();
             housePlayer1.runAudio.UnPause();
-            housePlayer1.isTalk = false;
+            housePlayer1.isUnActive = false;
         }
         else if (isHouse_3 && housePlayer1 != null)
         {
             housePlayer1.mainAudio.UnPause();
             housePlayer1.runAudio.UnPause();
-            housePlayer1.isTalk = false;
+            housePlayer1.isUnActive = false;
         }
         else if (isHouse_4 && housePlayer2 != null)
         {
             housePlayer2.mainAudio.UnPause();
             housePlayer2.runAudio.UnPause();
-            housePlayer2.isTalk2 = false;
+            housePlayer2.isUnActive = false;
         }
         else if (isHouse_5_Player2 || isHouse_5_EvoluPlayer)
         {
@@ -286,45 +284,40 @@ public class GameManager : MonoBehaviour
             {
                 evolutionPlayer.mainAudio.UnPause();
                 evolutionPlayer.runAudio.UnPause();
-                evolutionPlayer.isTalk2 = false;
+                evolutionPlayer.isUnActive = false;
             }
             else if (housePlayer2 != null)
             {
                 housePlayer2.mainAudio.UnPause();
                 housePlayer2.runAudio.UnPause();
-                housePlayer2.isTalk2 = false;
+                housePlayer2.isUnActive = false;
             }
         }
-        else if (isCity && cityPlayer != null)
-        {
-            cityPlayer.BGM.UnPause();
-            cityPlayer.startAudio.UnPause();
-            cityPlayer.isAllStop = false;
-        }
+       
         else if (isCave_1 && cavePlayer != null)
         {
             cavePlayer.mainAudio.UnPause();
-            cavePlayer.isTalk = false;
+            cavePlayer.isUnActive = false;
         }
         else if (isCave_2 && cavePlayer != null)
         {
             cavePlayer.mainAudio.UnPause();
-            cavePlayer.isTalk = false;
+            cavePlayer.isUnActive = false;
         }
         else if (isCave_3 && cavePlayer != null)
         {
             cavePlayer.mainAudio.UnPause();
-            cavePlayer.isTalk = false;
+            cavePlayer.isUnActive = false;
         }
         else if (isCave_4 && cavePlayer != null)
         {
             cavePlayer.mainAudio.UnPause();
-            cavePlayer.isTalk = false;
+            cavePlayer.isUnActive = false;
         }
         else if (isCave_5 && cavePlayer != null && !cavePlayer.MomContacting)
         {
             cavePlayer.mainAudio.UnPause();
-            cavePlayer.isTalk = false;
+            cavePlayer.isUnActive = false;
         }
         else if (isMain)
         {
@@ -342,67 +335,68 @@ public class GameManager : MonoBehaviour
 
     public void Enter()
     {
-        if (isFactory_1)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isFactory_2)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isFactory_3)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isFactory_4)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
+        /* if (isFactory_1)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isFactory_2)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isFactory_3)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isFactory_4)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
 
-        else if (isHouse_1)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isHouse_2)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isHouse_3)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isHouse_4)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isHouse_5_Player2 || isHouse_5_EvoluPlayer)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isCity)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isCave_1)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isCave_2)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isCave_3)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isCave_4)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
-        else if (isCave_5)
-        {
-            SceneManager.LoadScene("Enter2DScene");
-        }
+         else if (isHouse_1)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isHouse_2)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isHouse_3)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isHouse_4)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isHouse_5_Player2 || isHouse_5_EvoluPlayer)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isCity)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isCave_1)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isCave_2)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isCave_3)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isCave_4)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }
+         else if (isCave_5)
+         {
+             LoadingSceneManager.LoadScene("Enter2DScene");
+         }*/
+        LoadingSceneManager.LoadScene("Enter2DScene");
     }
     public void Enter2dScene()
     {
@@ -478,36 +472,9 @@ public class GameManager : MonoBehaviour
         {
             GameSave.Level = 15;
         }
-        SetAndGo(GameSave.Level);
+        LoadingSceneManager.LoadScene("Enter2DScene");
     }
-    public void SetAndGo(int num)
-    {
-        if (File.Exists(path))
-        {
-
-            string jsonData = File.ReadAllText(path);
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-            if (loadedData.LevelChk >= num)
-            {
-                GameSave.Level = loadedData.LevelChk;
-            }
-            else
-            {
-                GameSave.Level = num;
-            }
-        }
-        else
-        {
-            GameSave.Level = num;
-        }
-
-
-        LoadSceneInfo.is2DEnterScene = true;
-        PlayerPrefs.SetInt("Scene2DEnter", LoadSceneInfo.is2DEnterScene ? 1 : 0);
-        LoadSceneInfo.LevelCnt = 2;
-        SceneManager.LoadScene("LoadingScene");
-    }
+   
     public void AudioSettingScene()
     {
         AudioSettingUI.SetActive(true);
@@ -516,7 +483,7 @@ public class GameManager : MonoBehaviour
     public void StartScene1()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("StartScene_Final");
+        LoadingSceneManager.LoadScene("StartScene_Final");
     }
     public void StartScene2()
     {
@@ -529,18 +496,11 @@ public class GameManager : MonoBehaviour
 
         if (File.Exists(path))
         {
-
-
             string jsonData = File.ReadAllText(path);
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
-
-
             GameSave.Level = loadedData.LevelChk;
-            LoadSceneInfo.is2DEnterScene = true;
-            PlayerPrefs.SetInt("Scene2D", LoadSceneInfo.is2DEnterScene ? 1 : 0);
-            LoadSceneInfo.LevelCnt = 2;
-
-            SceneManager.LoadScene("LoadingScene");
+          
+            LoadingSceneManager.LoadScene("Enter2DScene");
 
         }
         else
@@ -560,11 +520,8 @@ public class GameManager : MonoBehaviour
                     LocaleManager = GetComponent<LocaleManager>();
                     LocaleManager.ChangeLocale(1);
                 }
-            }
-            LoadSceneInfo.isStartScene = true;
-            PlayerPrefs.SetInt("SceneStart", LoadSceneInfo.isStartScene ? 1 : 0);
-            LoadSceneInfo.LevelCnt = 1;
-            SceneManager.LoadScene("LoadingScene");
+            }        
+            LoadingSceneManager.LoadScene("StartSceneShow");
         }
     }
     public void Enter2DExit()
@@ -606,6 +563,7 @@ public class GameManager : MonoBehaviour
             loadedData.LevelChk = 0;
 
         }
+        
         File.Delete(Application.persistentDataPath + "/playerData.json");
 
 
@@ -644,76 +602,76 @@ public class GameManager : MonoBehaviour
         {
 
             memCnt.MemCntChange(0, 1);
-            SceneManager.LoadScene("FactoryScene_1");
+            LoadingSceneManager.LoadScene("FactoryScene_1");
         }
         else if (isFactory_2)
         {
 
 
             memCnt.MemCntChange(1, 2);
-            SceneManager.LoadScene("FactoryScene_2");
+            LoadingSceneManager.LoadScene("FactoryScene_2");
         }
         else if (isFactory_3)
         {
 
 
             memCnt.MemCntChange(2, 3);
-            SceneManager.LoadScene("FactoryScene_3");
+            LoadingSceneManager.LoadScene("FactoryScene_3");
         }
         else if (isFactory_4)
         {
 
             memCnt.MemCntChange(3, 4);
 
-            SceneManager.LoadScene("FactoryScene_4");
+            LoadingSceneManager.LoadScene("FactoryScene_4");
         }
         else if (isHouse_1)
         {
             memCnt.MemCntChange(0, 1);
-            SceneManager.LoadScene("HouseScene1");
+            LoadingSceneManager.LoadScene("HouseScene1");
         }
         else if (isHouse_2)
         {
             memCnt.MemCntChange(1, 2);
-            SceneManager.LoadScene("HouseScene2");
+            LoadingSceneManager.LoadScene("HouseScene2");
         }
         else if (isHouse_3)
         {
             memCnt.MemCntChange(2, 3);
-            SceneManager.LoadScene("HouseScene3");
+            LoadingSceneManager.LoadScene("HouseScene3");
         }
         else if (isHouse_4)
         {
 
-            SceneManager.LoadScene("HouseScene4");
+            LoadingSceneManager.LoadScene("HouseScene4");
         }
         else if (isHouse_5_Player2 || isHouse_5_EvoluPlayer)
         {
-            SceneManager.LoadScene("HouseScene5");
+            LoadingSceneManager.LoadScene("HouseScene5");
         }
         else if (isCity)
         {
-            SceneManager.LoadScene("CityScene");
+            LoadingSceneManager.LoadScene("CityScene");
         }
         else if (isCave_1)
         {
-            SceneManager.LoadScene("CaveScene_1");
+            LoadingSceneManager.LoadScene("CaveScene_1");
         }
         else if (isCave_2)
         {
-            SceneManager.LoadScene("CaveScene_2");
+            LoadingSceneManager.LoadScene("CaveScene_2");
         }
         else if (isCave_3)
         {
-            SceneManager.LoadScene("CaveScene_3");
+            LoadingSceneManager.LoadScene("CaveScene_3");
         }
         else if (isCave_4)
         {
-            SceneManager.LoadScene("CaveScene_4");
+            LoadingSceneManager.LoadScene("CaveScene_4");
         }
         else if (isCave_5)
         {
-            SceneManager.LoadScene("CaveScene_5");
+            LoadingSceneManager.LoadScene("CaveScene_5");
         }
     }
 

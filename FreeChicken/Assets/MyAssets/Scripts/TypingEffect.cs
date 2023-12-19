@@ -42,7 +42,8 @@ public class TypingEffect : MonoBehaviour
    
     public void Skip()
     {
-       // 로딩씬 -> 2DEnterScene 이동 구현 12.15
+        // 로딩씬 -> 2DEnterScene 이동 구현 12.15
+        LoadingSceneManager.LoadScene("Enter2DScene");
     }
     private IEnumerator InitialDelayCoroutine1()
     {
@@ -155,6 +156,6 @@ public class TypingEffect : MonoBehaviour
     }
     void StartScene()
     {
-        // 로딩씬 -> 2DEnterScene 이동 구현 12.15
+        LoadingSceneManager.LoadScene("Enter2DScene");
     }
 }

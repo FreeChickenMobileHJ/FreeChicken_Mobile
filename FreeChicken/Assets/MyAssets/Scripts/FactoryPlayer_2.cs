@@ -62,6 +62,7 @@ public class FactoryPlayer_2 : MonoBehaviour
     public AudioSource BGM;
     public AudioSource dieAudio;
     public AudioSource changeConAudio;
+    public AudioSource bombAudio;
    
     private void Start()
     {
@@ -237,7 +238,8 @@ public class FactoryPlayer_2 : MonoBehaviour
         {
             this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 7f, Space.World);
             slidePs_1.SetActive(true);
-            slidePs_2.SetActive(true);  
+            slidePs_2.SetActive(true);
+            bombAudio.Play();
         }
     }
     void RoadScene()

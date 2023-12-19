@@ -22,7 +22,7 @@ public class LoadingSceneManager : MonoBehaviour
     public static void LoadScene(string sceneName)
     {
         nextScene = sceneName;
-        SceneManager.LoadScene("LoadingScene_Final");
+        SceneManager.LoadScene("LoadingScene");
     }
 
     IEnumerator LoadScene()
@@ -57,22 +57,7 @@ public class LoadingSceneManager : MonoBehaviour
                     yield break;
                 }
             }
-            //else
-            //{
-            //    characterLoading.SetDestination(new Vector3(1.99000001f, 2.5f, 0f));
-
-            //    if (!characterLoading.HasReachedDestination())
-            //    {
-            //        progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, 1f, timer);
-            //        characterLoading.UpdateCharacterMovement(progressBar.fillAmount);
-            //    }
-
-            //    if (progressBar.fillAmount == 1.0f)
-            //    {
-            //        op.allowSceneActivation = true;
-            //        yield break;
-            //    }
-            //}
+         
         }
     }
 }

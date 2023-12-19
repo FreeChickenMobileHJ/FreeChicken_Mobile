@@ -16,8 +16,7 @@ public class Ending : MonoBehaviour
 
     [Header("UI")]
     public GameObject EndingCanvas;
-    public GameObject ButtonCanvas;
-
+    
     [Header("Audio")]
     public AudioSource ChickenAudio;
     public AudioSource ClickButtonAudio;
@@ -51,7 +50,7 @@ public class Ending : MonoBehaviour
     }
     void ButtonShow()
     {
-        ButtonCanvas.SetActive(true);
+        EndingCanvas.SetActive(true);
     }
     void Update()
     {
