@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EggDrop : MonoBehaviour
 {
-    
-    public GameObject[] prefab;
+
+    public GameObject Egg;
     public BoxCollider area;
-    public int cnt = 10;
+    public GameObject go;
+    public int cnt;
 
     bool isEggFalltrue;
-    
-  
+   
     void Start()
     {
         area = GetComponent<BoxCollider>();
@@ -26,6 +26,7 @@ public class EggDrop : MonoBehaviour
             {
                 Spawn();
             }
+           
         }
         isEggFalltrue = false;
        
@@ -33,14 +34,9 @@ public class EggDrop : MonoBehaviour
     void Spawn()
     {
         Vector3 pos = GetRandomPos();
-
-        int selection = Random.Range(0, prefab.Length);
-        GameObject go = prefab[selection];
-        
-        GameObject instance = Instantiate(go, pos, Quaternion.identity);
-        float random = Random.Range(3.5f, 5f);
-        Destroy(instance, random);
        
+        GameObject instance = Instantiate(Egg, pos, Quaternion.identity);
+        Destroy(instance, 3f);
     }
 
     Vector3 GetRandomPos()
@@ -56,6 +52,7 @@ public class EggDrop : MonoBehaviour
         Vector3 pos = area.center + spawnPos;
         return pos;
     }
+  
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -63,7 +60,6 @@ public class EggDrop : MonoBehaviour
            
             isEggFalltrue = true;
            
-
         }      
     }
 }

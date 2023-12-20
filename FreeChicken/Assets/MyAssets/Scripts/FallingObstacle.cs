@@ -5,9 +5,9 @@ using UnityEngine;
 public class FallingObstacle : MonoBehaviour
 {
     public ObjectPool objectPool;
-    public GameObject[] prefab;
+    //public GameObject[] prefab;
     BoxCollider area;
-    public int cnt = 20;
+    public int cnt;
     CaveScenePlayer player;
 
     void Start()
@@ -19,28 +19,22 @@ public class FallingObstacle : MonoBehaviour
     void Update()
     {
         if (player.isfallingBook)
-        {
+        {           
             for (int i = 0; i < cnt; ++i)
             {
                 StartCoroutine(Spawn());
             }
-        }
-        player.isfallingBook = false;
+            player.isfallingBook = false;
+        }       
     }
 
     IEnumerator Spawn()
     {
         Vector3 pos = GetRandomPos();
-        int selection = Random.Range(0, prefab.Length);
-        GameObject go = prefab[selection];
-        //GameObject instance = Instantiate(go, pos, Quaternion.identity);
-        float random = Random.Range(3.5f, 5f);
-        //Destroy(instance, random);
+        GameObject go = objectPool.GetObjectFromPool(pos, Quaternion.identity);
 
-        GameObject instance = objectPool.GetObjectFromPool(pos, Quaternion.identity);
-
-        yield return new WaitForSeconds(3f);
-        objectPool.ReturnObjectToPool(instance);
+        yield return new WaitForSeconds(2f);
+        objectPool.ReturnObjectToPool(go);
     }
 
     Vector3 GetRandomPos()

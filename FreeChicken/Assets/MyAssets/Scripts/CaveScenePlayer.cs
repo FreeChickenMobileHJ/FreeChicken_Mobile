@@ -72,6 +72,7 @@ public class CaveScenePlayer : MonoBehaviour
     public bool isSaveChk;
     public bool MomContacting;
     public bool isUnActive;
+    public bool isDropChk;
     [Header("Camera")]
     
     public CinemachineVirtualCamera mainCam;
@@ -517,18 +518,13 @@ public class CaveScenePlayer : MonoBehaviour
             isSenseTest = true;
         }
 
-        if (other.CompareTag("DropBox"))
+        if (other.CompareTag("DropBox") && !isfallingBook && !isDropChk)
         {
-            fallingAudio.Play();
-            isfallingObstacle = true;
-        }
-
-        if(other.gameObject.name == "SpawnObstaclePos2")
-        {
+            isDropChk = true;
             fallingAudio.Play();
             isfallingBook = true;
+            Invoke("SetDropObj", 4f);
         }
-
 
              
 
@@ -783,6 +779,10 @@ public class CaveScenePlayer : MonoBehaviour
         }
     }
   
+    public void SetDropObj()
+    {
+        isDropChk = false;
+    }
     private IEnumerator ReversePlayerMovement()
     {
         isReversed = true;

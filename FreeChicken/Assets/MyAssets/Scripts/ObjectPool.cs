@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public GameObject[] prefab;
-    public int poolSize = 5;
+    public int poolSize;
 
     private List<GameObject> objectPool;
     GameObject go;
@@ -17,15 +17,29 @@ public class ObjectPool : MonoBehaviour
     void InitializeObjectPool()
     {
         objectPool = new List<GameObject>();
-
-        for (int i = 0; i < poolSize; i++)
+        if(prefab.Length <= 1)
         {
-            int selection = Random.Range(0, prefab.Length);
-            go = prefab[selection];
-            GameObject obj = Instantiate(go, Vector3.zero, Quaternion.identity);
-            obj.SetActive(false);
-            objectPool.Add(obj);
+            for (int j = 0; j < poolSize; j++)
+            {
+                GameObject obj = Instantiate(prefab[0], Vector3.zero, Quaternion.identity);
+                obj.SetActive(false);
+                objectPool.Add(obj);
+            }
         }
+        else
+        {
+            for(int i=0;i<prefab.Length;i++)
+            {
+                for (int j = 0; j < poolSize; j++)
+                {
+                  
+                    GameObject obj = Instantiate(prefab[i], Vector3.zero, Quaternion.identity);
+                    obj.SetActive(false);
+                    objectPool.Add(obj);
+                }
+            }
+        }
+      
     }
 
     public GameObject GetObjectFromPool(Vector3 position, Quaternion rotation)

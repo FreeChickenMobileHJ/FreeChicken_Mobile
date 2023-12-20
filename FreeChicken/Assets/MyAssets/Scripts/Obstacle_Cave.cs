@@ -71,8 +71,6 @@ public class Obstacle_Cave : MonoBehaviour
     Vector3 offSet;
 
     Rigidbody rigid;
-   
-
     void Awake()
     {
         Application.targetFrameRate = 30;
@@ -106,12 +104,10 @@ public class Obstacle_Cave : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("CaveCharacter").GetComponent<CaveScenePlayer>();
-        //isPlayerFollow = false;
         isSense= false;
         removeObj = false;
-
-        //StartCoroutine(SetEverything());
     }
+  
     private void FixedUpdate()
     {
         switch (Type)
@@ -351,25 +347,31 @@ public class Obstacle_Cave : MonoBehaviour
     {
         if (isMove)
         {
+            
             if (!removeObj && isCube)
             {
                 objAnimator.SetBool("isMove", true);
 
                 moveObj.transform.position += new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime;
+               
                 isMove = false;
+               
             }
             if (!removeObj && isBarrel)
             {
                 objAnimator.SetBool("isMove", true);
 
                 moveObj.transform.position += new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime;
+                
                 isMove = false;
+              
 
             }
             else if (removeObj)
             {
                 isMove = false;
                 this.gameObject.SetActive(false);
+               
                 objAnimator.SetBool("isMove", false);
             }
             
@@ -399,14 +401,18 @@ public class Obstacle_Cave : MonoBehaviour
     {
         if (isMove)
         {
+           
             if (!removeObj)
             {
                 rigid.AddForce(new Vector3(1, 0, 0) * moveSpeed, ForceMode.Acceleration);
+                
                 isMove = false;
+                
             }
             else if (removeObj)
             {
                 isMove = false;
+              
                 this.gameObject.SetActive(false);
             }
         }
@@ -416,14 +422,18 @@ public class Obstacle_Cave : MonoBehaviour
     {
         if (isMove)
         {
+           
             if (!removeObj)
             {
                 rigid.AddForce(new Vector3(0, 0, -1) * moveSpeed, ForceMode.Acceleration);
+              
                 isMove = false;
+              
             }
             else if (removeObj)
             {
                 isMove = false;
+             
                 this.gameObject.SetActive(false);
             }
         }
@@ -439,12 +449,6 @@ public class Obstacle_Cave : MonoBehaviour
                                 orbitSpeed * Time.deltaTime);
         offSet = transform.position - Circletarget.position;
 
-       /* if (isPlayerFollow)
-        {
-            player.gameObject.transform.RotateAround(Circletarget.position,
-                                Vector3.up,
-                                orbitSpeed * Time.deltaTime);
-        }*/
     }
 
     void Circle()
