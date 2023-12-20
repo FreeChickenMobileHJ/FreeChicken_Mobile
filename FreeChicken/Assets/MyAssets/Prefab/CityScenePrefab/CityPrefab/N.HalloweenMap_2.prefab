@@ -262,9 +262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2029664198eae34099a09d85d0c812e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab:
-  - {fileID: 4523723347909101419}
+  Egg: {fileID: 4523723347909101419}
   area: {fileID: 369422524600195244}
+  go: {fileID: 0}
   cnt: 5
 --- !u!1 &5452116077238642704
 GameObject:
@@ -612,9 +612,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2029664198eae34099a09d85d0c812e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab:
-  - {fileID: 4523723347909101419}
+  Egg: {fileID: 4523723347909101419}
   area: {fileID: 4747309615542360222}
+  go: {fileID: 0}
   cnt: 5
 --- !u!1001 &88098109494361786
 PrefabInstance:

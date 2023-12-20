@@ -122,9 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2029664198eae34099a09d85d0c812e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab:
-  - {fileID: 5963515344282477130}
+  Egg: {fileID: 5963515344282477130}
   area: {fileID: 1256306337149262215}
+  go: {fileID: 0}
   cnt: 5
 --- !u!1 &8109637379226506077
 GameObject:
@@ -214,9 +214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2029664198eae34099a09d85d0c812e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab:
-  - {fileID: 5963515344282477130}
+  Egg: {fileID: 5963515344282477130}
   area: {fileID: 6029215796841161795}
+  go: {fileID: 0}
   cnt: 5
 --- !u!1 &8721897481838813775
 GameObject:
