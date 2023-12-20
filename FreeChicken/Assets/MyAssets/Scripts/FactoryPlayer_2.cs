@@ -66,6 +66,7 @@ public class FactoryPlayer_2 : MonoBehaviour
     public AudioSource changeConAudio;
     public AudioSource bombAudio;
     public AudioSource saveAudio;
+    public AudioSource quackAudio;
 
    
     private void Start()
@@ -237,6 +238,7 @@ public class FactoryPlayer_2 : MonoBehaviour
             if (npc.cnt == 3)
             {
                 scene2LastUI.gameObject.SetActive(true);
+                quackAudio.Play();
                 Invoke("RoadScene", 2f);
             }
             else if(npc.cnt < 3)
