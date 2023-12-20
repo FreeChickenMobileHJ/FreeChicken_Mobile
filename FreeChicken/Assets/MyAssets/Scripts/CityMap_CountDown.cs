@@ -11,7 +11,12 @@ public class CityMap_CountDown : MonoBehaviour
     public bool isStart;
     public bool isStop;
     public AudioSource countDownSound;
-    
+    private Color originalColor;
+    void Start()
+    {
+        originalColor = text.color;
+    }
+
     void Update()
     {
         if (isStart)
@@ -36,6 +41,11 @@ public class CityMap_CountDown : MonoBehaviour
         {
            
             text.text = CountValue.ToString();
+            if (CountValue <= 5)
+            {
+                text.color = Color.red;
+            }
+
             yield return new WaitForSeconds(1f);
             CountValue--;
         }
@@ -51,8 +61,9 @@ public class CityMap_CountDown : MonoBehaviour
                 countDownSound.Stop();
             }
         }
-        
-        if(!isStop && !isCity) isFin = true;
+
+        text.color = originalColor;
+        if (!isStop && !isCity) isFin = true;
         if (isCity)
         {
             this.gameObject.SetActive(false);
