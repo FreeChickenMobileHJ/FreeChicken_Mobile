@@ -96,13 +96,13 @@ public class HouseScenePlayer : MonoBehaviour
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
         isJump = false;
-        if (File.Exists("playerData.json"))
-        {
-            string jsonData = File.ReadAllText("playerData.json");
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
+        //if (File.Exists(Application.persistentDataPath + "/playerData.json"))
+        //{
+        //    string jsonData = File.ReadAllText(Application.persistentDataPath + "/playerData.json");
+        //    PlayerData loadedData = JsonUtility.FromJson<PlayerData>(jsonData);
 
-            isEnglish = loadedData.isEng;
-        }
+        //    isEnglish = loadedData.isEng;
+        //}
         memCnt = memCnt.GetComponent<MemoryCount>();
      
     }
@@ -147,7 +147,7 @@ public class HouseScenePlayer : MonoBehaviour
 
     IEnumerator CO_notDead()
     {
-        while (isUnActive && !Dead)
+        while (/*!isUnActive &&*/ !Dead)
         {
             DiePs.gameObject.SetActive(false);
 
@@ -281,6 +281,7 @@ public class HouseScenePlayer : MonoBehaviour
 
                 cameraArm.rotation = originalCameraRotation;
                 GetUpgradePs.SetActive(false);
+                StopCoroutine(CO_notDead());
             }
         }
     }
@@ -382,8 +383,7 @@ public class HouseScenePlayer : MonoBehaviour
 
         if (other.gameObject.name == "NextScenePoint")
         {
-            Invoke("NextScene", 1.5f);
-            
+            NextScene();
         }
 
         if (other.CompareTag("Obstacle") && !Dead)
