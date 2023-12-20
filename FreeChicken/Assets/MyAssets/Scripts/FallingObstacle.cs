@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FallingObstacle : MonoBehaviour
 {
+    public ObjectPool objectPool;
     public GameObject[] prefab;
     BoxCollider area;
     public int cnt = 20;
@@ -21,20 +22,25 @@ public class FallingObstacle : MonoBehaviour
         {
             for (int i = 0; i < cnt; ++i)
             {
-                Spawn();
+                StartCoroutine(Spawn());
             }
         }
         player.isfallingBook = false;
     }
 
-    void Spawn()
+    IEnumerator Spawn()
     {
         Vector3 pos = GetRandomPos();
         int selection = Random.Range(0, prefab.Length);
         GameObject go = prefab[selection];
-        GameObject instance = Instantiate(go, pos, Quaternion.identity);
+        //GameObject instance = Instantiate(go, pos, Quaternion.identity);
         float random = Random.Range(3.5f, 5f);
-        Destroy(instance, random);
+        //Destroy(instance, random);
+
+        GameObject instance = objectPool.GetObjectFromPool(pos, Quaternion.identity);
+
+        yield return new WaitForSeconds(3f);
+        objectPool.ReturnObjectToPool(instance);
     }
 
     Vector3 GetRandomPos()
