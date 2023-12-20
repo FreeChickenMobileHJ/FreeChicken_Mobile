@@ -1285,6 +1285,7 @@ GameObject:
   - component: {fileID: 5713634359370681710}
   - component: {fileID: 7449142804493063536}
   - component: {fileID: 7201070359947631062}
+  - component: {fileID: 7315052464804479168}
   m_Layer: 0
   m_Name: Building_Stadium
   m_TagString: Untagged
@@ -1357,6 +1358,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7315052464804479168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742781675266091294}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 35.460045, y: 63.423843, z: 103.50909}
+  m_Center: {x: -0.32175064, y: -0.16993713, z: 29.375011}
 --- !u!1 &771342406445274971
 GameObject:
   m_ObjectHideFlags: 0
@@ -5987,6 +6009,7 @@ GameObject:
   - component: {fileID: 1336131646917741243}
   - component: {fileID: 512707722591516278}
   - component: {fileID: 5774961391148538831}
+  - component: {fileID: 5048953589080208175}
   m_Layer: 0
   m_Name: Building_Residential_color03
   m_TagString: Untagged
@@ -6059,6 +6082,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5048953589080208175
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839321320128760508}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 58.95534, y: 34.282143, z: 20.899727}
+  m_Center: {x: 7.3100567, y: 17.141071, z: 4.1750593}
 --- !u!1 &4847331823829607331
 GameObject:
   m_ObjectHideFlags: 0
@@ -8374,6 +8418,7 @@ GameObject:
   - component: {fileID: 5513108203161914021}
   - component: {fileID: 2874701512587406980}
   - component: {fileID: 692561651235316181}
+  - component: {fileID: 1543295558420480513}
   m_Layer: 0
   m_Name: Road Lane_01
   m_TagString: Untagged
@@ -8446,6 +8491,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1543295558420480513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210912981489449104}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 22.684813, y: 33.431496, z: 109.02667}
+  m_Center: {x: 1.3424044, y: 12.665749, z: -16.035267}
 --- !u!1 &7369967638435549740
 GameObject:
   m_ObjectHideFlags: 0
