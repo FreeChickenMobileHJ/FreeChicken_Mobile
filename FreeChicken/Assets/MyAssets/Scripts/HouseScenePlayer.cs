@@ -84,6 +84,7 @@ public class HouseScenePlayer : MonoBehaviour
     public AudioSource TalkAudio;
     public AudioSource OpenDoorAudio;
     public AudioSource BoxGetAudio;
+    public AudioSource quackAudio;
 
     [Header("UI")]
     public GameObject PushBell_text;
@@ -383,7 +384,8 @@ public class HouseScenePlayer : MonoBehaviour
 
         if (other.gameObject.name == "NextScenePoint")
         {
-            NextScene();
+            quackAudio.Play();
+            Invoke("NextScene", 0.5f);
         }
 
         if (other.CompareTag("Obstacle") && !Dead)

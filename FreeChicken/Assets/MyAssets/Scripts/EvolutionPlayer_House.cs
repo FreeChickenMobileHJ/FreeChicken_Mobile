@@ -48,6 +48,7 @@ public class EvloutionPlayer : MonoBehaviour
     public AudioSource dieAudio;
     public AudioSource jumpAudio;
     public AudioSource savePointAudio;
+    public AudioSource quackAudio;
 
     [Header("Dialogue")]
     public GameObject ReadygoCity;
@@ -157,7 +158,8 @@ public class EvloutionPlayer : MonoBehaviour
 
         if (other.gameObject.name == "GoCitySense")
         {
-            NextScene();
+            quackAudio.Play();
+            Invoke("NextScene", 0.5f);
         }
     }
 

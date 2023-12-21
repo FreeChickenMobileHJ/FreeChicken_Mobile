@@ -50,6 +50,7 @@ public class HouseScene2_Player : MonoBehaviour
     public AudioSource savePointAudio;
     public AudioSource trumpetAudio;
     public AudioSource duckAudio;
+    public AudioSource windAudio;
 
     [Header("Dialogue")]
     public GameObject NPCDialogue1;
@@ -82,6 +83,7 @@ public class HouseScene2_Player : MonoBehaviour
     public Vector3 ResPawnPos1;
     public Vector3 ResPawnPos2;
     public bool isUnActive;
+    EvloutionPlayer evloutionPlayerplayer;
 
     void Awake()
     {
@@ -101,20 +103,17 @@ public class HouseScene2_Player : MonoBehaviour
 
     IEnumerator CO_notDead()
     {
-        while(true)
+        while (!Dead)
         {
-            if (!isUnActive && !Dead)
+            if (!isTalk1 || !isTalk2)
             {
-                if (!isTalk1 || !isTalk2)
+                if (isRotating)
                 {
-                    if (isRotating)
-                    {
-                        HandleCameraRotation();
-                    }
+                    HandleCameraRotation();
                 }
             }
             yield return null;
-        } 
+        }
     }
 
     IEnumerator CO_Dead()
@@ -225,6 +224,7 @@ public class HouseScene2_Player : MonoBehaviour
             anim.SetBool("Walk", false);
             anim.SetBool("Run", false);
             DestroyObj.SetActive(false);
+            LineObj.SetActive(true);
             unicycleCam.Priority = 10;
             mainCam.Priority = 1;
             Invoke("UnicycleObj_Destroy", 1.5f);
@@ -237,6 +237,7 @@ public class HouseScene2_Player : MonoBehaviour
             anim.SetBool("Walk", false);
             anim.SetBool("Run", false);
             DestroyObj.SetActive(false);
+            LineObj.SetActive(true);
             unicycleCam.Priority = 10;
             mainCam.Priority = 1;
             Invoke("UnicycleObj_Destroy", 1.5f);
@@ -252,7 +253,8 @@ public class HouseScene2_Player : MonoBehaviour
 
         if (other.gameObject.name == "NextScenePos")
         {
-            NextScene();
+            windAudio.Play();
+            Invoke("NextScene", 0.5f);
         }
     }
 
@@ -313,6 +315,7 @@ public class HouseScene2_Player : MonoBehaviour
 
             cameraArm.rotation = originalCameraRotation;
             EvoluPs.SetActive(false);
+            StopCoroutine(CO_notDead());
         }
     }
 

@@ -112,10 +112,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 79090225659904
-    m_Localized: 'Obtained Walking Ability (SHIFT) + Mouse Rotation Ability!
+    m_Localized: 'Obtained Camera Rotation Ability!
 
-      Use
-      these abilities to escape from the house!'
+      Use the ability to escape
+      from the house!'
     m_Metadata:
       m_Items: []
   - m_Id: 80904698347520
@@ -234,8 +234,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 406401298874368
-    m_Localized: "Gain the dash ability! Press X to speed up! \nLet's use the ability
-      to escape the cave!"
+    m_Localized: 'Acquired Dash Ability! Press to move faster!
+
+      Let''s use
+      the ability to escape the cave!'
     m_Metadata:
       m_Items: []
   - m_Id: 407142650494976
