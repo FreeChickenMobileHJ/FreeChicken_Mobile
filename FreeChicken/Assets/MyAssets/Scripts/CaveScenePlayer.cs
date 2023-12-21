@@ -118,6 +118,7 @@ public class CaveScenePlayer : MonoBehaviour
     public GameObject TimerUI;
 
     public GameObject DieCanvas;
+    public GameObject pause;
     [Header("SavePoint")]
     
     public GameObject SavePointImage;
@@ -493,6 +494,7 @@ public class CaveScenePlayer : MonoBehaviour
         {
             if(LastUI!=null) LastUI.SetActive(true);
             isLastUI = true;
+            pause.SetActive(false);
             if (PlayerData.isEnglish)
             {
                 Last_E.SetActive(true);
@@ -715,8 +717,7 @@ public class CaveScenePlayer : MonoBehaviour
             
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj2", 1.5f); 
-            // 문제 없으면 삭제해도 됨 761 줄 까지 주석처리 된 Invoke 12.21
-            //Invoke("Destroy_SavePointImage", 2f);
+           
         }
 
         if (other.CompareTag("SavePoint3") && !isCave_3 && !isSaveChk)
@@ -731,7 +732,7 @@ public class CaveScenePlayer : MonoBehaviour
            
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj3", 1.5f);
-            //Invoke("Destroy_SavePointImage", 2f);
+            
         }
 
         if (other.CompareTag("SavePoint4") && !isCave_4 && !isSaveChk)
@@ -746,7 +747,7 @@ public class CaveScenePlayer : MonoBehaviour
            
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj4", 1.5f);
-            //Invoke("Destroy_SavePointImage", 2f);
+           
         }
 
         if (other.CompareTag("SavePoint5") && !isCave_5 && !isSaveChk)
@@ -762,12 +763,12 @@ public class CaveScenePlayer : MonoBehaviour
           
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj5", 1.5f);
-            //Invoke("Destroy_SavePointImage", 2f);
+          
         }
 
         if (other.gameObject.name == "FinalPoint")
         {           
-            LoadingSceneManager.LoadScene("EndingScene"); // 12.15
+            LoadingSceneManager.LoadScene("EndingScene"); 
         }
 
         if(other.CompareTag("Poison")&&!isReversed)
