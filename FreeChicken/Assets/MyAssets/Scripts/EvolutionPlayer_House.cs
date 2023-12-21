@@ -61,6 +61,7 @@ public class EvloutionPlayer : MonoBehaviour
     private float rotationTimer = 0.0f;
     private float rotationDuration = 2.0f;
     public GameObject EvoluPs;
+    public GameObject hideObj;
 
 
 
@@ -79,11 +80,12 @@ public class EvloutionPlayer : MonoBehaviour
         DiePs.gameObject.SetActive(false);
         DieCanvas.gameObject.SetActive(false);
         StartCoroutine(CO_notDead());
+        hideObj.SetActive(false);
     }
 
     IEnumerator CO_notDead()
     {
-        while (!isUnActive && !Dead)
+        while (/*!isUnActive &&*/ !Dead)
         {
             if (!isTalk2)
             {
@@ -150,13 +152,18 @@ public class EvloutionPlayer : MonoBehaviour
         {
             StartRotation();
             ReadygoCity.SetActive(true);
+            Invoke("HideObj",3f);
         }
 
         if (other.gameObject.name == "GoCitySense")
         {
             NextScene();
-
         }
+    }
+
+    void HideObj()
+    {
+        ReadygoCity.SetActive(false);
     }
 
     void NextScene()
@@ -196,7 +203,6 @@ public class EvloutionPlayer : MonoBehaviour
         if (other.CompareTag("evolu"))
         {
             other.gameObject.SetActive(false);
-            ReadygoCity.SetActive(false);
         }
     }
 
