@@ -217,6 +217,7 @@ public class AI_Cave : MonoBehaviour
         {
             isDie = true;
             anim.SetTrigger("isDead");
+            DieSound.Play();
             DieParticle_2.SetActive(true);
             rigid.isKinematic = true;
 
