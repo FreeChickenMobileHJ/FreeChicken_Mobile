@@ -23873,7 +23873,7 @@ MonoBehaviour:
   enter2D_UI: {fileID: 0}
   startScene_UI: {fileID: 0}
   LocaleManager: {fileID: 0}
-  memCnt: {fileID: 0}
+  memCnt: {fileID: 3053332402413934420}
 --- !u!4 &2034672091
 Transform:
   m_ObjectHideFlags: 0
@@ -27886,7 +27886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 48.8, y: -10}
+  m_AnchoredPosition: {x: 52, y: -9.5}
   m_SizeDelta: {x: 25, y: 22}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1001 &3517593841121521359
@@ -32441,7 +32441,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '4
+  m_text: '3
 
 '
   m_isRightToLeft: 0

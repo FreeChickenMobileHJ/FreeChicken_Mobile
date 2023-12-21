@@ -229,7 +229,6 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint5 = true;
         }
 
-        //StartCoroutine("CO_notDead");
         StartCoroutine("CO_MomContact");
         StartCoroutine("CO_TalkNPC2");
         StartCoroutine("CO_TimerCheck");
@@ -250,7 +249,7 @@ public class CaveScenePlayer : MonoBehaviour
             GetInput();
 
         }
-        if (isUnActive && isTalk)
+        if (isUnActive || isTalk)
         {
             anim.SetBool("isRun", false);
         }
@@ -700,7 +699,7 @@ public class CaveScenePlayer : MonoBehaviour
             savePointAudio.Play();
             isSaveChk = true;
             StartCoroutine("GetSavePointImage");
-            Invoke("Destroy_SavePointObj1", 1.5f);
+            Invoke("Destroy_SavePointObj1", 1.5f);           
             Invoke("Destroy_SavePointImage", 2f);
         }
 
@@ -711,11 +710,13 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint1 = false;
             check_savepoint3 = false;
             check_savepoint4 = false;
-            savePointAudio.Play();
             isSaveChk = true;
+            savePointAudio.Play();
+            
             StartCoroutine("GetSavePointImage");
-            Invoke("Destroy_SavePointObj2", 1.5f);
-            Invoke("Destroy_SavePointImage", 2f);
+            Invoke("Destroy_SavePointObj2", 1.5f); 
+            // 문제 없으면 삭제해도 됨 761 줄 까지 주석처리 된 Invoke 12.21
+            //Invoke("Destroy_SavePointImage", 2f);
         }
 
         if (other.CompareTag("SavePoint3") && !isCave_3 && !isSaveChk)
@@ -724,12 +725,13 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint0 = false;
             check_savepoint1 = false;
             check_savepoint2 = false;
-            check_savepoint4 = false;
-            savePointAudio.Play();
+            check_savepoint4 = false; 
             isSaveChk = true;
+            savePointAudio.Play();
+           
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj3", 1.5f);
-            Invoke("Destroy_SavePointImage", 2f);
+            //Invoke("Destroy_SavePointImage", 2f);
         }
 
         if (other.CompareTag("SavePoint4") && !isCave_4 && !isSaveChk)
@@ -738,12 +740,13 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint0 = false;
             check_savepoint1 = false;
             check_savepoint2 = false;
-            check_savepoint3 = false;
-            savePointAudio.Play();
+            check_savepoint3 = false; 
             isSaveChk = true;
+            savePointAudio.Play();
+           
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj4", 1.5f);
-            Invoke("Destroy_SavePointImage", 2f);
+            //Invoke("Destroy_SavePointImage", 2f);
         }
 
         if (other.CompareTag("SavePoint5") && !isCave_5 && !isSaveChk)
@@ -753,12 +756,13 @@ public class CaveScenePlayer : MonoBehaviour
             check_savepoint1 = false;
             check_savepoint2 = false;
             check_savepoint3 = false;
-            check_savepoint4 = false;
-            savePointAudio.Play();
+            check_savepoint4 = false;  
             isSaveChk = true;
+            savePointAudio.Play();
+          
             StartCoroutine("GetSavePointImage");
             Invoke("Destroy_SavePointObj5", 1.5f);
-            Invoke("Destroy_SavePointImage", 2f);
+            //Invoke("Destroy_SavePointImage", 2f);
         }
 
         if (other.gameObject.name == "FinalPoint")
@@ -902,8 +906,7 @@ public class CaveScenePlayer : MonoBehaviour
         SavePoint2Obj.gameObject.SetActive(false);
         GameSave.Level = 12;
         LoadingSceneManager.LoadScene("Enter2DScene");
-        //SceneManager.LoadScene("LoadingScene");
-
+      
     }
 
     void Destroy_SavePointObj3()
@@ -923,7 +926,7 @@ public class CaveScenePlayer : MonoBehaviour
     }
     void Destroy_SavePointObj5()
     {
-        //SavePoint5Obj.gameObject.SetActive(false);
+       
         GameSave.Level = 15;
         LoadingSceneManager.LoadScene("Enter2DScene");
 

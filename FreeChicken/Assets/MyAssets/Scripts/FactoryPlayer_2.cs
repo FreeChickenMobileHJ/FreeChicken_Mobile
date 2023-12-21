@@ -16,9 +16,7 @@ public class FactoryPlayer_2 : MonoBehaviour
     Vector3 moveVec;
     Rigidbody rigid;
     public GameObject thisRealObj;
-
     public VariableJoystick joystick;
-
 
     [Header("Bool")]
     public bool isJump;
@@ -43,8 +41,8 @@ public class FactoryPlayer_2 : MonoBehaviour
     public GameObject SpawnPos;
     public MemoryCount memCnt;
     public FactoryNPC npc;
-    public GameObject slidePs_1;
-    public GameObject slidePs_2;
+    public ParticleSystem slidePs_1;
+    public ParticleSystem slidePs_2;
     public GameObject SavePos;
 
     [Header("UI")]
@@ -249,9 +247,9 @@ public class FactoryPlayer_2 : MonoBehaviour
         }
         if (other.CompareTag("Item"))
         {
-            
-            slidePs_1.SetActive(true);
-            slidePs_2.SetActive(true);
+
+            slidePs_1.Play();
+            slidePs_2.Play();
             bombAudio.Play();
         }
         if (other.CompareTag("SavePoint_1"))
@@ -278,10 +276,7 @@ public class FactoryPlayer_2 : MonoBehaviour
         if (other.CompareTag("Slide"))
         {
 
-            this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 3f, Space.World);
-
-
-          
+            this.gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 3f, Space.World);        
         }
         if (other.CompareTag("TurnPointR"))
         {
