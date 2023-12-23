@@ -253,7 +253,7 @@ public class HouseScene2_Player : MonoBehaviour
         if (other.gameObject.name == "NextScenePos")
         {
             windAudio.Play();
-            Invoke("NextScene", 0.8f);
+            Invoke("NextScene", 0.2f);
         }
     }
 
