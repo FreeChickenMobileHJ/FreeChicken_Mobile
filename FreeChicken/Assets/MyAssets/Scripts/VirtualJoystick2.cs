@@ -57,6 +57,7 @@ public class VirtualJoystick2 : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         if (isInput && !housePlayer2.Dead) 
         {
             ControlJoystickLever(eventData);
+            InputControlVector();
         }
     }
 
@@ -64,15 +65,15 @@ public class VirtualJoystick2 : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     {
         lever.anchoredPosition = Vector2.zero;
         isInput = false;
-        switch (joystickType)
-        {
-            case JoysitckType.Move:
-                housePlayer2.Move(Vector2.zero);
-                break;
-            case JoysitckType.Rotate:
-                housePlayer2.Move(Vector2.zero);
-                break;
-        }
+        //switch (joystickType)
+        //{
+        //    case JoysitckType.Move:
+        //        housePlayer2.Move(Vector2.zero);
+        //        break;
+        //    case JoysitckType.Rotate:
+        //        housePlayer2.Move(Vector2.zero);
+        //        break;
+        //}
     }
 
     private void ControlJoystickLever(PointerEventData eventData)
@@ -106,6 +107,10 @@ public class VirtualJoystick2 : MonoBehaviour, IBeginDragHandler, IDragHandler, 
                         break;
                 }
             }
+            else
+            {
+                housePlayer2.Move(Vector2.zero);
+            }
         }
     }
 
@@ -114,11 +119,11 @@ public class VirtualJoystick2 : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         if (!housePlayer2.isTalk1 || housePlayer2.TalkEnd1 || !housePlayer2.isTalk2 /*|| housePlayer2.TalkEnd2*/)
         {
             InputControlVector();
-
         }
         else if (housePlayer2.isTalk1 || !housePlayer2.TalkEnd1 || housePlayer2.isTalk2 || !housePlayer2.TalkEnd2)
         {
             isInput = false;
+            housePlayer2.Move(Vector2.zero); // 대화 중에는 움직이지 않도록
         }
     }
 }
