@@ -133,55 +133,6 @@ public class Obstacle_House : MonoBehaviour
                     break;
             }
     }
-
-    //IEnumerator SetEverything()
-    //{
-    //    while (true)
-    //    {
-    //        switch (Type)
-    //        {
-    //            case MoveObstacleType.A:
-    //                isMove = true;
-    //                upDown();
-    //                break;
-    //            case MoveObstacleType.B:
-    //                isMove = true;
-    //                leftRight_x();
-    //                break;
-    //            case MoveObstacleType.C:
-    //                isMove = true;
-    //                leftRight_z();
-    //                break;
-    //            case MoveObstacleType.D:
-    //                isMove = false;
-    //                deguldegul();
-    //                break;
-    //            case MoveObstacleType.E:
-    //                rotate_z();
-    //                break;
-    //            case MoveObstacleType.F:
-    //                isMove = true;
-    //                Orbit();
-    //                break;
-    //            case MoveObstacleType.G:
-    //                isMove = true;
-    //                rotatae_x();
-    //                break;
-    //            case MoveObstacleType.H:
-    //                Circle();
-    //                break;
-    //            case MoveObstacleType.I:
-    //                isMove = true;
-    //                rotate_y();
-    //                break;
-    //            case MoveObstacleType.K:
-    //                rotate_xyz();
-    //                break;
-    //        }
-    //        yield return null;
-    //    }
-    //}
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player") && !isPlayerFollow)
@@ -228,32 +179,26 @@ public class Obstacle_House : MonoBehaviour
                 if (player != null && !player.isMove)
                 {
                     player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime;
-                    //playerRigid1.MovePosition(player.gameObject.transform.position + new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime);
                 }
-                else if(player2 != null && !player2.isMove)
+                else if (player2 != null && !player2.isMove)
                 {
-                    //ObjRigid.MovePosition(transform.position);
-                    player2.gameObject.transform.position = player2.gameObject.transform.position + new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime;
-                    //playerRigid2.MovePosition(player2.gameObject.transform.position + new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime);
+                    playerRigid2.MovePosition(playerRigid2.gameObject.transform.position + new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime);
                 }
             }
         }
         else
         {
             transform.position = transform.position + new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime;
-           
+
             if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null && !player.isMove)
                 {
                     player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime;
-                    //playerRigid1.MovePosition(player.gameObject.transform.position + new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime);
                 }
                 else if (player2 != null && !player2.isMove)
                 {
-                    //ObjRigid.MovePosition(transform.position);
-                    player2.gameObject.transform.position = player2.gameObject.transform.position + new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime;
-                    playerRigid2.MovePosition(player2.gameObject.transform.position + new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime);
+                    playerRigid2.MovePosition(playerRigid2.gameObject.transform.position + new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime);
                 }
             }
         }
@@ -278,7 +223,7 @@ public class Obstacle_House : MonoBehaviour
     void rotate_xyz()
     {
         transform.Rotate(-angle_z / 50, -angle_z / 50, -angle_z / 50);
-    }    
+    }
 
     void leftRight_x()
     {
@@ -296,26 +241,25 @@ public class Obstacle_House : MonoBehaviour
         if (turnSwitch)
         {
             transform.position = transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime;
-           
+
             if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null && !player.isMove)
                 {
                     player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime;
-                    //playerRigid1.MovePosition(player.gameObject.transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime);
                 }
                 else if (player2 != null && !player2.isMove)
                 {
-                    ObjRigid.MovePosition(transform.position);
+                    //ObjRigid.MovePosition(transform.position);
                     //player2.gameObject.transform.position = player2.gameObject.transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime;
-                    playerRigid2.MovePosition(player2.gameObject.transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime);
+                    playerRigid2.MovePosition(playerRigid2.gameObject.transform.position + new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime);
                 }
             }
         }
         else
         {
             transform.position = transform.position + new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime;
-            
+
             if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null && !player.isMove)
@@ -325,9 +269,9 @@ public class Obstacle_House : MonoBehaviour
                 }
                 else if (player2 != null && !player2.isMove)
                 {
-                    ObjRigid.MovePosition(transform.position);
+                    //ObjRigid.MovePosition(transform.position);
                     //player2.gameObject.transform.position = player2.gameObject.transform.position + new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime;
-                    playerRigid2.MovePosition(player2.gameObject.transform.position + new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime);
+                    playerRigid2.MovePosition(playerRigid2.gameObject.transform.position + new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime);
                 }
             }
         }
@@ -349,39 +293,35 @@ public class Obstacle_House : MonoBehaviour
         if (turnSwitch)
         {
             transform.position = transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime;
-           
 
-            if (isPlayerFollow && !isNotPlayerFollow )
+
+            if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null && !player.isMove)
                 {
-                    //playerRigid1.MovePosition(player.gameObject.transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime);
                     player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime;
                 }
                 else if (player2 != null && !player2.isMove)
                 {
                     ObjRigid.MovePosition(transform.position);
-                    playerRigid2.MovePosition(player2.gameObject.transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime);
-                    //player2.gameObject.transform.position = player2.gameObject.transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime;
+                    playerRigid2.MovePosition(playerRigid2.gameObject.transform.position + new Vector3(0, 0, 1) * moveSpeed * Time.deltaTime);
                 }
             }
         }
         else
         {
             transform.position = transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime;
-           
+
             if (isPlayerFollow && !isNotPlayerFollow)
             {
                 if (player != null && !player.isMove)
                 {
-                    //playerRigid1.MovePosition(player.gameObject.transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime);
                     player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime;
                 }
                 else if (player2 != null && !player2.isMove)
                 {
                     ObjRigid.MovePosition(transform.position);
-                    playerRigid2.MovePosition(player2.gameObject.transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime);
-                    //player2.gameObject.transform.position = player2.gameObject.transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime;
+                    playerRigid2.MovePosition(playerRigid2.gameObject.transform.position + new Vector3(0, 0, -1) * moveSpeed * Time.deltaTime);
                 }
             }
         }

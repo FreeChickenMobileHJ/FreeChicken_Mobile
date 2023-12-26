@@ -142,8 +142,7 @@ public class HouseScene2_Player : MonoBehaviour
             Vector3 moveVec = lookForward * moveInput.y + lookRight * moveInput.x;
 
             characterBody.forward = moveVec;
-            //transform.position += moveVec * speed * Time.deltaTime;
-            rigid.MovePosition(transform.position + moveVec * speed * Time.deltaTime);
+            rigid.MovePosition(rigid.transform.position + moveVec * speed * Time.deltaTime);
             runAudio.Play();
         }
     }
@@ -254,7 +253,7 @@ public class HouseScene2_Player : MonoBehaviour
         if (other.gameObject.name == "NextScenePos")
         {
             windAudio.Play();
-            Invoke("NextScene", 0.5f);
+            Invoke("NextScene", 0.2f);
         }
     }
 
