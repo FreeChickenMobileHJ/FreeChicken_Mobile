@@ -864,7 +864,7 @@ public class CaveScenePlayer : MonoBehaviour
         isChk = false;
         cnt.isFin = false;
         BombParticle.SetActive(false);
-        cnt.CountValue = 15;
+        cnt.CountValue = 20;
         isTimerChk = false;
         this.gameObject.transform.position = ReStartZone.transform.position;
         Dad.gameObject.transform.position = DadReStartZone.transform.position;
