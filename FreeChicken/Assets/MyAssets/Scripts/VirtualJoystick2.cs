@@ -124,6 +124,7 @@ public class VirtualJoystick2 : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         {
             isInput = false;
             housePlayer2.Move(Vector2.zero); // 대화 중에는 움직이지 않도록
+            lever.anchoredPosition = Vector2.zero;
         }
     }
 }
