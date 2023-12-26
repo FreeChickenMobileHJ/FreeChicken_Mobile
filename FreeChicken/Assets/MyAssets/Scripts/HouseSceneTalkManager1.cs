@@ -96,8 +96,9 @@ public class HouseSceneTalkManager1 : MonoBehaviour
         foreach (char ch in line.ToCharArray())
         {
             text.text += ch;
-            yield return new WaitForSeconds(0.0001f);
+            //yield return null;
         }
+        yield return null;
     }
 
     public void ClickNextButton()

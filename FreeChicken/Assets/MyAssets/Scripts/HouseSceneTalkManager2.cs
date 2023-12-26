@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using Cinemachine;
+using Unity.VisualScripting;
 
 public class HouseSceneTalkManager2 : MonoBehaviour
 {
@@ -113,8 +114,9 @@ public class HouseSceneTalkManager2 : MonoBehaviour
         foreach (char ch in line.ToCharArray())
         {
             text.text += ch;
-            yield return new WaitForSeconds(0.0001f);
+            
         }
+        yield return null;
     }
 
     public void ClickNextButton()
